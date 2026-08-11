@@ -3,7 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MarketX | World Class E-Commerce</title>
+    
+    <!-- Google Search Engine (SEO) Meta Tags -->
+    <title>MarketX | ኦንላይን ገበያ - አልባሳት፣ ጫማዎች እና ኤሌክትሮኒክስ</title>
+    <meta name="description" content="MarketX በኢትዮጵያ ውስጥ ጥራት ያላቸውን ልብሶች፣ ጫማዎች፣ ኤሌክትሮኒክስ እና ያገለገሉ እቃዎችን በታማኝነት የሚያገኙበት ኦንላይን ገበያ ነው።">
+    <meta name="keywords" content="MarketX, Market X, ገበያ, ኦንላይን ሾፕ, ጫማ, ልብስ, ኤሌክትሮኒክስ, ኢትዮጵያ ሾፕ">
+    <meta name="author" content="MarketX Ethiopia">
+    <meta name="robots" content="index, follow">
+
+    <!-- Open Graph for Social Media (Telegram, Facebook) -->
+    <meta property="og:title" content="MarketX | World Class E-Commerce">
+    <meta property="og:description" content="ጥራት ያላቸውን ምርቶች በአንድ ቦታ ያግኙና በቴሌግራም ይዘዙ።">
+    <meta property="og:type" content="website">
+
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
@@ -110,7 +122,6 @@
             padding: 12px 20px;
             overflow-x: auto;
         }
-
         .nav-btn {
             border: none;
             color: var(--text-muted);
@@ -137,6 +148,7 @@
             border-color: var(--primary);
             box-shadow: 0 4px 12px rgba(37, 99, 235, 0.25);
         }
+
         /* Hero Banner */
         .hero {
             background: radial-gradient(circle at top right, #1e293b, #0f172a);
@@ -264,7 +276,6 @@
             font-size: 20px;
             font-weight: 800;
         }
-
         .buy-btn {
             background-color: var(--primary);
             color: white;
@@ -283,7 +294,8 @@
             background-color: var(--primary-hover);
             box-shadow: 0 6px 16px rgba(37, 99, 235, 0.35);
         }
-        /* No Results Found Message */
+
+        /* No Results Message */
         .no-results {
             display: none;
             text-align: center;
@@ -373,7 +385,6 @@
                 </div>
             </div>
         </section>
-
         <!-- 2. ልብሶች -->
         <section id="clothes" class="category-section active">
             <h3 class="category-header">👕 ልብሶች</h3>
@@ -385,7 +396,7 @@
                         <span class="price">1,200 ብር</span>
                     </div>
                     <a class="buy-btn" href="https://t.me/Tvwlute" target="_blank">በቴሌግራም ይዘዙ</a>
-                    </div>
+                </div>
                 <div class="card">
                     <span class="badge">HOT</span>
                     <img src="https://images.unsplash.com/photo-1551028719-00167b16eac5?w=500" alt="ጃኬት">
@@ -456,12 +467,9 @@
 
     <!-- JavaScript code for Filtering and Live Search -->
     <script>
-        // Category Filter Function
         function showCategory(categoryId, element) {
-            // Search Input ፅሁፉን ማፅዳት
             document.getElementById('searchInput').value = '';
             document.getElementById('noResults').style.display = 'none';
-
             let buttons = document.querySelectorAll('.nav-btn');
             buttons.forEach(btn => btn.classList.remove('active'));
             
@@ -470,8 +478,9 @@
             let sections = document.querySelectorAll('.category-section');
             sections.forEach(section => {
                 let cards = section.querySelectorAll('.card');
-                cards.forEach(card => card.style.display = 'flex'); // ሁሉንም ካርዶች ማሳየት
-                             if (categoryId === 'all') {
+                cards.forEach(card => card.style.display = 'flex');
+
+                if (categoryId === 'all') {
                     section.classList.add('active');
                 } else {
                     if (section.id === categoryId) {
@@ -483,7 +492,6 @@
             });
         }
 
-        // Live Search Filter Function
         function filterProducts() {
             let input = document.getElementById('searchInput').value.toLowerCase();
             let cards = document.querySelectorAll('.card');
@@ -491,7 +499,7 @@
             let visibleCardsCount = 0;
 
             sections.forEach(section => {
-                section.classList.add('active'); // በፍለጋ ወቅት ሁሉንም ሴክሽኖች መክፈት
+                section.classList.add('active');
                 let sectionHasMatch = false;
 
                 let sectionCards = section.querySelectorAll('.card');
@@ -506,13 +514,11 @@
                     }
                 });
 
-                // በዚያ ምድብ ውስጥ ምንም ከተፈለገው ጋር የሚመሳሰል እቃ ከሌለ ሙሉ ሴክሽኑን መደብቅ
                 if (!sectionHasMatch && input !== '') {
                     section.classList.remove('active');
                 }
             });
 
-            // ምንም እቃ ካልተገኘ መልእክት ማሳየት
             let noResultsMsg = document.getElementById('noResults');
             if (visibleCardsCount === 0 && input !== '') {
                 noResultsMsg.style.display = 'block';
