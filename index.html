@@ -853,11 +853,10 @@
 
         // Search Filter Function
         document.getElementById('searchInput').addEventListener('keyup', function() {
-            let input = this.value.toLowerCase();
+            let input = this.value.toLowerCase().trim();
             let visibleCardsCount = 0;
 
             document.querySelectorAll('.category-section').forEach(section => {
-                section.classList.add('active');
                 let sectionHasMatch = false;
 
                 section.querySelectorAll('.card').forEach(card => {
@@ -871,7 +870,9 @@
                     }
                 });
 
-                if (!sectionHasMatch && input !== '') {
+                if (sectionHasMatch) {
+                    section.classList.add('active');
+                } else {
                     section.classList.remove('active');
                 }
             });
@@ -884,6 +885,5 @@
             }
         });
     </script>
-
 </body>
 </html>
