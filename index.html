@@ -278,30 +278,25 @@
             font-weight: 800;
         }
 
-        /* Direct Telegram Link Button */
         .buy-btn {
-            background-color: #22c55e;
-            color: white !important;
+            background-color: var(--primary);
+            color: white;
             text-align: center;
             padding: 12px;
             border: none;
             border-radius: 10px;
-            font-weight: 700;
+            font-weight: 600;
             font-size: 14px;
             transition: all 0.2s ease;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
+            display: block;
             width: 100%;
             cursor: pointer;
-            text-decoration: none;
-            box-shadow: 0 4px 12px rgba(34, 197, 94, 0.2);
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.2);
         }
 
         .buy-btn:hover {
-            background-color: #16a34a;
-            box-shadow: 0 6px 16px rgba(34, 197, 94, 0.35);
+            background-color: var(--primary-hover);
+            box-shadow: 0 6px 16px rgba(37, 99, 235, 0.35);
         }
 
         /* No Results Message */
@@ -312,6 +307,145 @@
             color: var(--text-muted);
             font-size: 18px;
             font-weight: 600;
+        }
+
+        /* Modal Overlay & Styling (የተስተካከለ) */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(15, 23, 42, 0.7);
+            backdrop-filter: blur(4px);
+            display: none; /* መጀመሪያ የተሸሸገ ነው */
+            justify-content: center;
+            align-items: center;
+            z-index: 2000;
+            padding: 20px;
+        }
+
+        .modal-content {
+            background: #ffffff;
+            width: 100%;
+            max-width: 450px;
+            border-radius: 20px;
+            padding: 28px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            position: relative;
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: #f1f5f9;
+            border: none;
+            font-size: 20px;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            cursor: pointer;
+            color: var(--text-muted);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s ease;
+        }
+
+        .close-modal:hover {
+            background: #e2e8f0;
+            color: var(--text-main);
+        }
+
+        .modal-title {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 6px;
+            color: var(--text-main);
+        }
+
+        .modal-subtitle {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+
+        .selected-item-info {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            padding: 12px 16px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .selected-item-name {
+            font-weight: 600;
+            font-size: 14px;
+            color: var(--text-main);
+        }
+
+        .selected-item-price {
+            font-weight: 800;
+            color: var(--primary);
+            font-size: 15px;
+        }
+
+        .form-group {
+            margin-bottom: 16px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 13px;
+            font-weight: 600;
+            margin-bottom: 6px;
+            color: var(--text-main);
+        }
+
+        .form-group input, .form-group textarea {
+            width: 100%;
+            padding: 12px 16px;
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 10px;
+            outline: none;
+            font-size: 14px;
+            font-family: inherit;
+            transition: all 0.2s ease;
+        }
+
+        .form-group input:focus, .form-group textarea:focus {
+            background: #ffffff;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px var(--accent-glow);
+        }
+
+        .submit-order-btn {
+            background: #22c55e;
+            color: white;
+            border: none;
+            width: 100%;
+            padding: 14px;
+            border-radius: 12px;
+            font-weight: 700;
+            font-size: 15px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            box-shadow: 0 4px 12px rgba(34, 197, 94, 0.25);
+            margin-top: 10px;
+        }
+
+        .submit-order-btn:hover {
+            background: #16a34a;
+            box-shadow: 0 6px 16px rgba(34, 197, 94, 0.35);
         }
 
         /* Footer */
@@ -381,9 +515,7 @@
                     <div class="price-container">
                         <span class="price">3,200 ብር</span>
                     </div>
-                    <a href="https://t.me/Tvwlute?text=%E1%88%B0%E1%88%AF%E1%88%B1%21%20%E1%8B%AD%E1%88%85%E1%8A%95%E1%8A%95%20%E1%8A%A5%E1%89%83%20%E1%88%98%E1%8B%9D%E1%8A%A5%20%E1%8A%A5%E1%8D%8D%E1%88%8D%E1%8C%AF%E1%88%8B%E1%88%AE%20Nike%20Air%20Max%20Limited%20%283%2C200%20%E1%89%B5%E1%88%AD%29" target="_blank" class="buy-btn">
-                        ✈️ በቴሌግራም ያናግሩን
-                    </a>
+                    <button type="button" class="buy-btn" onclick="openOrderModal('Nike Air Max Limited (የስፖርት ጫማ)', '3,200 ብር')">በቴሌግራም ይዘዙ</button>
                 </div>
                 <div class="card">
                     <span class="badge">NEW</span>
@@ -392,9 +524,7 @@
                     <div class="price-container">
                         <span class="price">2,800 ብር</span>
                     </div>
-                    <a href="https://t.me/Tvwlute?text=%E1%88%B0%E1%88%AF%E1%88%B1%21%20%E1%8B%AD%E1%88%85%E1%8A%95%E1%8A%95%20%E1%8A%A5%E1%89%83%20%E1%88%98%E1%8B%9D%E1%8A%A5%20%E1%8A%A5%E1%8D%8D%E1%88%8D%E1%8C%AF%E1%88%8B%E1%88%AE%20Casual%20Sneakers%20Edition%20%282%2C800%20%E1%89%B5%E1%88%AD%29" target="_blank" class="buy-btn">
-                        ✈️ በቴሌግራም ያናግሩን
-                    </a>
+                    <button type="button" class="buy-btn" onclick="openOrderModal('Casual Sneakers Edition (የካዥዋል ጫማ)', '2,800 ብር')">በቴሌግራም ይዘዙ</button>
                 </div>
             </div>
         </section>
@@ -409,9 +539,7 @@
                     <div class="price-container">
                         <span class="price">1,200 ብር</span>
                     </div>
-                    <a href="https://t.me/Tvwlute?text=%E1%88%B0%E1%88%AF%E1%88%B1%21%20%E1%8B%AD%E1%88%85%E1%8A%95%E1%8A%95%20%E1%8A%A5%E1%89%83%20%E1%88%98%E1%8B%9D%E1%8A%A5%20%E1%8A%A5%E1%8D%8D%E1%88%8D%E1%8C%AF%E1%88%8B%E1%88%AE%20Premium%20Cotton%20T-Shirt%20%281%2C200%20%E1%89%B5%E1%88%AD%29" target="_blank" class="buy-btn">
-                        ✈️ በቴሌግራም ያናግሩን
-                    </a>
+                    <button type="button" class="buy-btn" onclick="openOrderModal('Premium Cotton T-Shirt (ቲሸርት)', '1,200 ብር')">በቴሌግራም ይዘዙ</button>
                 </div>
                 <div class="card">
                     <span class="badge">HOT</span>
@@ -420,9 +548,7 @@
                     <div class="price-container">
                         <span class="price">4,500 ብር</span>
                     </div>
-                    <a href="https://t.me/Tvwlute?text=%E1%88%B0%E1%88%AF%E1%88%B1%21%20%E1%8B%AD%E1%88%85%E1%8A%95%E1%8A%95%20%E1%8A%A5%E1%89%83%20%E1%88%98%E1%8B%9D%E1%8A%A5%20%E1%8A%A5%E1%8D%8D%E1%88%8D%E1%8C%AF%E1%88%8B%E1%88%AE%20Classic%20Leather%20Jacket%20%284%2C500%20%E1%89%B5%E1%88%AD%29" target="_blank" class="buy-btn">
-                        ✈️ በቴሌግራም ያናግሩን
-                    </a>
+                    <button type="button" class="buy-btn" onclick="openOrderModal('Classic Leather Jacket (የቆዳ ጃኬት)', '4,500 ብር')">በቴሌግራም ይዘዙ</button>
                 </div>
             </div>
         </section>
@@ -437,9 +563,7 @@
                     <div class="price-container">
                         <span class="price">18,000 ብር</span>
                     </div>
-                    <a href="https://t.me/Tvwlute?text=%E1%88%B0%E1%88%AF%E1%88%B1%21%20%E1%8B%AD%E1%88%85%E1%8A%95%E1%8A%95%20%E1%8A%A5%E1%89%83%20%E1%88%98%E1%8B%9D%E1%8A%A5%20%E1%8A%A5%E1%8D%8D%E1%88%8D%E1%8C%AF%E1%88%8B%E1%88%AE%20Smart%20Phone%20Flagship%20%2818%2C000%20%E1%89%B5%E1%88%AD%29" target="_blank" class="buy-btn">
-                        ✈️ በቴሌግራም ያናግሩን
-                    </a>
+                    <button type="button" class="buy-btn" onclick="openOrderModal('Smart Phone Flagship (ስማርት ስልክ)', '18,000 ብር')">በቴሌግራም ይዘዙ</button>
                 </div>
                 <div class="card">
                     <span class="badge">NEW</span>
@@ -448,9 +572,7 @@
                     <div class="price-container">
                         <span class="price">2,200 ብር</span>
                     </div>
-                    <a href="https://t.me/Tvwlute?text=%E1%88%B0%E1%88%AF%E1%88%B1%21%20%E1%8B%AD%E1%88%85%E1%8A%95%E1%8A%95%20%E1%8A%A5%E1%89%83%20%E1%88%98%E1%8B%9D%E1%8A%A5%20%E1%8A%A5%E1%8D%8D%E1%88%8D%E1%8C%AF%E1%88%8B%E1%88%AE%20Wireless%20Headphones%20Pro%20%282%2C200%20%E1%89%B5%E1%88%AD%29" target="_blank" class="buy-btn">
-                        ✈️ በቴሌግራም ያናግሩን
-                    </a>
+                    <button type="button" class="buy-btn" onclick="openOrderModal('Wireless Headphones Pro (የገመድ አልባ ማዳመጫ)', '2,200 ብር')">በቴሌግራም ይዘዙ</button>
                 </div>
             </div>
         </section>
@@ -466,9 +588,7 @@
                     <div class="price-container">
                         <span class="price">35,000 ብር</span>
                     </div>
-                    <a href="https://t.me/Tvwlute?text=%E1%88%B0%E1%88%AF%E1%88%B1%21%20%E1%8B%AD%E1%88%85%E1%8A%95%E1%8A%95%20%E1%8A%A5%E1%89%83%20%E1%88%98%E1%8B%9D%E1%8A%A5%20%E1%8A%A5%E1%8D%8D%E1%88%8D%E1%8C%AF%E1%88%8B%E1%88%AE%20MacBook%20Pro%20%2835%2C000%20%E1%89%B5%E1%88%AD%29" target="_blank" class="buy-btn">
-                        ✈️ በቴሌግራም ያናግሩን
-                    </a>
+                    <button type="button" class="buy-btn" onclick="openOrderModal('MacBook Pro (ላፕቶፕ)', '35,000 ብር')">በቴሌግራም ይዘዙ</button>
                 </div>
                 <div class="card">
                     <span class="badge">USED</span>
@@ -477,23 +597,118 @@
                     <div class="price-container">
                         <span class="price">15,000 ብር</span>
                     </div>
-                    <a href="https://t.me/Tvwlute?text=%E1%88%B0%E1%88%AF%E1%88%B1%21%20%E1%8B%AD%E1%88%85%E1%8A%95%E1%8A%95%20%E1%8A%A5%E1%89%83%20%E1%88%98%E1%8B%9D%E1%8A%A5%20%E1%8A%A5%E1%8D%8D%E1%88%8D%E1%8C%AF%E1%88%8B%E1%88%AE%20Canon%20Professional%20Camera%20%2815%2C000%20%E1%89%B5%E1%88%AD%29" target="_blank" class="buy-btn">
-                        ✈️ በቴሌግራም ያናግሩን
-                    </a>
+                    <button type="button" class="buy-btn" onclick="openOrderModal('Canon Professional Camera (ካሜራ)', '15,000 ብር')">በቴሌግራም ይዘዙ</button>
                 </div>
             </div>
         </section>
 
     </main>
 
+    <!-- Order Modal Form -->
+    <div id="orderModal" class="modal-overlay">
+        <div class="modal-content">
+            <button type="button" class="close-modal" onclick="closeOrderModal()">&times;</button>
+            <h3 class="modal-title">የእቃ ማዘዣ ፎርም</h3>
+            <p class="modal-subtitle">እባክዎን መረጃዎን ይሙሉ፣ ቀጥታ ወደ ቴሌግራም ይላካል።</p>
+            
+            <div class="selected-item-info">
+                <span id="modalProductName" class="selected-item-name">-</span>
+                <span id="modalProductPrice" class="selected-item-price">-</span>
+            </div>
+
+            <form id="orderForm" onsubmit="sendToTelegram(event)">
+                <div class="form-group">
+                    <label for="custName">ሙሉ ስም</label>
+                    <input type="text" id="custName" placeholder="ለምሳሌ፡ አበበ ከበደ" required>
+                </div>
+                <div class="form-group">
+                    <label for="custPhone">ስልክ ቁጥር</label>
+                    <input type="tel" id="custPhone" placeholder="0911......" required>
+                </div>
+                <div class="form-group">
+                    <label for="custLocation">መኖሪያ አድራሻ / ከተማ</label>
+                    <input type="text" id="custLocation" placeholder="ለምሳሌ፡ አዲስ አበባ፣ ቦሌ" required>
+                </div>
+                <div class="form-group">
+                    <label for="custNote">ተጨማሪ መልእክት (ካለዎት)</label>
+                    <textarea id="custNote" rows="2" placeholder="የእቃው ከለር፣ ሳይዝ ወይም ተጨማሪ አስተያየት..."></textarea>
+                </div>
+
+                <button type="submit" class="submit-order-btn">
+                    ✈️ ትእዛዙን ወደ ቴሌግራም ላክ
+                </button>
+            </form>
+        </div>
+    </div>
+
     <!-- Footer -->
     <footer>
         <p>&copy; 2026 MerkatoX. All rights reserved.</p>
     </footer>
 
-    <!-- JavaScript for Filter and Search -->
+    <!-- JavaScript code (ቀጥታ Display Flex የሚያደርግበት ተስተካክሏል) -->
     <script>
-        // ካቴጎሪዎችን የማጣሪያ function
+        let currentProduct = '';
+        let currentPrice = '';
+
+        // 1. Modal-ኡን መክፈቻ function
+        function openOrderModal(productName, price) {
+            currentProduct = productName;
+            currentPrice = price;
+
+            document.getElementById('modalProductName').innerText = productName;
+            document.getElementById('modalProductPrice').innerText = price;
+
+            const modal = document.getElementById('orderModal');
+            if (modal) {
+                modal.style.display = 'flex'; // ቀጥታ ሞዳሉ እንዲታይ ያደርጋል
+            }
+        }
+
+        // 2. Modal-ኡን መዝጋቻ function
+        function closeOrderModal() {
+            const modal = document.getElementById('orderModal');
+            if (modal) {
+                modal.style.display = 'none'; // ሞዳሉን ይሸሽጋል
+            }
+            document.getElementById('orderForm').reset();
+        }
+
+        // ከ Modal ውጪ ከተነካ እንዲዘጋ ማድረግ
+        window.onclick = function(event) {
+            const modal = document.getElementById('orderModal');
+            if (event.target === modal) {
+                closeOrderModal();
+            }
+        };
+
+        // 3. መረጃውን አዘጋጅቶ ወደ ቴሌግራም መላኪያ function
+        function sendToTelegram(event) {
+            event.preventDefault();
+
+            let name = document.getElementById('custName').value;
+            let phone = document.getElementById('custPhone').value;
+            let location = document.getElementById('custLocation').value;
+            let note = document.getElementById('custNote').value;
+
+            let telegramUsername = "Tvwlute";
+
+            let message = `🛍️ *አዲስ ትእዛዝ ከ MerkatoX!*\n\n` +
+                          `📦 *የተመረጠው እቃ:* ${currentProduct}\n` +
+                          `💰 *ዋጋ:* ${currentPrice}\n\n` +
+                          `👤 *የደንበኛ ስም:* ${name}\n` +
+                          `📞 *ስልክ ቁጥር:* ${phone}\n` +
+                          `📍 *አድራሻ:* ${location}\n` +
+                          `📝 *ተጨማሪ ማስታወሻ:* ${note ? note : "የለም"}`;
+
+            let encodedMessage = encodeURIComponent(message);
+            let telegramUrl = `https://t.me/${telegramUsername}?text=${encodedMessage}`;
+
+            window.open(telegramUrl, '_blank');
+            closeOrderModal();
+        }
+
+        // 4. ካቴጎሪዎችን የማጣሪያ function
         function filterCategory(category, btnElement) {
             document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
             btnElement.classList.add('active');
@@ -517,7 +732,7 @@
             });
         }
 
-        // Search Filter Function
+        // 5. Search Filter Function
         document.getElementById('searchInput').addEventListener('keyup', function() {
             let input = this.value.toLowerCase();
             let visibleCardsCount = 0;
