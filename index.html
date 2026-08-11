@@ -3,843 +3,361 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <!-- SEO Meta Tags -->
-    <title>MerkatoX | ኦንላይን ገበያ - አልባሳት፣ ጫማዎች እና ኤሌክትሮኒክስ</title>
-    <meta name="description" content="MerkatoX በኢትዮጵያ ውስጥ ጥራት ያላቸውን ልብሶች፣ ጫማዎች፣ ኤሌክትሮኒክስ እና ያገለገሉ እቃዎችን በታማኝነት የሚያገኙበት የዲጂታል መርካቶ ገበያ ነው።">
-    <meta name="keywords" content="MerkatoX, Merkato X, መርካቶ, ገበያ, ኦንላይን ሾፕ, ጫማ, ልብስ, ኤሌክትሮኒክስ, ኢትዮጵያ ሾፕ">
-    <meta name="author" content="MerkatoX Ethiopia">
-    <meta name="robots" content="index, follow">
-
-    <!-- Open Graph -->
-    <meta property="og:title" content="MerkatoX | World Class E-Commerce">
-    <meta property="og:description" content="ጥራት ያላቸውን ምርቶች ከአዲሱ ዲጂታል መርካቶ ይበልጥ በታማኝነት ይዘዙ።">
-    <meta property="og:type" content="website">
-
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <title>የእኔ ኦንላይን ሱቅ | Online Store</title>
     <style>
         :root {
-            --primary: #2563eb;
-            --primary-hover: #1d4ed8;
-            --dark-bg: #0f172a;
-            --card-bg: #ffffff;
-            --text-main: #0f172a;
-            --text-muted: #64748b;
-            --accent-glow: rgba(37, 99, 235, 0.15);
+            --primary-color: #0088cc;
+            --secondary-color: #27ae60;
+            --dark-color: #2c3e50;
+            --light-bg: #f8f9fa;
+            --card-shadow: 0 4px 12px rgba(0,0,0,0.1);
         }
 
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
         body {
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            background-color: #f8fafc;
-            color: var(--text-main);
-            -webkit-font-smoothing: antialiased;
-        }
-
-        /* Top Bar */
-        .top-bar {
-            background: linear-gradient(90deg, #0f172a 0%, #1e293b 100%);
-            color: #cbd5e1;
-            text-align: center;
-            padding: 10px;
-            font-size: 13px;
-            font-weight: 500;
-            letter-spacing: 0.5px;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-        }
-
-        /* Header */
-        header {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            border-bottom: 1px solid #e2e8f0;
-        }
-
-        .header-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 16px 20px;
-            gap: 20px;
-        }
-
-        .logo {
-            font-size: 28px;
-            font-weight: 800;
-            background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            text-decoration: none;
-            letter-spacing: -0.5px;
-        }
-
-        .search-box {
-            flex-grow: 1;
-            max-width: 480px;
-            position: relative;
-        }
-
-        .search-box input {
-            width: 100%;
-            padding: 12px 20px;
-            background-color: #f1f5f9;
-            border: 1px solid transparent;
-            border-radius: 30px;
-            outline: none;
-            font-size: 14px;
-            transition: all 0.3s ease;
-        }
-
-        .search-box input:focus {
-            background-color: #ffffff;
-            border-color: var(--primary);
-            box-shadow: 0 0 0 4px var(--accent-glow);
-        }
-
-        /* Navigation Buttons */
-        nav {
-            background: #ffffff;
-            border-bottom: 1px solid #e2e8f0;
-        }
-
-        .nav-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: center;
-            gap: 12px;
-            padding: 12px 20px;
-            overflow-x: auto;
-        }
-
-        .nav-btn {
-            border: none;
-            color: var(--text-muted);
-            font-size: 14px;
-            font-weight: 600;
-            padding: 10px 22px;
-            border-radius: 30px;
-            cursor: pointer;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            white-space: nowrap;
-            background: #f8fafc;
-            border: 1px solid #e2e8f0;
-        }
-
-        .nav-btn:hover {
-            color: var(--primary);
-            background: #eff6ff;
-            border-color: #bfdbfe;
-        }
-
-        .nav-btn.active {
-            background-color: var(--primary);
-            color: #ffffff;
-            border-color: var(--primary);
-            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.25);
-        }
-
-        /* Hero Banner */
-        .hero {
-            background: radial-gradient(circle at top right, #1e293b, #0f172a);
-            color: white;
-            text-align: center;
-            padding: 65px 20px;
-            margin-bottom: 40px;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero h2 {
-            font-size: 38px;
-            font-weight: 800;
-            margin-bottom: 12px;
-            letter-spacing: -1px;
-        }
-
-        .hero p {
-            font-size: 16px;
-            color: #94a3b8;
-            max-width: 550px;
-            margin: 0 auto;
+            background-color: #f4f6f9;
+            color: #333;
             line-height: 1.6;
         }
 
-        /* Main Content */
-        .main-content {
+        header {
+            background: linear-gradient(135deg, #1e3c72, #2a5298);
+            color: white;
+            padding: 2rem 1rem;
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+        }
+
+        header h1 {
+            font-size: 2.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        .container {
             max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px 60px;
+            margin: 2rem auto;
+            padding: 0 1rem;
         }
 
-        .category-section {
-            display: none;
-            animation: fadeIn 0.4s ease-in-out;
+        .section-title {
+            font-size: 1.8rem;
+            color: var(--dark-color);
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 3px solid var(--primary-color);
+            display: inline-block;
         }
 
-        .category-section.active {
-            display: block;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .category-header {
-            font-size: 24px;
-            font-weight: 700;
-            margin-bottom: 25px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            color: var(--text-main);
-        }
-
-        /* Product Grid & Cards */
         .product-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-            gap: 30px;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 3rem;
         }
 
         .card {
-            background: var(--card-bg);
-            border-radius: 16px;
-            padding: 16px;
-            border: 1px solid #e2e8f0;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: var(--card-shadow);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
             display: flex;
             flex-direction: column;
-            justify-content: space-between;
-            position: relative;
         }
 
         .card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.08), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-            border-color: #cbd5e1;
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
         }
 
         .badge {
             position: absolute;
-            top: 26px;
-            left: 26px;
-            background: rgba(15, 23, 42, 0.85);
-            backdrop-filter: blur(4px);
+            top: 12px;
+            left: 12px;
+            background-color: #e74c3c;
             color: white;
-            font-size: 11px;
-            font-weight: 700;
             padding: 4px 10px;
+            font-size: 0.75rem;
+            font-weight: bold;
             border-radius: 20px;
             text-transform: uppercase;
-            letter-spacing: 0.5px;
             z-index: 2;
         }
 
         .card img {
             width: 100%;
-            height: 220px;
+            height: 260px;
             object-fit: cover;
-            border-radius: 12px;
-            margin-bottom: 16px;
-            background-color: #f1f5f9;
+            border-bottom: 1px solid #eee;
+        }
+
+        .card-content {
+            padding: 1.2rem;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
         }
 
         .card h3 {
-            font-size: 17px;
-            font-weight: 600;
-            margin-bottom: 6px;
-            color: var(--text-main);
-            line-height: 1.4;
+            font-size: 1.2rem;
+            color: var(--dark-color);
+            margin-bottom: 0.5rem;
         }
 
         .product-details {
-            font-size: 13px;
-            color: var(--text-muted);
-            margin-bottom: 12px;
-            line-height: 1.5;
+            font-size: 0.9rem;
+            color: #666;
+            margin-bottom: 0.8rem;
         }
 
         .price-container {
-            display: flex;
-            align-items: baseline;
-            gap: 8px;
-            margin-bottom: 16px;
+            margin-bottom: 1rem;
         }
 
         .price {
-            color: var(--primary);
-            font-size: 20px;
-            font-weight: 800;
+            font-size: 1.4rem;
+            font-weight: bold;
+            color: var(--secondary-color);
         }
 
-        /* Action Buttons Area */
         .btn-group {
             display: flex;
             flex-direction: column;
-            gap: 8px;
+            gap: 0.5rem;
+            margin-top: auto;
+        }
+
+        .form-btn, .buy-btn {
+            display: block;
+            width: 100%;
+            padding: 0.75rem;
+            text-align: center;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: background 0.2s ease;
+            border: none;
         }
 
         .form-btn {
-            background-color: var(--primary);
-            color: white !important;
-            text-align: center;
-            padding: 10px;
-            border: none;
-            border-radius: 8px;
-            font-weight: 700;
-            font-size: 13px;
-            cursor: pointer;
-            transition: all 0.2s ease;
-            width: 100%;
+            background-color: var(--dark-color);
+            color: white;
         }
 
         .form-btn:hover {
-            background-color: var(--primary-hover);
+            background-color: #1a252f;
         }
 
         .buy-btn {
-            background-color: #22c55e;
-            color: white !important;
-            text-align: center;
-            padding: 10px;
-            border: none;
-            border-radius: 8px;
-            font-weight: 700;
-            font-size: 13px;
-            transition: all 0.2s ease;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 6px;
-            width: 100%;
-            cursor: pointer;
-            text-decoration: none;
+            background-color: var(--primary-color);
+            color: white;
         }
 
         .buy-btn:hover {
-            background-color: #16a34a;
+            background-color: #0077b5;
         }
 
-        /* Modal Styles (የፎርም መስኮት) */
-        .modal-overlay {
+        /* Modal / Form Styles */
+        .modal {
             display: none;
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(15, 23, 42, 0.7);
-            backdrop-filter: blur(5px);
-            z-index: 2000;
+            background-color: rgba(0,0,0,0.6);
+            z-index: 1000;
             justify-content: center;
             align-items: center;
-            padding: 20px;
+            padding: 1rem;
         }
 
-        .modal-card {
-            background: #ffffff;
-            width: 100%;
+        .modal-content {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
             max-width: 450px;
-            border-radius: 16px;
-            padding: 24px;
+            width: 100%;
             position: relative;
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
-            animation: modalSlide 0.3s ease-out;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
         }
 
-        @keyframes modalSlide {
-            from { transform: translateY(20px); opacity: 0; }
-            to { transform: translateY(0); opacity: 1; }
-        }
-
-        .close-modal {
+        .close-btn {
             position: absolute;
-            top: 16px;
+            top: 15px;
             right: 20px;
-            font-size: 24px;
+            font-size: 1.5rem;
             cursor: pointer;
-            color: var(--text-muted);
+            color: #888;
         }
 
-        .modal-card h3 {
-            font-size: 20px;
-            font-weight: 700;
-            margin-bottom: 4px;
-        }
-
-        .modal-card p {
-            font-size: 13px;
-            color: var(--text-muted);
-            margin-bottom: 20px;
+        .modal h2 {
+            margin-bottom: 1rem;
+            color: var(--dark-color);
         }
 
         .form-group {
-            margin-bottom: 14px;
+            margin-bottom: 1rem;
         }
 
         .form-group label {
             display: block;
-            font-size: 13px;
+            margin-bottom: 0.4rem;
             font-weight: 600;
-            margin-bottom: 6px;
         }
 
         .form-group input, .form-group textarea {
             width: 100%;
-            padding: 10px 14px;
-            border: 1px solid #cbd5e1;
-            border-radius: 8px;
-            font-size: 14px;
-            outline: none;
-            font-family: inherit;
-        }
-
-        .form-group input:focus, .form-group textarea:focus {
-            border-color: var(--primary);
-            box-shadow: 0 0 0 3px var(--accent-glow);
+            padding: 0.6rem;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-size: 1rem;
         }
 
         .submit-btn {
             width: 100%;
-            background: var(--primary);
+            background-color: var(--secondary-color);
             color: white;
+            padding: 0.8rem;
             border: none;
-            padding: 12px;
-            border-radius: 8px;
-            font-weight: 700;
+            border-radius: 6px;
+            font-size: 1rem;
+            font-weight: bold;
             cursor: pointer;
-            font-size: 14px;
-            margin-top: 10px;
         }
 
         .submit-btn:hover {
-            background: var(--primary-hover);
+            background-color: #219150;
         }
 
-        /* Testimonials Section */
-        .testimonials {
-            background: #ffffff;
-            border-top: 1px solid #e2e8f0;
-            border-bottom: 1px solid #e2e8f0;
-            padding: 60px 20px;
-            margin-bottom: 40px;
-        }
-
-        .testimonials-container {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .section-title {
-            text-align: center;
-            font-size: 26px;
-            font-weight: 800;
-            margin-bottom: 30px;
-            color: var(--text-main);
-        }
-
-        .testimonial-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 20px;
-        }
-
-        .testimonial-card {
-            background: #f8fafc;
-            border: 1px solid #e2e8f0;
-            border-radius: 12px;
-            padding: 20px;
-            font-size: 14px;
-            color: var(--text-main);
-        }
-
-        .testimonial-card p {
-            font-style: italic;
-            color: #475569;
-            margin-bottom: 12px;
-        }
-
-        .testimonial-author {
-            font-weight: 700;
-            color: var(--primary);
-            font-size: 13px;
-        }
-
-        /* Footer */
         footer {
-            background-color: var(--dark-bg);
-            color: #94a3b8;
-            padding: 50px 20px;
-            border-top: 1px solid #1e293b;
-        }
-
-        .footer-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
-            margin-bottom: 30px;
-        }
-
-        .footer-col h4 {
-            color: #ffffff;
-            font-size: 16px;
-            font-weight: 700;
-            margin-bottom: 15px;
-        }
-
-        .footer-col p, .footer-col ul {
-            font-size: 14px;
-            line-height: 1.8;
-            list-style: none;
-        }
-
-        .footer-col a {
-            color: #38bdf8;
-            text-decoration: none;
-        }
-
-        .footer-col a:hover {
-            text-decoration: underline;
-        }
-
-        .payment-badges span {
-            display: inline-block;
-            background: #1e293b;
-            color: #38bdf8;
-            padding: 6px 12px;
-            border-radius: 6px;
-            font-size: 12px;
-            font-weight: 600;
-            margin: 4px 4px 4px 0;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .footer-bottom {
             text-align: center;
-            padding-top: 20px;
-            border-top: 1px solid #1e293b;
-            font-size: 13px;
-        }
-
-        /* No Results Message */
-        .no-results {
-            display: none;
-            text-align: center;
-            padding: 50px 20px;
-            color: var(--text-muted);
-            font-size: 18px;
-            font-weight: 600;
+            padding: 1.5rem;
+            background-color: var(--dark-color);
+            color: white;
+            margin-top: 2rem;
         }
     </style>
 </head>
 <body>
 
-    <!-- Top Announcement -->
-    <div class="top-bar">
-        ✨ እንኳን ወደ ዲጂታሉ MerkatoX ኦንላይን ገበያ በሰላም መጡ!
-    </div>
-
-    <!-- Main Header -->
     <header>
-        <div class="header-container">
-            <a href="#" class="logo">MerkatoX.</a>
-            <div class="search-box">
-                <input type="text" id="searchInput" placeholder="የሚፈልጉትን እቃ እዚህ ይፈልጉ...">
-            </div>
-        </div>
+        <h1>🛍️ የእኔ ኦንላይን ሱቅ</h1>
+        <p>ጥራት ያላቸውን ጫማዎች በታላቅ ቅናሽ ይዘዙ</p>
     </header>
 
-    <!-- Navigation Menu Buttons -->
-    <nav>
-        <div class="nav-container">
-            <button class="nav-btn active" onclick="filterCategory('all', this)">🌐 ሁሉንም</button>
-            <button class="nav-btn" onclick="filterCategory('shoes', this)">👟 ጫማዎች</button>
-            <button class="nav-btn" onclick="filterCategory('clothes', this)">👕 ልብሶች</button>
-            <button class="nav-btn" onclick="filterCategory('electronics', this)">📱 ኤሌክትሮኒክስ</button>
-            <button class="nav-btn" onclick="filterCategory('used', this)">📦 ያገለገሉ እቃዎች</button>
+    <div class="container">
+        <h2 class="section-title">👟 ጫማዎች</h2>
+
+        <div class="product-grid" id="shoes">
+            
+            <!-- ጫማ 1: J-FNG High-Top -->
+            <div class="card">
+                <span class="badge">HOT</span>
+                <img src="https://i.ibb.co/9mP67T1B/image.jpg" alt="J-FNG High-Top Sneaker">
+                <div class="card-content">
+                    <h3>J-FNG High-Top Sneaker</h3>
+                    <p class="product-details">📏 Size: 41 | 🏷️ Condition: Brand New (አዲስ)</p>
+                    <div class="price-container">
+                        <span class="price">2,500 ብር</span>
+                    </div>
+                    <div class="btn-group">
+                        <button class="form-btn" onclick="openOrderModal('J-FNG High-Top Sneaker', '2,500 ብር')">📝 በፎርም እዘዝ</button>
+                        <a href="https://t.me/Tvwlute?text=ሰላም!%20ይህንን%20እቃ%20መግዛት%20እፈልጋለሁ%20J-FNG%20High-Top%20Sneaker%20(2,500%20ብር)" target="_blank" class="buy-btn">✈️ በቴሌግራም አናግር</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ጫማ 2: Fashion Low-Top -->
+            <div class="card">
+                <span class="badge">NEW</span>
+                <img src="https://i.ibb.co/f7ZRjzx/image.jpg" alt="Fashion Low-Top Sneaker">
+                <div class="card-content">
+                    <h3>Fashion Low-Top Sneaker</h3>
+                    <p class="product-details">📏 Size: 41 | 🏷️ Condition: Brand New (አዲስ)</p>
+                    <div class="price-container">
+                        <span class="price">2,300 ብር</span>
+                    </div>
+                    <div class="btn-group">
+                        <button class="form-btn" onclick="openOrderModal('Fashion Low-Top Sneaker', '2,300 ብር')">📝 በፎርም እዘዝ</button>
+                        <a href="https://t.me/Tvwlute?text=ሰላም!%20ይህንን%20እቃ%20መግዛት%20እፈልጋለሁ%20Fashion%20Low-Top%20Sneaker%20(2,300%20ብር)" target="_blank" class="buy-btn">✈️ በቴሌግራም አናግር</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ጫማ 3: ANTA Sports -->
+            <div class="card">
+                <span class="badge">BEST</span>
+                <img src="https://i.ibb.co/hv0krkT/image.jpg" alt="ANTA Multi-Color Sports Sneaker">
+                <div class="card-content">
+                    <h3>ANTA Multi-Color Sneaker</h3>
+                    <p class="product-details">📏 Size: 44 | 🏷️ Condition: Brand New (አዲስ)</p>
+                    <div class="price-container">
+                        <span class="price">2,300 ብር</span>
+                    </div>
+                    <div class="btn-group">
+                        <button class="form-btn" onclick="openOrderModal('ANTA Multi-Color Sneaker', '2,300 ብር')">📝 በፎርም እዘዝ</button>
+                        <a href="https://t.me/Tvwlute?text=ሰላም!%20ይህንን%20እቃ%20መግዛት%20እፈልጋለሁ%20ANTA%20Multi-Color%20Sneaker%20(2,300%20ብር)" target="_blank" class="buy-btn">✈️ በቴሌግራም አናግር</a>
+                    </div>
+                </div>
+            </div>
+
         </div>
-    </nav>
+    </div>
 
-    <!-- Hero Banner -->
-    <section class="hero">
-        <h2>Digital Merkato Experience</h2>
-        <p>ከአለም አቀፍ ጥራት ያላቸው እቃዎች እስከ ምርጥ ያገለገሉ እቃዎች ድረስ በታማኝነት ይዘዙ።</p>
-    </section>
-
-    <!-- Main Content Area -->
-    <main class="main-content">
-        
-        <!-- No Results Message -->
-        <div id="noResults" class="no-results">
-            🔍 "ለፈለጉት ቃል የሚሆን እቃ አልተገኘም!"
-        </div>
-
-        <!-- 1. ጫማዎች Section -->
-        <section id="shoes" class="category-section active">
-            <h3 class="category-header">👟 ጫማዎች (Shoes Collection)</h3>
-            <div class="product-grid">
-
-                <!-- ጫማ 1 -->
-                <div class="card">
-                    <span class="badge">HOT</span>
-                    <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=500" alt="Nike Air Max">
-                    <h3>Nike Air Max Red</h3>
-                    <p class="product-details">📏 Size: 40 - 44 | 🏷️ Condition: Brand New (አዲስ)</p>
-                    <div class="price-container">
-                        <span class="price">3,500 ብር</span>
-                    </div>
-                    <div class="btn-group">
-                        <button class="form-btn" onclick="openOrderModal('Nike Air Max Red', '3,500 ብር')">📝 በፎርም እዘዝ</button>
-                        <a href="https://t.me/Tvwlute?text=ሰላም!%20ይህንን%20እቃ%20መግዛት%20እፈልጋለሁ%20Nike%20Air%20Max%20Red%20(3,500%20ብር)" target="_blank" class="buy-btn">✈️ በቴሌግራም አናግር</a>
-                    </div>
-                </div>
-
-                <!-- ጫማ 2 -->
-                <div class="card">
-                    <span class="badge">NEW</span>
-                    <img src="https://images.unsplash.com/photo-1549298916-b41d501d3772?w=500" alt="Casual Sneaker">
-                    <h3>Adidas Sneaker White</h3>
-                    <p class="product-details">📏 Size: 39 - 43 | 🏷️ Condition: Brand New (አዲስ)</p>
-                    <div class="price-container">
-                        <span class="price">2,900 ብር</span>
-                    </div>
-                    <div class="btn-group">
-                        <button class="form-btn" onclick="openOrderModal('Adidas Sneaker White', '2,900 ብር')">📝 በፎርም እዘዝ</button>
-                        <a href="https://t.me/Tvwlute?text=ሰላም!%20ይህንን%20እቃ%20መግዛት%20እፈልጋለሁ%20Adidas%20Sneaker%20White%20(2,900%20ብር)" target="_blank" class="buy-btn">✈️ በቴሌግራም አናግር</a>
-                    </div>
-                </div>
-
-                <!-- ጫማ 3 -->
-                <div class="card">
-                    <span class="badge">BEST</span>
-                    <img src="https://images.unsplash.com/photo-1608231387042-66d1773070a5?w=500" alt="Puma Classic">
-                    <h3>Puma Classic Black</h3>
-                    <p class="product-details">📏 Size: 40 - 43 | 🏷️ Condition: Brand New (አዲስ)</p>
-                    <div class="price-container">
-                        <span class="price">3,100 ብር</span>
-                    </div>
-                    <div class="btn-group">
-                        <button class="form-btn" onclick="openOrderModal('Puma Classic Black', '3,100 ብር')">📝 በፎርም እዘዝ</button>
-                        <a href="https://t.me/Tvwlute?text=ሰላም!%20ይህንን%20እቃ%20መግዛት%20እፈልጋለሁ%20Puma%20Classic%20Black%20(3,100%20ብር)" target="_blank" class="buy-btn">✈️ በቴሌግራም አናግር</a>
-                    </div>
-                </div>
-
-                <!-- ጫማ 4 -->
-                <div class="card">
-                    <span class="badge">NEW</span>
-                    <img src="https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?w=500" alt="Jordan Retro">
-                    <h3>Air Jordan High Retro</h3>
-                    <p class="product-details">📏 Size: 41 - 45 | 🏷️ Condition: Brand New (አዲስ)</p>
-                    <div class="price-container">
-                        <span class="price">4,200 ብር</span>
-                    </div>
-                    <div class="btn-group">
-                        <button class="form-btn" onclick="openOrderModal('Air Jordan High Retro', '4,200 ብር')">📝 በፎርም እዘዝ</button>
-                        <a href="https://t.me/Tvwlute?text=ሰላም!%20ይህንን%20እቃ%20መግዛት%20እፈልጋለሁ%20Air%20Jordan%20High%20Retro%20(4,200%20ብር)" target="_blank" class="buy-btn">✈️ በቴሌግራም አናግር</a>
-                    </div>
-                </div>
-
-            </div>
-        </section>
-
-        <!-- 2. ልብሶች -->
-        <section id="clothes" class="category-section active">
-            <h3 class="category-header">👕 ልብሶች</h3>
-            <div class="product-grid">
-                <div class="card">
-                    <img src="https://images.unsplash.com/photo-1521572267360-ee0c2909d518?w=500" alt="ቲሸርት">
-                    <h3>Premium Cotton T-Shirt</h3>
-                    <p class="product-details">📏 Size: Medium, Large, XL | 🧵 Material: 100% Cotton</p>
-                    <div class="price-container">
-                        <span class="price">1,200 ብር</span>
-                    </div>
-                    <div class="btn-group">
-                        <button class="form-btn" onclick="openOrderModal('Premium Cotton T-Shirt', '1,200 ብር')">📝 በፎርም እዘዝ</button>
-                        <a href="https://t.me/Tvwlute?text=ሰላም!%20ይህንን%20እቃ%20መግዛት%20እፈልጋለሁ%20Premium%20Cotton%20T-Shirt%20(1,200%20ብር)" target="_blank" class="buy-btn">✈️ በቴሌግራም አናግር</a>
-                    </div>
-                </div>
-                <div class="card">
-                    <span class="badge">HOT</span>
-                    <img src="https://images.unsplash.com/photo-1551028719-00167b16eac5?w=500" alt="ጃኬት">
-                    <h3>Classic Leather Jacket</h3>
-                    <p class="product-details">📏 Size: L, XL | 🧵 Material: Genuine Leather</p>
-                    <div class="price-container">
-                        <span class="price">4,500 ብር</span>
-                    </div>
-                    <div class="btn-group">
-                        <button class="form-btn" onclick="openOrderModal('Classic Leather Jacket', '4,500 ብር')">📝 በፎርም እዘዝ</button>
-                        <a href="https://t.me/Tvwlute?text=ሰላም!%20ይህንን%20እቃ%20መግዛት%20እፈልጋለሁ%20Classic%20Leather%20Jacket%20(4,500%20ብር)" target="_blank" class="buy-btn">✈️ በቴሌግራም አናግር</a>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- 3. ኤሌክትሮኒክስ -->
-        <section id="electronics" class="category-section active">
-            <h3 class="category-header">📱 ኤሌክትሮኒክስ</h3>
-            <div class="product-grid">
-                <div class="card">
-                    <img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=500" alt="ስማርት ስልክ">
-                    <h3>Smart Phone Flagship</h3>
-                    <p class="product-details">💾 Storage: 128GB | 🔋 Battery: 5000mAh</p>
-                    <div class="price-container">
-                        <span class="price">18,000 ብር</span>
-                    </div>
-                    <div class="btn-group">
-                        <button class="form-btn" onclick="openOrderModal('Smart Phone Flagship', '18,000 ብር')">📝 በፎርም እዘዝ</button>
-                        <a href="https://t.me/Tvwlute?text=ሰላም!%20ይህንን%20እቃ%20መግዛት%20እፈልጋለሁ%20Smart%20Phone%20Flagship%20(18,000%20ብር)" target="_blank" class="buy-btn">✈️ በቴሌግራም አናግር</a>
-                    </div>
-                </div>
-                <div class="card">
-                    <span class="badge">NEW</span>
-                    <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=500" alt="Headphone">
-                    <h3>Wireless Headphones Pro</h3>
-                    <p class="product-details">🎧 Noise Cancelling | 🔋 Battery: 30 Hours</p>
-                    <div class="price-container">
-                        <span class="price">2,200 ብር</span>
-                    </div>
-                    <div class="btn-group">
-                        <button class="form-btn" onclick="openOrderModal('Wireless Headphones Pro', '2,200 ብር')">📝 በፎርም እዘዝ</button>
-                        <a href="https://t.me/Tvwlute?text=ሰላም!%20ይህንን%20እቃ%20መግዛት%20እፈልጋለሁ%20Wireless%20Headphones%20Pro%20(2,200%20ብር)" target="_blank" class="buy-btn">✈️ በቴሌግራም አናግር</a>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- 4. ያገለገሉ እቃዎች -->
-        <section id="used" class="category-section active">
-            <h3 class="category-header">📦 ያገለገሉ እቃዎች</h3>
-            <div class="product-grid">
-                <div class="card">
-                    <span class="badge">USED</span>
-                    <img src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=500" alt="ላፕቶፕ">
-                    <h3>MacBook Pro</h3>
-                    <p class="product-details">💻 Core i7 / 16GB RAM / 512GB SSD</p>
-                    <div class="price-container">
-                        <span class="price">35,000 ብር</span>
-                    </div>
-                    <div class="btn-group">
-                        <button class="form-btn" onclick="openOrderModal('MacBook Pro', '35,000 ብር')">📝 በፎርም እዘዝ</button>
-                        <a href="https://t.me/Tvwlute?text=ሰላም!%20ይህንን%20እቃ%20መግዛት%20እፈልጋለሁ%20MacBook%20Pro%20(35,000%20ብር)" target="_blank" class="buy-btn">✈️ በቴሌግራም አናግር</a>
-                    </div>
-                </div>
-                <div class="card">
-                    <span class="badge">USED</span>
-                    <img src="https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f?w=500" alt="ካሜራ">
-                    <h3>Canon Professional Camera</h3>
-                    <p class="product-details">📷 24MP Sensor / 18-55mm Lens</p>
-                    <div class="price-container">
-                        <span class="price">15,000 ብር</span>
-                    </div>
-                    <div class="btn-group">
-                        <button class="form-btn" onclick="openOrderModal('Canon Professional Camera', '15,000 ብር')">📝 በፎርም እዘዝ</button>
-                        <a href="https://t.me/Tvwlute?text=ሰላም!%20ይህንን%20እቃ%20መግዛት%20እፈልጋለሁ%20Canon%20Professional%20Camera%20(15,000%20ብር)" target="_blank" class="buy-btn">✈️ በቴሌግራም አናግር</a>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-    </main>
-
-    <!-- Order Form Modal (የፎርም መስኮት) -->
-    <div id="orderModal" class="modal-overlay">
-        <div class="modal-card">
-            <span class="close-modal" onclick="closeOrderModal()">&times;</span>
-            <h3 id="modalProductName">የእቃ ስም</h3>
-            <p id="modalProductPrice">ዋጋ</p>
+    <!-- Order Modal Form -->
+    <div class="modal" id="orderModal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeOrderModal()">&times;</span>
+            <h2>የእቃ ትእዛዝ ፎርም</h2>
             <form id="orderForm" onsubmit="handleFormSubmit(event)">
                 <div class="form-group">
-                    <label for="custName">ሙሉ ስም</label>
-                    <input type="text" id="custName" required placeholder="ስምዎን ያስገቡ">
+                    <label for="productName">የእቃው ስም</label>
+                    <input type="text" id="productName" readonly>
                 </div>
                 <div class="form-group">
-                    <label for="custPhone">ስልክ ቁጥር</label>
-                    <input type="tel" id="custPhone" required placeholder="09... / 07...">
+                    <label for="productPrice">ዋጋ</label>
+                    <input type="text" id="productPrice" readonly>
                 </div>
                 <div class="form-group">
-                    <label for="custAddress">የማድረሻ አድራሻ</label>
-                    <textarea id="custAddress" rows="2" required placeholder="ከተማ፣ ክፍለ ከተማ ወይም አካባቢ"></textarea>
+                    <label for="customerName">ሙሉ ስም</label>
+                    <input type="text" id="customerName" required placeholder="ስምዎን ያስገቡ">
                 </div>
-                <button type="submit" class="submit-btn">🚀 ትእዛዝ ላክ</button>
+                <div class="form-group">
+                    <label for="customerPhone">ስልክ ቁጥር</label>
+                    <input type="tel" id="customerPhone" required placeholder="09........">
+                </div>
+                <div class="form-group">
+                    <label for="customerAddress">አድራሻ / ቦታ</label>
+                    <input type="text" id="customerAddress" required placeholder="ከተማ / አካባቢ">
+                </div>
+                <button type="submit" class="submit-btn">ትእዛዝ ላክ</button>
             </form>
         </div>
     </div>
 
-    <!-- Testimonials Section -->
-    <section class="testimonials">
-        <div class="testimonials-container">
-            <h3 class="section-title">💬 የደንበኞቻችን አስተያየት</h3>
-            <div class="testimonial-grid">
-                <div class="testimonial-card">
-                    <p>"ጫማውን አዝዤ በሰዓቱ ነው ያረከቡኝ። ጥራቱ በጣም ደስ ይላል፤ አመሰግናለሁ MerkatoX!"</p>
-                    <span class="testimonial-author">⭐ ሰለሞን ከካሳንቺስ</span>
-                </div>
-                <div class="testimonial-card">
-                    <p>"ያገለገለ ላፕቶፕ ገዝቼ ነበር፤ እንደ አዲስ ነው የሚያገለግለው። በታማኝነታችሁ ቀጥሉበት።"</p>
-                    <span class="testimonial-author">⭐ ሀና ከቦሌ</span>
-                </div>
-                <div class="testimonial-card">
-                    <p>"በቴሌግራም ቀጥታ አናግሬ በቃ በደቂቃዎች ውስጥ ትእዛዜን አስተናገዱልኝ። ፈጣን አገልግሎት!"</p>
-                    <span class="testimonial-author">⭐ ዮናስ ከሲኤምሲ</span>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
     <footer>
-        <div class="footer-container">
-            <div class="footer-col">
-                <h4>ስለ MerkatoX</h4>
-                <p>MerkatoX ጥራት ያላቸውን ምርቶች በተጣጣመ ዋጋና በታማኝነት የሚያቀርብ የእርስዎ የመጀመሪያ ዲጂታል ገበያ ነው።</p>
-            </div>
-            <div class="footer-col">
-                <h4>የመገናኛ አድራሻ</h4>
-                <p>📍 አዲስ አበባ፣ ኢትዮጵያ</p>
-                <p>📞 ስልክ 1፡ <a href="tel:+251900578058">+251 900 578 058</a></p>
-                <p>📞 ስልክ 2፡ <a href="tel:+251910037996">+251 910 037 996</a></p>
-                <p>✈️ ቴሌግራም፡ <a href="https://t.me/Tvwlute" target="_blank">@Tvwlute</a></p>
-            </div>
-            <div class="footer-col">
-                <h4>የክፍያ አማራጮች</h4>
-                <div class="payment-badges">
-                    <span>Telebirr</span>
-                    <span>CBE Birr</span>
-                    <span>Bank Transfer</span>
-                </div>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <p>&copy; 2026 MerkatoX. All rights reserved.</p>
-        </div>
+        <p>&copy; 2026 መብቱ በህግ የተጠበቀ ነው።</p>
     </footer>
 
-    <!-- JavaScript logic -->
     <script>
-        let selectedProduct = '';
-        let selectedPrice = '';
-
-        // Modal Controls
-        function openOrderModal(pName, pPrice) {
-            selectedProduct = pName;
-            selectedPrice = pPrice;
-            document.getElementById('modalProductName').innerText = pName;
-            document.getElementById('modalProductPrice').innerText = "ዋጋ፦ " + pPrice;
+        function openOrderModal(name, price) {
+            document.getElementById('productName').value = name;
+            document.getElementById('productPrice').value = price;
             document.getElementById('orderModal').style.display = 'flex';
         }
 
@@ -847,77 +365,27 @@
             document.getElementById('orderModal').style.display = 'none';
         }
 
-        // Form Submit Handler
-        function handleFormSubmit(e) {
-            e.preventDefault();
-            const name = document.getElementById('custName').value;
-            const phone = document.getElementById('custPhone').value;
-            const address = document.getElementById('custAddress').value;
+        function handleFormSubmit(event) {
+            event.preventDefault();
+            const pName = document.getElementById('productName').value;
+            const pPrice = document.getElementById('productPrice').value;
+            const cName = document.getElementById('customerName').value;
+            const cPhone = document.getElementById('customerPhone').value;
+            const cAddress = document.getElementById('customerAddress').value;
 
-            const text = `ሰላም! አዲስ ትእዛዝ አለኝ%0A%0A📦 እቃ፦ ${selectedProduct}%0A💰 ዋጋ፦ ${selectedPrice}%0A👤 ስም፦ ${name}%0A📞 ስልክ፦ ${phone}%0A📍 አድራሻ፦ ${address}`;
+            const text = `ሰላም! እቃ ማዘዝ እፈልጋለሁ%0A%0A📦 እቃ፡ ${pName}%0A💰 ዋጋ፡ ${pPrice}%0A👤 ስም፡ ${cName}%0A📞 ስልክ፡ ${cPhone}%0A📍 አድራሻ፡ ${cAddress}`;
             
-            // Redirect to Telegram with filled data
             window.open(`https://t.me/Tvwlute?text=${text}`, '_blank');
             closeOrderModal();
-            document.getElementById('orderForm').reset();
         }
 
-        // Filter Function
-        function filterCategory(category, btnElement) {
-            document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
-            btnElement.classList.add('active');
-
-            const searchInput = document.getElementById('searchInput');
-            searchInput.value = '';
-            document.getElementById('noResults').style.display = 'none';
-
-            document.querySelectorAll('.category-section').forEach(section => {
-                section.querySelectorAll('.card').forEach(card => card.style.display = 'flex');
-
-                if (category === 'all') {
-                    section.classList.add('active');
-                } else {
-                    if (section.id === category) {
-                        section.classList.add('active');
-                    } else {
-                        section.classList.remove('active');
-                    }
-                }
-            });
-        }
-
-        // Search Filter Function
-        document.getElementById('searchInput').addEventListener('keyup', function() {
-            let input = this.value.toLowerCase();
-            let visibleCardsCount = 0;
-
-            document.querySelectorAll('.category-section').forEach(section => {
-                section.classList.add('active');
-                let sectionHasMatch = false;
-
-                section.querySelectorAll('.card').forEach(card => {
-                    let title = card.querySelector('h3').innerText.toLowerCase();
-                    if (title.includes(input)) {
-                        card.style.display = 'flex';
-                        sectionHasMatch = true;
-                        visibleCardsCount++;
-                    } else {
-                        card.style.display = 'none';
-                    }
-                });
-
-                if (!sectionHasMatch && input !== '') {
-                    section.classList.remove('active');
-                }
-            });
-
-            let noResultsMsg = document.getElementById('noResults');
-            if (visibleCardsCount === 0 && input !== '') {
-                noResultsMsg.style.display = 'block';
-            } else {
-                noResultsMsg.style.display = 'none';
+        // Window click to close modal
+        window.onclick = function(event) {
+            const modal = document.getElementById('orderModal');
+            if (event.target === modal) {
+                closeOrderModal();
             }
-        });
+        }
     </script>
 
 </body>
