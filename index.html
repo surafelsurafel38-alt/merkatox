@@ -3,479 +3,102 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MerkatoX | ኦንላይን ገበያ እና የእቃ መሸጫ ፕላትፎርም</title>
-    <meta name="description" content="MerkatoX - ይግዙ፣ ይሸጡ! አካውንት በመክፈት የሚሸጡትን እቃ በነጻ ያስገቡ።">
-    
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    
+    <title>MerkatoX | ኦንላይን ገበያ</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
     <style>
-        :root {
-            --primary: #2563eb;
-            --primary-hover: #1d4ed8;
-            --success: #16a34a;
-            --success-hover: #15803d;
-            --dark-bg: #0f172a;
-            --card-bg: #ffffff;
-            --text-main: #0f172a;
-            --text-muted: #64748b;
-            --accent-glow: rgba(37, 99, 235, 0.15);
-        }
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Plus Jakarta Sans', sans-serif; }
+        body { background-color: #f8fafc; color: #0f172a; padding-bottom: 50px; }
+        
+        header { background: #ffffff; padding: 15px 20px; border-bottom: 1px solid #e2e8f0; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 100; }
+        .logo { font-size: 24px; font-weight: 800; color: #2563eb; text-decoration: none; }
+        
+        .user-actions { display: flex; gap: 10px; align-items: center; }
+        .btn-auth { padding: 8px 16px; border-radius: 20px; font-size: 13px; font-weight: 600; cursor: pointer; border: 1px solid #cbd5e1; background: #fff; }
+        .btn-sell { background: #16a34a; color: white; border: none; padding: 10px 18px; border-radius: 20px; font-size: 13px; font-weight: 700; cursor: pointer; }
+        .btn-sell:hover { background: #15803d; }
 
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
+        .container { max-width: 1100px; margin: 30px auto; padding: 0 20px; }
+        .product-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 20px; margin-top: 20px; }
+        
+        .card { background: white; border-radius: 12px; padding: 15px; border: 1px solid #e2e8f0; display: flex; flex-direction: column; justify-content: space-between; }
+        .card img { width: 100%; height: 180px; object-fit: cover; border-radius: 8px; margin-bottom: 10px; }
+        .card h3 { font-size: 16px; margin-bottom: 5px; }
+        .card .price { color: #2563eb; font-weight: 800; font-size: 18px; margin: 8px 0; }
+        
+        .action-btns { display: flex; gap: 8px; margin-top: 10px; }
+        .buy-btn { flex: 1; text-align: center; background: #2563eb; color: white; border: none; padding: 9px; border-radius: 6px; font-weight: 700; font-size: 13px; cursor: pointer; }
+        .buy-btn:hover { background: #1d4ed8; }
+        .tg-btn { text-align: center; background: #22c55e; color: white; text-decoration: none; padding: 9px 12px; border-radius: 6px; font-weight: 700; font-size: 13px; }
 
-        body {
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            background-color: #f8fafc;
-            color: var(--text-main);
-            -webkit-font-smoothing: antialiased;
-        }
-
-        /* Top Bar */
-        .top-bar {
-            background: linear-gradient(90deg, #0f172a 0%, #1e293b 100%);
-            color: #cbd5e1;
-            text-align: center;
-            padding: 10px;
-            font-size: 13px;
-            font-weight: 500;
-        }
-
-        /* Header */
-        header {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            border-bottom: 1px solid #e2e8f0;
-        }
-
-        .header-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 16px 20px;
-            gap: 15px;
-            flex-wrap: wrap;
-        }
-
-        .logo {
-            font-size: 28px;
-            font-weight: 800;
-            background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            text-decoration: none;
-        }
-
-        .search-box {
-            flex-grow: 1;
-            max-width: 400px;
-        }
-
-        .search-box input {
-            width: 100%;
-            padding: 10px 18px;
-            background-color: #f1f5f9;
-            border: 1px solid transparent;
-            border-radius: 30px;
-            outline: none;
-            font-size: 14px;
-        }
-
-        .search-box input:focus {
-            background-color: #ffffff;
-            border-color: var(--primary);
-            box-shadow: 0 0 0 4px var(--accent-glow);
-        }
-
-        /* Account & Action Controls */
-        .user-actions {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .btn-auth {
-            padding: 8px 16px;
-            border-radius: 20px;
-            font-size: 13px;
-            font-weight: 600;
-            cursor: pointer;
-            border: 1px solid #cbd5e1;
-            background: #ffffff;
-            color: var(--text-main);
-            transition: all 0.2s ease;
-        }
-
-        .btn-auth:hover {
-            border-color: var(--primary);
-            color: var(--primary);
-        }
-
-        .btn-sell {
-            background: var(--success);
-            color: white;
-            border: none;
-            padding: 9px 18px;
-            border-radius: 20px;
-            font-size: 13px;
-            font-weight: 700;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            transition: all 0.2s ease;
-        }
-
-        .btn-sell:hover {
-            background: var(--success-hover);
-        }
-
-        /* Navigation */
-        nav {
-            background: #ffffff;
-            border-bottom: 1px solid #e2e8f0;
-        }
-
-        .nav-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: center;
-            gap: 10px;
-            padding: 12px 20px;
-            overflow-x: auto;
-        }
-
-        .nav-btn {
-            border: 1px solid #e2e8f0;
-            color: var(--text-muted);
-            font-size: 14px;
-            font-weight: 600;
-            padding: 8px 20px;
-            border-radius: 30px;
-            cursor: pointer;
-            background: #f8fafc;
-            white-space: nowrap;
-        }
-
-        .nav-btn.active {
-            background-color: var(--primary);
-            color: #ffffff;
-            border-color: var(--primary);
-        }
-
-        /* Hero Section */
-        .hero {
-            background: radial-gradient(circle at top right, #1e293b, #0f172a);
-            color: white;
-            text-align: center;
-            padding: 50px 20px;
-            margin-bottom: 30px;
-        }
-
-        .hero h2 {
-            font-size: 32px;
-            font-weight: 800;
-            margin-bottom: 10px;
-        }
-
-        .hero p {
-            font-size: 15px;
-            color: #94a3b8;
-        }
-
-        /* Main Section */
-        .main-content {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px 60px;
-        }
-
-        .category-header {
-            font-size: 22px;
-            font-weight: 700;
-            margin-bottom: 20px;
-            color: var(--text-main);
-        }
-
-        /* Product Grid & Cards */
-        .product-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            gap: 25px;
-        }
-
-        .card {
-            background: var(--card-bg);
-            border-radius: 16px;
-            padding: 16px;
-            border: 1px solid #e2e8f0;
-            transition: all 0.3s ease;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            position: relative;
-        }
-
-        .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 12px 20px rgba(0, 0, 0, 0.06);
-        }
-
-        .badge {
-            position: absolute;
-            top: 24px;
-            left: 24px;
-            background: rgba(15, 23, 42, 0.85);
-            color: white;
-            font-size: 11px;
-            font-weight: 700;
-            padding: 4px 10px;
-            border-radius: 20px;
-            text-transform: uppercase;
-        }
-
-        .card img {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-            border-radius: 12px;
-            margin-bottom: 12px;
-            background-color: #f1f5f9;
-        }
-
-        .card h3 {
-            font-size: 16px;
-            font-weight: 600;
-            margin-bottom: 6px;
-        }
-
-        .product-details {
-            font-size: 13px;
-            color: var(--text-muted);
-            margin-bottom: 10px;
-        }
-
-        .price {
-            color: var(--primary);
-            font-size: 18px;
-            font-weight: 800;
-            margin-bottom: 12px;
-        }
-
-        .seller-tag {
-            font-size: 11px;
-            color: #64748b;
-            background: #f1f5f9;
-            padding: 3px 8px;
-            border-radius: 6px;
-            display: inline-block;
-            margin-bottom: 10px;
-        }
-
-        .buy-btn {
-            background-color: #22c55e;
-            color: white !important;
-            text-align: center;
-            padding: 10px;
-            border: none;
-            border-radius: 8px;
-            font-weight: 700;
-            font-size: 13px;
-            cursor: pointer;
-            text-decoration: none;
-            display: block;
-        }
-
-        .buy-btn:hover {
-            background-color: #16a34a;
-        }
-
-        /* Modal Popups */
+        /* Modal Box CSS */
         .modal-overlay {
             display: none;
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(15, 23, 42, 0.7);
-            backdrop-filter: blur(5px);
-            z-index: 2000;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: rgba(15, 23, 42, 0.75);
+            backdrop-filter: blur(4px);
+            z-index: 1000;
             justify-content: center;
             align-items: center;
-            padding: 20px;
+        }
+        
+        .modal-overlay.active {
+            display: flex !important;
         }
 
         .modal-card {
             background: #ffffff;
-            width: 100%;
-            max-width: 450px;
+            width: 90%; max-width: 420px;
             border-radius: 16px;
-            padding: 24px;
+            padding: 25px;
             position: relative;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
         }
 
-        .close-modal {
-            position: absolute;
-            top: 16px;
-            right: 20px;
-            font-size: 24px;
-            cursor: pointer;
-            color: var(--text-muted);
-        }
-
-        .modal-card h3 {
-            font-size: 20px;
-            font-weight: 700;
-            margin-bottom: 6px;
-        }
-
-        .modal-card p {
-            font-size: 13px;
-            color: var(--text-muted);
-            margin-bottom: 18px;
-        }
-
-        .form-group {
-            margin-bottom: 12px;
-        }
-
-        .form-group label {
-            display: block;
-            font-size: 12px;
-            font-weight: 600;
-            margin-bottom: 5px;
-        }
-
-        .form-group input, .form-group select, .form-group textarea {
-            width: 100%;
-            padding: 10px;
-            border: 1px solid #cbd5e1;
-            border-radius: 8px;
-            font-size: 13px;
-            outline: none;
-            font-family: inherit;
-        }
-
-        .form-group input:focus {
-            border-color: var(--primary);
-        }
-
-        .submit-btn {
-            width: 100%;
-            background: var(--primary);
-            color: white;
-            border: none;
-            padding: 12px;
-            border-radius: 8px;
-            font-weight: 700;
-            cursor: pointer;
-            font-size: 14px;
-            margin-top: 10px;
-        }
-
-        .submit-btn-success {
-            background: var(--success);
-        }
-
-        .submit-btn-success:hover {
-            background: var(--success-hover);
-        }
-
-        /* Footer */
-        footer {
-            background-color: var(--dark-bg);
-            color: #94a3b8;
-            padding: 40px 20px;
-            text-align: center;
-            font-size: 13px;
-        }
+        .close-btn { position: absolute; top: 15px; right: 20px; font-size: 22px; cursor: pointer; font-weight: bold; color: #64748b; }
+        .form-group { margin-bottom: 15px; text-align: left; }
+        .form-group label { display: block; font-size: 12px; font-weight: 700; margin-bottom: 5px; }
+        .form-group input, .form-group select, .form-group textarea { width: 100%; padding: 10px; border: 1px solid #cbd5e1; border-radius: 8px; font-size: 14px; outline: none; }
+        .submit-btn { width: 100%; background: #2563eb; color: white; border: none; padding: 12px; border-radius: 8px; font-weight: 700; cursor: pointer; margin-top: 10px; }
+        .submit-btn-success { background: #16a34a; }
     </style>
 </head>
 <body>
 
-    <!-- Top Bar -->
-    <div class="top-bar">
-        ✨ እንኳን ወደ MerkatoX በሰላም መጡ! አካውንት በመክፈት የሚሸጡትን እቃ በነጻ ይለጥፉ!
-    </div>
-
-    <!-- Header -->
     <header>
-        <div class="header-container">
-            <a href="#" class="logo">MerkatoX.</a>
-
-            <div class="search-box">
-                <input type="text" id="searchInput" placeholder="የሚፈልጉትን እቃ ይፈልጉ...">
+        <a href="#" class="logo">MerkatoX.</a>
+        <div class="user-actions">
+            <div id="authButtons">
+                <button class="btn-auth" onclick="showModal('loginModal')">🔑 ግባ</button>
+                <button class="btn-auth" onclick="showModal('signupModal')">✨ ተመዝገብ</button>
             </div>
-
-            <div class="user-actions">
-                <div id="authButtons">
-                    <button class="btn-auth" onclick="openModal('loginModal')">🔑 ግባ (Login)</button>
-                    <button class="btn-auth" onclick="openModal('signupModal')">✨ ተመዝገብ</button>
-                </div>
-                <div id="userProfile" style="display: none; align-items: center; gap: 8px;">
-                    <span id="userNameDisplay" style="font-size: 13px; font-weight: 700; color: var(--primary);"></span>
-                    <button class="btn-auth" onclick="logout()">ውጣ</button>
-                </div>
-                <button class="btn-sell" onclick="handleSellButtonClick()">➕ እቃ ለመሸጥ</button>
+            <div id="userProfile" style="display:none; align-items:center; gap:8px;">
+                <span id="userNameDisplay" style="font-weight:700; font-size:13px; color:#2563eb;"></span>
+                <button class="btn-auth" onclick="logout()">ውጣ</button>
             </div>
+            <button class="btn-sell" onclick="clickSellButton()">➕ እቃ ለመሸጥ</button>
         </div>
     </header>
 
-    <!-- Category Nav -->
-    <nav>
-        <div class="nav-container">
-            <button class="nav-btn active" onclick="filterCategory('all', this)">🌐 ሁሉንም</button>
-            <button class="nav-btn" onclick="filterCategory('shoes', this)">👟 ጫማዎች</button>
-            <button class="nav-btn" onclick="filterCategory('clothes', this)">👕 ልብሶች</button>
-            <button class="nav-btn" onclick="filterCategory('electronics', this)">📱 ኤሌክትሮኒክስ</button>
-            <button class="nav-btn" onclick="filterCategory('used', this)">📦 ያገለገሉ እቃዎች</button>
-        </div>
-    </nav>
-
-    <!-- Hero Banner -->
-    <section class="hero">
-        <h2>ይግዙ፤ የሚሸጡትንም በቀላሉ ይለጥፉ!</h2>
-        <p>በመላ ኢትዮጵያ የሚገኙ ገዢዎችን እና ሻጮችን የሚያገናኝ የዲጂታል መርካቶ ገበያ።</p>
-    </section>
-
-    <!-- Main Content -->
-    <main class="main-content">
-        <h3 class="category-header">🛍️ የቅርብ ጊዜ እቃዎች</h3>
-        <div class="product-grid" id="productGrid">
-            <!-- Products dynamic rendering dynamically -->
-        </div>
-    </main>
+    <div class="container">
+        <h2>🛍️ የቀረቡ እቃዎች</h2>
+        <div class="product-grid" id="productGrid"></div>
+    </div>
 
     <!-- 1. SIGNUP MODAL -->
     <div id="signupModal" class="modal-overlay">
         <div class="modal-card">
-            <span class="close-modal" onclick="closeModal('signupModal')">&times;</span>
-            <h3>አካውንት ይክፈቱ</h3>
-            <p>እቃ ለመሸጥ እና ለመግዛት ይመዝገቡ</p>
+            <span class="close-btn" onclick="hideModal('signupModal')">&times;</span>
+            <h3 style="margin-bottom: 15px;">አካውንት ይክፈቱ</h3>
             <form onsubmit="handleSignUp(event)">
                 <div class="form-group">
-                    <label>ሙሉ ስም</label>
-                    <input type="text" id="signUpName" required placeholder="ምሳሌ፦ አበበ ከበደ">
+                    <label>ስም</label>
+                    <input type="text" id="signUpName" required placeholder="ምሳሌ፦ አበበ">
                 </div>
                 <div class="form-group">
                     <label>ስልክ ቁጥር</label>
                     <input type="tel" id="signUpPhone" required placeholder="09...">
-                </div>
-                <div class="form-group">
-                    <label>የምስጢር ቃል (Password)</label>
-                    <input type="password" id="signUpPassword" required placeholder="******">
                 </div>
                 <button type="submit" class="submit-btn">ተመዝገብ</button>
             </form>
@@ -485,17 +108,12 @@
     <!-- 2. LOGIN MODAL -->
     <div id="loginModal" class="modal-overlay">
         <div class="modal-card">
-            <span class="close-modal" onclick="closeModal('loginModal')">&times;</span>
-            <h3>ወደ አካውንትዎ ይግቡ</h3>
-            <p>እቃ ለመለጠፍ አስቀድመው ይግቡ</p>
+            <span class="close-btn" onclick="hideModal('loginModal')">&times;</span>
+            <h3 style="margin-bottom: 15px;">ወደ አካውንትዎ ይግቡ</h3>
             <form onsubmit="handleLogin(event)">
                 <div class="form-group">
                     <label>ስልክ ቁጥር</label>
                     <input type="tel" id="loginPhone" required placeholder="09...">
-                </div>
-                <div class="form-group">
-                    <label>የምስጢር ቃል</label>
-                    <input type="password" id="loginPassword" required placeholder="******">
                 </div>
                 <button type="submit" class="submit-btn">ግባ</button>
             </form>
@@ -505,136 +123,113 @@
     <!-- 3. SELL ITEM MODAL (የእቃ መሸጫ ፎርም) -->
     <div id="sellModal" class="modal-overlay">
         <div class="modal-card">
-            <span class="close-modal" onclick="closeModal('sellModal')">&times;</span>
-            <h3>የሚሸጡትን እቃ ያስገቡ</h3>
-            <p>መረጃውን ሲሞሉ እቃዎ በቀጥታ ድረ-ገጹ ላይ ይለጠፋል</p>
+            <span class="close-btn" onclick="hideModal('sellModal')">&times;</span>
+            <h3 style="margin-bottom: 15px;">የሚሸጡትን እቃ ያስገቡ</h3>
             <form onsubmit="handlePostItem(event)">
                 <div class="form-group">
                     <label>የእቃው ስም</label>
-                    <input type="text" id="itemTitle" required placeholder="ምሳሌ፦ Nike Sneakers Size 42">
-                </div>
-                <div class="form-group">
-                    <label>ምድብ (Category)</label>
-                    <select id="itemCategory" required>
-                        <option value="shoes">👟 ጫማዎች</option>
-                        <option value="clothes">👕 ልብሶች</option>
-                        <option value="electronics">📱 ኤሌክትሮኒክስ</option>
-                        <option value="used">📦 ያገለገሉ እቃዎች</option>
-                    </select>
+                    <input type="text" id="itemTitle" required placeholder="ምሳሌ፦ Nike Shoes">
                 </div>
                 <div class="form-group">
                     <label>ዋጋ (ብር)</label>
-                    <input type="number" id="itemPrice" required placeholder="ምሳሌ፦ 2500">
+                    <input type="number" id="itemPrice" required placeholder="2500">
                 </div>
                 <div class="form-group">
-                    <label>የፎቶ ሊንክ (Image URL) ወይም የምስል መግለጫ</label>
-                    <input type="url" id="itemImage" placeholder="https://..." value="https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=500">
+                    <label>የፎቶ ሊንክ (Image URL)</label>
+                    <input type="url" id="itemImage" value="https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=500">
                 </div>
                 <div class="form-group">
-                    <label>ተጨማሪ መግለጫ (Size, Condition, etc...)</label>
-                    <textarea id="itemDesc" rows="2" placeholder="የእቃው ሁኔታ፣ ሳይዝ፣ አድራሻ..."></textarea>
+                    <label>መግለጫ</label>
+                    <textarea id="itemDesc" rows="2" placeholder="የእቃው ሁኔታ..."></textarea>
                 </div>
-                <button type="submit" class="submit-btn submit-btn-success">🚀 እቃውን ለጥፍ (Post Item)</button>
+                <button type="submit" class="submit-btn submit-btn-success">🚀 እቃውን ለጥፍ</button>
             </form>
         </div>
     </div>
 
-    <!-- Footer -->
-    <footer>
-        <p>&copy; 2026 MerkatoX. All rights reserved. | Powered by MerkatoX Platform</p>
-    </footer>
+    <!-- 4. BUY ITEM MODAL (የእቃ መግዣ/ማዘዣ ፎርም) -->
+    <div id="buyModal" class="modal-overlay">
+        <div class="modal-card">
+            <span class="close-btn" onclick="hideModal('buyModal')">&times;</span>
+            <h3 id="buyItemTitle" style="margin-bottom: 5px; color:#2563eb;">የእቃው ስም</h3>
+            <p id="buyItemPrice" style="font-weight:700; margin-bottom:15px; color:#16a34a;"></p>
+            
+            <form onsubmit="handleSendOrder(event)">
+                <input type="hidden" id="selectedItemName">
+                <input type="hidden" id="selectedItemPrice">
+                
+                <div class="form-group">
+                    <label>የእርስዎ ስም</label>
+                    <input type="text" id="buyerName" required placeholder="ምሳሌ፦ ከበደ">
+                </div>
+                <div class="form-group">
+                    <label>ስልክ ቁጥር</label>
+                    <input type="tel" id="buyerPhone" required placeholder="09...">
+                </div>
+                <div class="form-group">
+                    <label>መቀበያ አድራሻ (ከተማ/ሰፈር)</label>
+                    <input type="text" id="buyerAddress" required placeholder="ምሳሌ፦ አዲስ አበባ፣ ቦሌ">
+                </div>
+                <button type="submit" class="submit-btn submit-btn-success">📩 ትእዛዝ ላክ (Order Now)</button>
+            </form>
+        </div>
+    </div>
 
-    <!-- JavaScript Application Logic -->
     <script>
-        // Initial Mock Database
-        let products = [
-            {
-                id: 1,
-                title: "Nike Air Max Limited",
-                category: "shoes",
-                price: "3,200",
-                details: "📏 Size: 40 - 44 | Brand New",
-                img: "https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=500",
-                seller: "MerkatoX Official",
-                phone: "0900578058"
-            },
-            {
-                id: 2,
-                title: "Classic Leather Jacket",
-                category: "clothes",
-                price: "4,500",
-                details: "📏 Size: L, XL | Genuine Leather",
-                img: "https://images.unsplash.com/photo-1551028719-00167b16eac5?w=500",
-                seller: "MerkatoX Official",
-                phone: "0910037996"
-            },
-            {
-                id: 3,
-                title: "Smart Phone Flagship",
-                category: "electronics",
-                price: "18,000",
-                details: "💾 Storage: 128GB | Battery: 5000mAh",
-                img: "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=500",
-                seller: "MerkatoX Official",
-                phone: "0900578058"
-            },
-            {
-                id: 4,
-                title: "MacBook Pro Used",
-                category: "used",
-                price: "35,000",
-                details: "💻 Core i7 / 16GB RAM / 512GB SSD",
-                img: "https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=500",
-                seller: "አበበ (ለጋራ)",
-                phone: "0912345678"
-            }
+        let currentUser = JSON.parse(localStorage.getItem('merkatoX_user')) || null;
+        let products = JSON.parse(localStorage.getItem('merkatoX_products')) || [
+            { id: 1, title: "Nike Air Max", price: "3,200", img: "https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=500", seller: "MerkatoX" },
+            { id: 2, title: "Smart Watch", price: "2,500", img: "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=500", seller: "MerkatoX" }
         ];
 
-        let currentUser = null;
-
-        // Load saved state on start
         window.onload = function() {
-            const savedUser = localStorage.getItem('merkatoX_user');
-            if (savedUser) {
-                currentUser = JSON.parse(savedUser);
-                updateUIForUser();
-            }
-
-            const savedProducts = localStorage.getItem('merkatoX_products');
-            if (savedProducts) {
-                products = JSON.parse(savedProducts);
-            }
-
-            renderProducts(products);
+            updateUserUI();
+            renderProducts();
         };
 
-        // Render products to Grid
-        function renderProducts(items) {
-            const grid = document.getElementById('productGrid');
-            grid.innerHTML = '';
-
-            if (items.length === 0) {
-                grid.innerHTML = '<p style="grid-column: 1/-1; text-align: center; color: #64748b; padding: 40px;">ምንም አይነት እቃ አልተገኘም!</p>';
-                return;
-            }
-
-            items.forEach(item => {
-                const card = document.createElement('div');
-                card.className = 'card';
-                card.innerHTML = `
-                    <span class="badge">${item.category}</span>
-                    <img src="${item.img}" alt="${item.title}">
-                    <h3>${item.title}</h3>
-                    <p class="product-details">${item.details}</p>
-                    <span class="seller-tag">👤 ሻጭ፦ ${item.seller}</span>
-                    <div class="price">${item.price} ብር</div>
-                    <a href="https://t.me/Tvwlute?text=ሰላም%20የተለጠፈውን%20${encodeURIComponent(item.title)}%20ለመግዛት%20ፈልጌ%20ነበር" target="_blank" class="buy-btn">✈️ በቴሌግራም አናግር</a>
-                `;
-                grid.appendChild(card);
-            });
+        function showModal(id) {
+            document.getElementById(id).classList.add('active');
         }
 
-        // Auth Logic
+        function hideModal(id) {
+            document.getElementById(id).classList.remove('active');
+        }
+
+        function clickSellButton() {
+            if (!currentUser) {
+                alert("እቃ ለመሸጥ አስቀድመው አካውንት መክፈት ወይም መግባት (Login) አለብዎት!");
+                showModal('loginModal');
+            } else {
+                showModal('sellModal');
+            }
+        }
+
+        // ገዢዎች "ግዛ" የሚለውን ሲጫኑ ፎርም እንዲከፈት የሚያደርግ
+        function openBuyModal(title, price) {
+            document.getElementById('buyItemTitle').innerText = "🛍️ " + title;
+            document.getElementById('buyItemPrice').innerText = "ዋጋ፦ " + price + " ብር";
+            document.getElementById('selectedItemName').value = title;
+            document.getElementById('selectedItemPrice').value = price;
+            
+            showModal('buyModal');
+        }
+
+        // ትእዛዝ ወደ ቴሌግራም መላኪያ
+        function handleSendOrder(e) {
+            e.preventDefault();
+            const item = document.getElementById('selectedItemName').value;
+            const price = document.getElementById('selectedItemPrice').value;
+            const buyer = document.getElementById('buyerName').value;
+            const phone = document.getElementById('buyerPhone').value;
+            const address = document.getElementById('buyerAddress').value;
+
+            const msg = `🛒 **አዲስ የግዢ ትእዛዝ መጥቷል!**%0A%0A📦 **እቃ፦** ${item}%0A💰 **ዋጋ፦** ${price} ብር%0A%0A👤 **የገዢው ስም፦** ${buyer}%0A📞 **ስልክ፦** ${phone}%0A📍 **አድራሻ፦** ${address}`;
+            
+            // ወደ እርሶ ቴሌግራም ይልካቸዋል
+            window.open(`https://t.me/Tvwlute?text=${msg}`, '_blank');
+            hideModal('buyModal');
+        }
+
         function handleSignUp(e) {
             e.preventDefault();
             const name = document.getElementById('signUpName').value;
@@ -643,102 +238,81 @@
             currentUser = { name: name, phone: phone };
             localStorage.setItem('merkatoX_user', JSON.stringify(currentUser));
             
-            updateUIForUser();
-            closeModal('signupModal');
-            alert(`እንኳን ደስ አለዎት ${name}! አካውንትዎ በተሳካ ሁኔታ ተከፍቷል።`);
+            updateUserUI();
+            hideModal('signupModal');
+            alert(`እንኳን ደስ አለዎት ${name}! አካውንትዎ ተከፍቷል።`);
         }
 
         function handleLogin(e) {
             e.preventDefault();
             const phone = document.getElementById('loginPhone').value;
 
-            currentUser = { name: "የተመዘገበ ተጠቃሚ", phone: phone };
+            currentUser = { name: "ተጠቃሚ (" + phone.slice(-4) + ")", phone: phone };
             localStorage.setItem('merkatoX_user', JSON.stringify(currentUser));
 
-            updateUIForUser();
-            closeModal('loginModal');
+            updateUserUI();
+            hideModal('loginModal');
             alert("በተሳካ ሁኔታ ገብተዋል!");
         }
 
         function logout() {
             currentUser = null;
             localStorage.removeItem('merkatoX_user');
-            document.getElementById('authButtons').style.display = 'block';
-            document.getElementById('userProfile').style.display = 'none';
-            alert("ከአካውንትዎ ወጥተዋል።");
+            updateUserUI();
         }
 
-        function updateUIForUser() {
+        function updateUserUI() {
             if (currentUser) {
                 document.getElementById('authButtons').style.display = 'none';
                 document.getElementById('userProfile').style.display = 'flex';
-                document.getElementById('userNameDisplay').innerText = `👤 ${currentUser.name}`;
-            }
-        }
-
-        function handleSellButtonClick() {
-            if (!currentUser) {
-                alert("እቃ ለመሸጥ/ለመፖሰት አስቀድመው አካውንት መክፈት ወይም መግባት (Login) አለብዎት!");
-                openModal('loginModal');
+                document.getElementById('userNameDisplay').innerText = '👤 ' + currentUser.name;
             } else {
-                openModal('sellModal');
+                document.getElementById('authButtons').style.display = 'block';
+                document.getElementById('userProfile').style.display = 'none';
             }
         }
 
-        // Post Product Logic
         function handlePostItem(e) {
             e.preventDefault();
             const title = document.getElementById('itemTitle').value;
-            const category = document.getElementById('itemCategory').value;
             const price = document.getElementById('itemPrice').value;
             const img = document.getElementById('itemImage').value;
-            const desc = document.getElementById('itemDesc').value;
 
             const newItem = {
                 id: Date.now(),
                 title: title,
-                category: category,
                 price: Number(price).toLocaleString(),
-                details: desc || "አዲስ የቀረበ እቃ",
-                img: img || "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=500",
-                seller: currentUser.name,
-                phone: currentUser.phone
+                img: img || "https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=500",
+                seller: currentUser.name
             };
 
             products.unshift(newItem);
             localStorage.setItem('merkatoX_products', JSON.stringify(products));
 
-            renderProducts(products);
-            closeModal('sellModal');
-            alert("🎉 እቃዎ በተሳካ ሁኔታ ድረ-ገጹ ላይ ተለጥፏል!");
+            renderProducts();
+            hideModal('sellModal');
+            alert("🎉 እቃዎ በተሳካ ሁኔታ ተለጥፏል!");
         }
 
-        // Category Filter
-        function filterCategory(category, btn) {
-            document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
-            btn.classList.add('active');
-
-            if (category === 'all') {
-                renderProducts(products);
-            } else {
-                const filtered = products.filter(p => p.category === category);
-                renderProducts(filtered);
-            }
-        }
-
-        // Search
-        document.getElementById('searchInput').addEventListener('keyup', function() {
-            const val = this.value.toLowerCase();
-            const filtered = products.filter(p => p.title.toLowerCase().includes(val));
-            renderProducts(filtered);
-        });
-
-        // Modal Helpers
-        function openModal(id) {
-            document.getElementById(id).style.display = 'flex';
-        }
-        function closeModal(id) {
-            document.getElementById(id).style.display = 'none';
+        function renderProducts() {
+            const grid = document.getElementById('productGrid');
+            grid.innerHTML = '';
+            products.forEach(item => {
+                grid.innerHTML += `
+                    <div class="card">
+                        <div>
+                            <img src="${item.img}" alt="${item.title}">
+                            <h3>${item.title}</h3>
+                            <p style="font-size:12px; color:#64748b;">👤 ሻጭ: ${item.seller}</p>
+                            <div class="price">${item.price} ብር</div>
+                        </div>
+                        <div class="action-btns">
+                            <button class="buy-btn" onclick="openBuyModal('${item.title}', '${item.price}')">🛍️ ግዛ</button>
+                            <a href="https://t.me/Tvwlute" target="_blank" class="tg-btn">✈️ ቴሌግራም</a>
+                        </div>
+                    </div>
+                `;
+            });
         }
     </script>
 </body>
