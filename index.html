@@ -283,6 +283,15 @@
             background-color: var(--primary-hover);
             box-shadow: 0 6px 16px rgba(37, 99, 235, 0.35);
         }
+        /* No Results Found Message */
+        .no-results {
+            display: none;
+            text-align: center;
+            padding: 50px 20px;
+            color: var(--text-muted);
+            font-size: 18px;
+            font-weight: 600;
+        }
 
         /* Footer */
         footer {
@@ -292,6 +301,7 @@
             text-align: center;
             border-top: 1px solid #1e293b;
         }
+
         footer p {
             font-size: 14px;
         }
@@ -309,7 +319,7 @@
         <div class="header-container">
             <a href="#" class="logo">MarketX.</a>
             <div class="search-box">
-                <input type="text" placeholder="የሚፈልጉትን እቃ እዚህ ይፈልጉ...">
+                <input type="text" id="searchInput" onkeyup="filterProducts()" placeholder="የሚፈልጉትን እቃ እዚህ ይፈልጉ...">
             </div>
         </div>
     </header>
@@ -334,6 +344,11 @@
     <!-- Main Content Area -->
     <main class="main-content">
         
+        <!-- No Results Message -->
+        <div id="noResults" class="no-results">
+            🔍 "ለፈለጉት ቃል የሚሆን እቃ አልተገኘም!"
+        </div>
+
         <!-- 1. ጫማዎች -->
         <section id="shoes" class="category-section active">
             <h3 class="category-header">👟 ጫማዎች</h3>
@@ -341,7 +356,7 @@
                 <div class="card">
                     <span class="badge">HOT</span>
                     <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=500" alt="የስፖርት ጫማ">
-                    <h3>Nike Air Max Limited</h3>
+                    <h3>Nike Air Max Limited (የስፖርት ጫማ)</h3>
                     <div class="price-container">
                         <span class="price">3,200 ብር</span>
                     </div>
@@ -350,7 +365,7 @@
                 <div class="card">
                     <span class="badge">NEW</span>
                     <img src="https://images.unsplash.com/photo-1549298916-b41d501d3772?w=500" alt="የካዥዋል ጫማ">
-                    <h3>Casual Sneakers Edition</h3>
+                    <h3>Casual Sneakers Edition (የካዥዋል ጫማ)</h3>
                     <div class="price-container">
                         <span class="price">2,800 ብር</span>
                     </div>
@@ -365,16 +380,16 @@
             <div class="product-grid">
                 <div class="card">
                     <img src="https://images.unsplash.com/photo-1521572267360-ee0c2909d518?w=500" alt="ቲሸርት">
-                    <h3>Premium Cotton T-Shirt</h3>
+                    <h3>Premium Cotton T-Shirt (ቲሸርት)</h3>
                     <div class="price-container">
                         <span class="price">1,200 ብር</span>
                     </div>
                     <a class="buy-btn" href="https://t.me/Tvwlute" target="_blank">በቴሌግራም ይዘዙ</a>
-                </div>
+                    </div>
                 <div class="card">
                     <span class="badge">HOT</span>
                     <img src="https://images.unsplash.com/photo-1551028719-00167b16eac5?w=500" alt="ጃኬት">
-                    <h3>Classic Leather Jacket</h3>
+                    <h3>Classic Leather Jacket (የቆዳ ጃኬት)</h3>
                     <div class="price-container">
                         <span class="price">4,500 ብር</span>
                     </div>
@@ -389,7 +404,7 @@
             <div class="product-grid">
                 <div class="card">
                     <img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=500" alt="ስማርት ስልክ">
-                    <h3>Smart Phone Flagship</h3>
+                    <h3>Smart Phone Flagship (ስማርት ስልክ)</h3>
                     <div class="price-container">
                         <span class="price">18,000 ብር</span>
                     </div>
@@ -398,7 +413,7 @@
                 <div class="card">
                     <span class="badge">NEW</span>
                     <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=500" alt="Headphone">
-                    <h3>Wireless Headphones Pro</h3>
+                    <h3>Wireless Headphones Pro (የገመድ አልባ ማዳመጫ)</h3>
                     <div class="price-container">
                         <span class="price">2,200 ብር</span>
                     </div>
@@ -414,7 +429,7 @@
                 <div class="card">
                     <span class="badge">USED</span>
                     <img src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=500" alt="ላፕቶፕ">
-                    <h3>MacBook Pro (Like New)</h3>
+                    <h3>MacBook Pro (ላፕቶፕ)</h3>
                     <div class="price-container">
                         <span class="price">35,000 ብር</span>
                     </div>
@@ -423,7 +438,7 @@
                 <div class="card">
                     <span class="badge">USED</span>
                     <img src="https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f?w=500" alt="ካሜራ">
-                    <h3>Canon Professional Camera</h3>
+                    <h3>Canon Professional Camera (ካሜራ)</h3>
                     <div class="price-container">
                         <span class="price">15,000 ብር</span>
                     </div>
@@ -439,9 +454,14 @@
         <p>&copy; 2026 MarketX. All rights reserved.</p>
     </footer>
 
-    <!-- JavaScript code for Filtering -->
+    <!-- JavaScript code for Filtering and Live Search -->
     <script>
+        // Category Filter Function
         function showCategory(categoryId, element) {
+            // Search Input ፅሁፉን ማፅዳት
+            document.getElementById('searchInput').value = '';
+            document.getElementById('noResults').style.display = 'none';
+
             let buttons = document.querySelectorAll('.nav-btn');
             buttons.forEach(btn => btn.classList.remove('active'));
             
@@ -449,7 +469,9 @@
 
             let sections = document.querySelectorAll('.category-section');
             sections.forEach(section => {
-                if (categoryId === 'all') {
+                let cards = section.querySelectorAll('.card');
+                cards.forEach(card => card.style.display = 'flex'); // ሁሉንም ካርዶች ማሳየት
+                             if (categoryId === 'all') {
                     section.classList.add('active');
                 } else {
                     if (section.id === categoryId) {
@@ -459,6 +481,44 @@
                     }
                 }
             });
+        }
+
+        // Live Search Filter Function
+        function filterProducts() {
+            let input = document.getElementById('searchInput').value.toLowerCase();
+            let cards = document.querySelectorAll('.card');
+            let sections = document.querySelectorAll('.category-section');
+            let visibleCardsCount = 0;
+
+            sections.forEach(section => {
+                section.classList.add('active'); // በፍለጋ ወቅት ሁሉንም ሴክሽኖች መክፈት
+                let sectionHasMatch = false;
+
+                let sectionCards = section.querySelectorAll('.card');
+                sectionCards.forEach(card => {
+                    let title = card.querySelector('h3').innerText.toLowerCase();
+                    if (title.includes(input)) {
+                        card.style.display = 'flex';
+                        sectionHasMatch = true;
+                        visibleCardsCount++;
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+
+                // በዚያ ምድብ ውስጥ ምንም ከተፈለገው ጋር የሚመሳሰል እቃ ከሌለ ሙሉ ሴክሽኑን መደብቅ
+                if (!sectionHasMatch && input !== '') {
+                    section.classList.remove('active');
+                }
+            });
+
+            // ምንም እቃ ካልተገኘ መልእክት ማሳየት
+            let noResultsMsg = document.getElementById('noResults');
+            if (visibleCardsCount === 0 && input !== '') {
+                noResultsMsg.style.display = 'block';
+            } else {
+                noResultsMsg.style.display = 'none';
+            }
         }
     </script>
 
