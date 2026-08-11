@@ -11,7 +11,7 @@
     <meta name="author" content="MerkatoX Ethiopia">
     <meta name="robots" content="index, follow">
 
-    <!-- Open Graph for Social Media (Telegram, Facebook) -->
+    <!-- Open Graph for Social Media -->
     <meta property="og:title" content="MerkatoX | World Class E-Commerce">
     <meta property="og:description" content="ጥራት ያላቸውን ምርቶች ከአዲሱ ዲጂታል መርካቶ ይበልጥ በታማኝነት ይዘዙ።">
     <meta property="og:type" content="website">
@@ -324,7 +324,7 @@
         }
 
         .modal-overlay.active {
-            display: flex;
+            display: flex !important;
             animation: modalFadeIn 0.3s ease-out;
         }
 
@@ -522,7 +522,7 @@
                     <div class="price-container">
                         <span class="price">3,200 ብር</span>
                     </div>
-                    <button class="buy-btn" onclick="openOrderModal('Nike Air Max Limited (የስፖርት ጫማ)', '3,200 ብር')">በቴሌግራም ይዘዙ</button>
+                    <button type="button" class="buy-btn" onclick="openOrderModal('Nike Air Max Limited (የስፖርት ጫማ)', '3,200 ብር')">በቴሌግራም ይዘዙ</button>
                 </div>
                 <div class="card">
                     <span class="badge">NEW</span>
@@ -531,7 +531,7 @@
                     <div class="price-container">
                         <span class="price">2,800 ብር</span>
                     </div>
-                    <button class="buy-btn" onclick="openOrderModal('Casual Sneakers Edition (የካዥዋል ጫማ)', '2,800 ብር')">በቴሌግራም ይዘዙ</button>
+                    <button type="button" class="buy-btn" onclick="openOrderModal('Casual Sneakers Edition (የካዥዋል ጫማ)', '2,800 ብር')">በቴሌግራም ይዘዙ</button>
                 </div>
             </div>
         </section>
@@ -545,7 +545,7 @@
                     <div class="price-container">
                         <span class="price">1,200 ብር</span>
                     </div>
-                    <button class="buy-btn" onclick="openOrderModal('Premium Cotton T-Shirt (ቲሸርት)', '1,200 ብር')">በቴሌግራም ይዘዙ</button>
+                    <button type="button" class="buy-btn" onclick="openOrderModal('Premium Cotton T-Shirt (ቲሸርት)', '1,200 ብር')">በቴሌግራም ይዘዙ</button>
                 </div>
                 <div class="card">
                     <span class="badge">HOT</span>
@@ -554,7 +554,7 @@
                     <div class="price-container">
                         <span class="price">4,500 ብር</span>
                     </div>
-                    <button class="buy-btn" onclick="openOrderModal('Classic Leather Jacket (የቆዳ ጃኬት)', '4,500 ብር')">በቴሌግራም ይዘዙ</button>
+                    <button type="button" class="buy-btn" onclick="openOrderModal('Classic Leather Jacket (የቆዳ ጃኬት)', '4,500 ብር')">በቴሌግራም ይዘዙ</button>
                 </div>
             </div>
         </section>
@@ -569,7 +569,7 @@
                     <div class="price-container">
                         <span class="price">18,000 ብር</span>
                     </div>
-                    <button class="buy-btn" onclick="openOrderModal('Smart Phone Flagship (ስማርት ስልክ)', '18,000 ብር')">በቴሌግራም ይዘዙ</button>
+                    <button type="button" class="buy-btn" onclick="openOrderModal('Smart Phone Flagship (ስማርት ስልክ)', '18,000 ብር')">በቴሌግራም ይዘዙ</button>
                 </div>
                 <div class="card">
                     <span class="badge">NEW</span>
@@ -578,7 +578,7 @@
                     <div class="price-container">
                         <span class="price">2,200 ብር</span>
                     </div>
-                    <button class="buy-btn" onclick="openOrderModal('Wireless Headphones Pro (የገመድ አልባ ማዳመጫ)', '2,200 ብር')">በቴሌግራም ይዘዙ</button>
+                    <button type="button" class="buy-btn" onclick="openOrderModal('Wireless Headphones Pro (የገመድ አልባ ማዳመጫ)', '2,200 ብር')">በቴሌግራም ይዘዙ</button>
                 </div>
             </div>
         </section>
@@ -594,7 +594,7 @@
                     <div class="price-container">
                         <span class="price">35,000 ብር</span>
                     </div>
-                    <button class="buy-btn" onclick="openOrderModal('MacBook Pro (ላፕቶፕ)', '35,000 ብር')">በቴሌግራም ይዘዙ</button>
+                    <button type="button" class="buy-btn" onclick="openOrderModal('MacBook Pro (ላፕቶፕ)', '35,000 ብር')">በቴሌግራም ይዘዙ</button>
                 </div>
                 <div class="card">
                     <span class="badge">USED</span>
@@ -603,7 +603,7 @@
                     <div class="price-container">
                         <span class="price">15,000 ብር</span>
                     </div>
-                    <button class="buy-btn" onclick="openOrderModal('Canon Professional Camera (ካሜራ)', '15,000 ብር')">በቴሌግራም ይዘዙ</button>
+                    <button type="button" class="buy-btn" onclick="openOrderModal('Canon Professional Camera (ካሜራ)', '15,000 ብር')">በቴሌግራም ይዘዙ</button>
                 </div>
             </div>
         </section>
@@ -612,7 +612,7 @@
     <!-- Order Modal Form -->
     <div id="orderModal" class="modal-overlay">
         <div class="modal-content">
-            <button class="close-modal" onclick="closeOrderModal()">&times;</button>
+            <button type="button" class="close-modal" onclick="closeOrderModal()">&times;</button>
             <h3 class="modal-title">የእቃ ማዘዣ ፎርም</h3>
             <p class="modal-subtitle">እባክዎን መረጃዎን ይሙሉ፣ ቀጥታ ወደ ቴሌግራም ይላካል።</p>
             
@@ -661,11 +661,14 @@
             currentPrice = productPrice;
             document.getElementById('modalProductName').innerText = productName;
             document.getElementById('modalProductPrice').innerText = productPrice;
-            document.getElementById('orderModal').classList.add('active');
+            
+            let modal = document.getElementById('orderModal');
+            modal.style.display = 'flex';
         }
 
         function closeOrderModal() {
-            document.getElementById('orderModal').classList.remove('active');
+            let modal = document.getElementById('orderModal');
+            modal.style.display = 'none';
             document.getElementById('orderForm').reset();
         }
 
@@ -687,23 +690,24 @@
 
             let telegramUsername = "Tvwlute"; // ያንተ የቴሌግራም Username
 
-            let message = 🛍️ *አዲስ ትእዛዝ ከ MerkatoX!*%0A%0A +
-                          📦 *የተመረጠው እቃ:* ${currentProduct}%0A +
-                          💰 *ዋጋ:* ${currentPrice}%0A%0A +
-                          👤 *የደንበኛ ስም:* ${name}%0A +
-                          📞 *ስልክ ቁጥር:* ${phone}%0A +
-                          📍 *አድራሻ:* ${location}%0A +
+            let message = 🛍️ *አዲስ ትእዛዝ ከ MerkatoX!*\n\n +
+                          📦 *የተመረጠው እቃ:* ${currentProduct}\n +
+                          💰 *ዋጋ:* ${currentPrice}\n\n +
+                          👤 *የደንበኛ ስም:* ${name}\n +
+                          📞 *ስልክ ቁጥር:* ${phone}\n +
+                          📍 *አድራሻ:* ${location}\n +
                           📝 *ተጨማሪ ማስታወሻ:* ${note ? note : "የለም"};
 
-            let telegramUrl = https://t.me/${telegramUsername}?text=${message};
+            let encodedMessage = encodeURIComponent(message);
+            let telegramUrl = https://t.me/${telegramUsername}?text=${encodedMessage};
             
-            window.open(telegramUrl, '_blank');
+            window.location.href = telegramUrl;
             closeOrderModal();
         }
-
         function showCategory(categoryId, element) {
             document.getElementById('searchInput').value = '';
             document.getElementById('noResults').style.display = 'none';
+
             let buttons = document.querySelectorAll('.nav-btn');
             buttons.forEach(btn => btn.classList.remove('active'));
             
