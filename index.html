@@ -47,18 +47,18 @@
             font-size: 20px; 
             margin: 10px 0; 
         }
-        button { 
+        .buy-btn { 
             background-color: #ffa41c; 
-            border: none; 
             color: #111; 
             padding: 12px 15px; 
-            cursor: pointer; 
+            text-decoration: none;
             border-radius: 25px; 
             font-weight: bold; 
-            width: 100%; 
+            display: block;
             font-size: 15px; 
+            margin-top: 10px;
         }
-        button:hover { background-color: #f7ca00; }
+        .buy-btn:hover { background-color: #f7ca00; }
     </style>
 </head>
 <body>
@@ -73,7 +73,7 @@
             <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=500" alt="ጫማ">
             <h3>የስፖርት ጫማ</h3>
             <p class="price">2,500 ብር</p>
-            <button onclick="orderProduct('የስፖርት ጫማ', 2500)">በቴሌግራም ይዘዙ</button>
+            <a class="buy-btn" href="https://t.me/Tvwlute" target="_blank">በቴሌግራም ይዘዙ</a>
         </div>
 
         <!-- Product 2 -->
@@ -81,19 +81,9 @@
             <img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=500" alt="ስማርት ስልክ">
             <h3>ስማርት ስልክ</h3>
             <p class="price">18,000 ብር</p>
-            <button onclick="orderProduct('ስማርት ስልክ', 18000)">በቴሌግራም ይዘዙ</button>
+            <a class="buy-btn" href="https://t.me/Tvwlute" target="_blank">በቴሌግራም ይዘዙ</a>
         </div>
     </div>
-
-    <script>
-        function orderProduct(name, price) {
-            // የቴሌግራም አካውንትህ እዚህ ገብቷል
-            let telegramUsername = "Tvwlute"; 
-            
-            let message = ሰላም! ከዌብሳይትህ ይህንን እቃ ማዘዝ እፈልጋለሁ፡\n\n📦 እቃ፡ ${name}\n💰 ዋጋ፡ ${price} ብር;
-            window.open(https://t.me/${telegramUsername}?text=${encodeURIComponent(message)}, '_blank');
-        }
-    </script>
 
 </body>
 </html>
