@@ -25,10 +25,8 @@
         .card h3 { font-size: 16px; margin-bottom: 5px; }
         .card .price { color: #2563eb; font-weight: 800; font-size: 18px; margin: 8px 0; }
         
-        .action-btns { display: flex; gap: 8px; margin-top: 10px; }
-        .buy-btn { flex: 1; text-align: center; background: #2563eb; color: white; border: none; padding: 9px; border-radius: 6px; font-weight: 700; font-size: 13px; cursor: pointer; }
-        .buy-btn:hover { background: #1d4ed8; }
-        .tg-btn { text-align: center; background: #22c55e; color: white; text-decoration: none; padding: 9px 12px; border-radius: 6px; font-weight: 700; font-size: 13px; }
+        .buy-btn { width: 100%; text-align: center; background: #22c55e; color: white; border: none; padding: 10px; border-radius: 8px; font-weight: 700; font-size: 14px; cursor: pointer; margin-top: 10px; }
+        .buy-btn:hover { background: #16a34a; }
 
         /* Modal Box CSS */
         .modal-overlay {
@@ -36,8 +34,8 @@
             position: fixed;
             top: 0; left: 0;
             width: 100%; height: 100%;
-            background: rgba(15, 23, 42, 0.75);
-            backdrop-filter: blur(4px);
+            background: rgba(15, 23, 42, 0.85);
+            backdrop-filter: blur(5px);
             z-index: 1000;
             justify-content: center;
             align-items: center;
@@ -147,34 +145,6 @@
         </div>
     </div>
 
-    <!-- 4. BUY ITEM MODAL (የእቃ መግዣ/ማዘዣ ፎርም) -->
-    <div id="buyModal" class="modal-overlay">
-        <div class="modal-card">
-            <span class="close-btn" onclick="hideModal('buyModal')">&times;</span>
-            <h3 id="buyItemTitle" style="margin-bottom: 5px; color:#2563eb;">የእቃው ስም</h3>
-            <p id="buyItemPrice" style="font-weight:700; margin-bottom:15px; color:#16a34a;"></p>
-            
-            <form onsubmit="handleSendOrder(event)">
-                <input type="hidden" id="selectedItemName">
-                <input type="hidden" id="selectedItemPrice">
-                
-                <div class="form-group">
-                    <label>የእርስዎ ስም</label>
-                    <input type="text" id="buyerName" required placeholder="ምሳሌ፦ ከበደ">
-                </div>
-                <div class="form-group">
-                    <label>ስልክ ቁጥር</label>
-                    <input type="tel" id="buyerPhone" required placeholder="09...">
-                </div>
-                <div class="form-group">
-                    <label>መቀበያ አድራሻ (ከተማ/ሰፈር)</label>
-                    <input type="text" id="buyerAddress" required placeholder="ምሳሌ፦ አዲስ አበባ፣ ቦሌ">
-                </div>
-                <button type="submit" class="submit-btn submit-btn-success">📩 ትእዛዝ ላክ (Order Now)</button>
-            </form>
-        </div>
-    </div>
-
     <script>
         let currentUser = JSON.parse(localStorage.getItem('merkatoX_user')) || null;
         let products = JSON.parse(localStorage.getItem('merkatoX_products')) || [
@@ -197,37 +167,24 @@
 
         function clickSellButton() {
             if (!currentUser) {
-                alert("እቃ ለመሸጥ አስቀድመው አካውንት መክፈት ወይም መግባት (Login) አለብዎት!");
+                alert("እቃ ለመሸጥ አስቀድመው አካውንት መክፈት አለብዎት!");
                 showModal('loginModal');
             } else {
                 showModal('sellModal');
             }
         }
 
-        // ገዢዎች "ግዛ" የሚለውን ሲጫኑ ፎርም እንዲከፈት የሚያደርግ
-        function openBuyModal(title, price) {
-            document.getElementById('buyItemTitle').innerText = "🛍️ " + title;
-            document.getElementById('buyItemPrice').innerText = "ዋጋ፦ " + price + " ብር";
-            document.getElementById('selectedItemName').value = title;
-            document.getElementById('selectedItemPrice').value = price;
-            
-            showModal('buyModal');
-        }
-
-        // ትእዛዝ ወደ ቴሌግራም መላኪያ
-        function handleSendOrder(e) {
-            e.preventDefault();
-            const item = document.getElementById('selectedItemName').value;
-            const price = document.getElementById('selectedItemPrice').value;
-            const buyer = document.getElementById('buyerName').value;
-            const phone = document.getElementById('buyerPhone').value;
-            const address = document.getElementById('buyerAddress').value;
-
-            const msg = `🛒 **አዲስ የግዢ ትእዛዝ መጥቷል!**%0A%0A📦 **እቃ፦** ${item}%0A💰 **ዋጋ፦** ${price} ብር%0A%0A👤 **የገዢው ስም፦** ${buyer}%0A📞 **ስልክ፦** ${phone}%0A📍 **አድራሻ፦** ${address}`;
-            
-            // ወደ እርሶ ቴሌግራም ይልካቸዋል
-            window.open(`https://t.me/Tvwlute?text=${msg}`, '_blank');
-            hideModal('buyModal');
+        // "ግዛ" ሲጫኑ የሚሰራው ፈንክሽን
+        function handleBuy(title, price) {
+            if (!currentUser) {
+                // አልገቡም -> ማስጠንቀቂያ አሳይተህ የመግቢያ ፎርም ክፈት
+                alert("እቃ ለማዘዝ አስቀድመው አካውንት መክፈት ወይም መግባት (Login) አለብዎት!");
+                showModal('loginModal');
+            } else {
+                // ገብተዋል -> የተጠቃሚውን ስምና ስልክ + የእቃውን ስምና ዋጋ በአንድ ላይ አዘጋጅተህ ወደ ቴሌግራም ላክ
+                const msg = `🛒 **አዲስ የግዢ ትእዛዝ!**%0A%0A📦 **እቃ፦** ${title}%0A💰 **ዋጋ፦** ${price} ብር%0A%0A👤 **የገዢው ስም፦** ${currentUser.name}%0A📞 **የገዢው ስልክ፦** ${currentUser.phone}`;
+                window.open(`https://t.me/Tvwlute?text=${msg}`, '_blank');
+            }
         }
 
         function handleSignUp(e) {
@@ -238,9 +195,9 @@
             currentUser = { name: name, phone: phone };
             localStorage.setItem('merkatoX_user', JSON.stringify(currentUser));
             
-            updateUserUI();
             hideModal('signupModal');
-            alert(`እንኳን ደስ አለዎት ${name}! አካውንትዎ ተከፍቷል።`);
+            updateUserUI();
+            alert(`እንኳን ደስ አለዎት ${name}! አካውንትዎ ተከፍቷል። አሁን ማዘዝ ይችላሉ።`);
         }
 
         function handleLogin(e) {
@@ -250,8 +207,8 @@
             currentUser = { name: "ተጠቃሚ (" + phone.slice(-4) + ")", phone: phone };
             localStorage.setItem('merkatoX_user', JSON.stringify(currentUser));
 
-            updateUserUI();
             hideModal('loginModal');
+            updateUserUI();
             alert("በተሳካ ሁኔታ ገብተዋል!");
         }
 
@@ -306,10 +263,7 @@
                             <p style="font-size:12px; color:#64748b;">👤 ሻጭ: ${item.seller}</p>
                             <div class="price">${item.price} ብር</div>
                         </div>
-                        <div class="action-btns">
-                            <button class="buy-btn" onclick="openBuyModal('${item.title}', '${item.price}')">🛍️ ግዛ</button>
-                            <a href="https://t.me/Tvwlute" target="_blank" class="tg-btn">✈️ ቴሌግራም</a>
-                        </div>
+                        <button class="buy-btn" onclick="handleBuy('${item.title}', '${item.price}')">🛍️ በቴሌግራም አዝዝ</button>
                     </div>
                 `;
             });
