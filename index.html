@@ -3,199 +3,297 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Global Marketplace | የኔ ኦንላይን ገበያ</title>
+    <title>MarketX | World Class E-Commerce</title>
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
+        :root {
+            --primary: #2563eb;
+            --primary-hover: #1d4ed8;
+            --dark-bg: #0f172a;
+            --card-bg: #ffffff;
+            --text-main: #0f172a;
+            --text-muted: #64748b;
+            --accent-glow: rgba(37, 99, 235, 0.15);
+        }
+
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
         }
+
         body {
-            font-family: 'Poppins', 'Segoe UI', sans-serif;
+            font-family: 'Plus Jakarta Sans', sans-serif;
             background-color: #f8fafc;
-            color: #1e293b;
+            color: var(--text-main);
+            -webkit-font-smoothing: antialiased;
         }
 
         /* Top Bar */
         .top-bar {
-            background-color: #0f172a;
-            color: #f8fafc;
+            background: linear-gradient(90deg, #0f172a 0%, #1e293b 100%);
+            color: #cbd5e1;
             text-align: center;
-            padding: 8px 10px;
+            padding: 10px;
             font-size: 13px;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
         }
 
         /* Header */
         header {
-            background: #ffffff;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
             position: sticky;
             top: 0;
             z-index: 1000;
+            border-bottom: 1px solid #e2e8f0;
         }
+
         .header-container {
             max-width: 1200px;
             margin: 0 auto;
             display: flex;
             align-items: center;
             justify-content: space-between;
-            padding: 15px 20px;
+            padding: 16px 20px;
             gap: 20px;
         }
+
         .logo {
-            font-size: 26px;
-            font-weight: 700;
-            color: #2563eb;
+            font-size: 28px;
+            font-weight: 800;
+            background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
             text-decoration: none;
-        }
-        
-        .search-box {
-            flex-grow: 1;
-            max-width: 500px;
-            display: flex;
-        }
-        .search-box input {
-            width: 100%;
-            padding: 10px 15px;
-            border: 2px solid #e2e8f0;
-            border-radius: 25px 0 0 25px;
-            outline: none;
-            font-size: 14px;
-        }
-        .search-box button {
-            background: #2563eb;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 0 25px 25px 0;
-            cursor: pointer;
-            font-weight: 600;
+            letter-spacing: -0.5px;
         }
 
-        /* Navigation Menu Buttons */
+        .search-box {
+            flex-grow: 1;
+            max-width: 480px;
+            position: relative;
+        }
+
+        .search-box input {
+            width: 100%;
+            padding: 12px 20px;
+            background-color: #f1f5f9;
+            border: 1px solid transparent;
+            border-radius: 30px;
+            outline: none;
+            font-size: 14px;
+            transition: all 0.3s ease;
+        }
+
+        .search-box input:focus {
+            background-color: #ffffff;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 4px var(--accent-glow);
+        }
+
+        /* Navigation Buttons */
         nav {
             background: #ffffff;
-            border-top: 1px solid #f1f5f9;
             border-bottom: 1px solid #e2e8f0;
         }
+
         .nav-container {
             max-width: 1200px;
             margin: 0 auto;
             display: flex;
             justify-content: center;
-            gap: 10px;
+            gap: 12px;
             padding: 12px 20px;
             overflow-x: auto;
         }
+
         .nav-btn {
             border: none;
-            color: #475569;
+            color: var(--text-muted);
             font-size: 14px;
             font-weight: 600;
-            padding: 10px 20px;
-            border-radius: 20px;
+            padding: 10px 22px;
+            border-radius: 30px;
             cursor: pointer;
-            transition: all 0.3s ease;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             white-space: nowrap;
-            background: #f1f5f9;
-        }
-        .nav-btn:hover, .nav-btn.active {
-            background-color: #2563eb;
-            color: white;
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
         }
 
-        /* Hero Section */
+        .nav-btn:hover {
+            color: var(--primary);
+            background: #eff6ff;
+            border-color: #bfdbfe;
+        }
+
+        .nav-btn.active {
+            background-color: var(--primary);
+            color: #ffffff;
+            border-color: var(--primary);
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.25);
+        }
+        /* Hero Banner */
         .hero {
-            background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+            background: radial-gradient(circle at top right, #1e293b, #0f172a);
             color: white;
             text-align: center;
-            padding: 40px 20px;
-            margin-bottom: 30px;
-        }
-        .hero h2 {
-            font-size: 30px;
-            font-weight: 700;
-            margin-bottom: 10px;
+            padding: 65px 20px;
+            margin-bottom: 40px;
+            position: relative;
+            overflow: hidden;
         }
 
-        /* Main Content Area */
+        .hero h2 {
+            font-size: 38px;
+            font-weight: 800;
+            margin-bottom: 12px;
+            letter-spacing: -1px;
+        }
+
+        .hero p {
+            font-size: 16px;
+            color: #94a3b8;
+            max-width: 550px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        /* Main Content */
         .main-content {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 0 20px 60px;
+            padding: 0 20px 80px;
         }
 
-        /* Category Sections */
         .category-section {
-            display: none; /* መጀመሪያ ሁሉንም እንደብቃቸዋለን */
+            display: none;
+            animation: fadeIn 0.4s ease-in-out;
         }
+
         .category-section.active {
-            display: block; /* የተመረጠውን ብቻ እናሳያለን */
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         .category-header {
-            font-size: 22px;
+            font-size: 24px;
             font-weight: 700;
-            margin-bottom: 20px;
-            padding-bottom: 8px;
-            border-bottom: 2px solid #2563eb;
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--text-main);
         }
 
+        /* Product Grid & Cards */
         .product-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-            gap: 25px;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: 30px;
         }
+
         .card {
-            background: white;
-            border-radius: 12px;
-            padding: 15px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-            transition: transform 0.3s ease;
+            background: var(--card-bg);
+            border-radius: 16px;
+            padding: 16px;
+            border: 1px solid #e2e8f0;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             display: flex;
             flex-direction: column;
             justify-content: space-between;
+            position: relative;
         }
+
         .card:hover {
-            transform: translateY(-6px);
+            transform: translateY(-8px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.08), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            border-color: #cbd5e1;
         }
+
+        .badge {
+            position: absolute;
+            top: 26px;
+            left: 26px;
+            background: rgba(15, 23, 42, 0.85);
+            backdrop-filter: blur(4px);
+            color: white;
+            font-size: 11px;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 20px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            z-index: 2;
+        }
+
         .card img {
             width: 100%;
-            height: 200px;
+            height: 220px;
             object-fit: cover;
-            border-radius: 8px;
-            margin-bottom: 12px;
+            border-radius: 12px;
+            margin-bottom: 16px;
+            background-color: #f1f5f9;
         }
+
         .card h3 {
-            font-size: 16px;
-            margin-bottom: 6px;
+            font-size: 17px;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: var(--text-main);
+            line-height: 1.4;
         }
+
+        .price-container {
+            display: flex;
+            align-items: baseline;
+            gap: 8px;
+            margin-bottom: 16px;
+        }
+
         .price {
-            color: #2563eb;
-            font-size: 18px;
-            font-weight: 700;
-            margin-bottom: 12px;
+            color: var(--primary);
+            font-size: 20px;
+            font-weight: 800;
         }
+
         .buy-btn {
-            background-color: #2563eb;
+            background-color: var(--primary);
             color: white;
             text-align: center;
-            padding: 10px;
+            padding: 12px;
             text-decoration: none;
-            border-radius: 8px;
+            border-radius: 10px;
             font-weight: 600;
+            font-size: 14px;
+            transition: all 0.2s ease;
             display: block;
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.2);
+        }
+
+        .buy-btn:hover {
+            background-color: var(--primary-hover);
+            box-shadow: 0 6px 16px rgba(37, 99, 235, 0.35);
         }
 
         /* Footer */
         footer {
-            background-color: #0f172a;
+            background-color: var(--dark-bg);
             color: #94a3b8;
-            padding: 30px 20px;
+            padding: 40px 20px;
             text-align: center;
-            margin-top: 50px;
+            border-top: 1px solid #1e293b;
+        }
+        footer p {
+            font-size: 14px;
         }
     </style>
 </head>
@@ -203,16 +301,15 @@
 
     <!-- Top Announcement -->
     <div class="top-bar">
-        ✨ እንኳን ወደ አለም አቀፉ የኢትዮጵያ ኦንላይን ገበያ በሰላም መጡ!
+        ✨ እንኳን ወደ አለም አቀፉ MarketX ገበያ በሰላም መጡ!
     </div>
 
     <!-- Main Header -->
     <header>
         <div class="header-container">
-            <a href="#" class="logo">🛍️ MarketX</a>
+            <a href="#" class="logo">MarketX.</a>
             <div class="search-box">
                 <input type="text" placeholder="የሚፈልጉትን እቃ እዚህ ይፈልጉ...">
-                <button>ፈልግ</button>
             </div>
         </div>
     </header>
@@ -230,7 +327,8 @@
 
     <!-- Hero Banner -->
     <section class="hero">
-        <h2>ጥራት ያላቸው ምርቶች በአንድ ቦታ!</h2>
+        <h2>Premium Shopping Experience</h2>
+        <p>ከአለም አቀፍ ጥራት ያላቸው እቃዎች እስከ ምርጥ ያገለገሉ እቃዎች ድረስ በታማኝነት ይዘዙ።</p>
     </section>
 
     <!-- Main Content Area -->
@@ -241,15 +339,21 @@
             <h3 class="category-header">👟 ጫማዎች</h3>
             <div class="product-grid">
                 <div class="card">
+                    <span class="badge">HOT</span>
                     <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=500" alt="የስፖርት ጫማ">
-                    <h3>የስፖርት ጫማ (Nike Air)</h3>
-                    <p class="price">3,200 ብር</p>
+                    <h3>Nike Air Max Limited</h3>
+                    <div class="price-container">
+                        <span class="price">3,200 ብር</span>
+                    </div>
                     <a class="buy-btn" href="https://t.me/Tvwlute" target="_blank">በቴሌግራም ይዘዙ</a>
                 </div>
                 <div class="card">
+                    <span class="badge">NEW</span>
                     <img src="https://images.unsplash.com/photo-1549298916-b41d501d3772?w=500" alt="የካዥዋል ጫማ">
-                    <h3>የካዥዋል ጫማ (Sneakers)</h3>
-                    <p class="price">2,800 ብር</p>
+                    <h3>Casual Sneakers Edition</h3>
+                    <div class="price-container">
+                        <span class="price">2,800 ብር</span>
+                    </div>
                     <a class="buy-btn" href="https://t.me/Tvwlute" target="_blank">በቴሌግራም ይዘዙ</a>
                 </div>
             </div>
@@ -261,14 +365,19 @@
             <div class="product-grid">
                 <div class="card">
                     <img src="https://images.unsplash.com/photo-1521572267360-ee0c2909d518?w=500" alt="ቲሸርት">
-                    <h3>ጥራት ያለው ቲሸርት (Cotton T-Shirt)</h3>
-                    <p class="price">1,200 ብር</p>
+                    <h3>Premium Cotton T-Shirt</h3>
+                    <div class="price-container">
+                        <span class="price">1,200 ብር</span>
+                    </div>
                     <a class="buy-btn" href="https://t.me/Tvwlute" target="_blank">በቴሌግራም ይዘዙ</a>
                 </div>
                 <div class="card">
+                    <span class="badge">HOT</span>
                     <img src="https://images.unsplash.com/photo-1551028719-00167b16eac5?w=500" alt="ጃኬት">
-                    <h3>የቆዳ ጃኬት (Leather Jacket)</h3>
-                    <p class="price">4,500 ብር</p>
+                    <h3>Classic Leather Jacket</h3>
+                    <div class="price-container">
+                        <span class="price">4,500 ብር</span>
+                    </div>
                     <a class="buy-btn" href="https://t.me/Tvwlute" target="_blank">በቴሌግራም ይዘዙ</a>
                 </div>
             </div>
@@ -280,14 +389,19 @@
             <div class="product-grid">
                 <div class="card">
                     <img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=500" alt="ስማርት ስልክ">
-                    <h3>ስማርት ስልክ</h3>
-                    <p class="price">18,000 ብር</p>
+                    <h3>Smart Phone Flagship</h3>
+                    <div class="price-container">
+                        <span class="price">18,000 ብር</span>
+                    </div>
                     <a class="buy-btn" href="https://t.me/Tvwlute" target="_blank">በቴሌግራም ይዘዙ</a>
                 </div>
                 <div class="card">
+                    <span class="badge">NEW</span>
                     <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=500" alt="Headphone">
-                    <h3>የገመድ አልባ ማዳመጫ (Headphone)</h3>
-                    <p class="price">2,200 ብር</p>
+                    <h3>Wireless Headphones Pro</h3>
+                    <div class="price-container">
+                        <span class="price">2,200 ብር</span>
+                    </div>
                     <a class="buy-btn" href="https://t.me/Tvwlute" target="_blank">በቴሌግራም ይዘዙ</a>
                 </div>
             </div>
@@ -298,15 +412,21 @@
             <h3 class="category-header">📦 ያገለገሉ እቃዎች</h3>
             <div class="product-grid">
                 <div class="card">
+                    <span class="badge">USED</span>
                     <img src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=500" alt="ላፕቶፕ">
-                    <h3>ያገለገለ MacBook Pro</h3>
-                    <p class="price">35,000 ብር</p>
+                    <h3>MacBook Pro (Like New)</h3>
+                    <div class="price-container">
+                        <span class="price">35,000 ብር</span>
+                    </div>
                     <a class="buy-btn" href="https://t.me/Tvwlute" target="_blank">በቴሌግራም ይዘዙ</a>
                 </div>
                 <div class="card">
+                    <span class="badge">USED</span>
                     <img src="https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f?w=500" alt="ካሜራ">
-                    <h3>የፎቶ ካሜራ (Canon Camera)</h3>
-                    <p class="price">15,000 ብር</p>
+                    <h3>Canon Professional Camera</h3>
+                    <div class="price-container">
+                        <span class="price">15,000 ብር</span>
+                    </div>
                     <a class="buy-btn" href="https://t.me/Tvwlute" target="_blank">በቴሌግራም ይዘዙ</a>
                 </div>
             </div>
@@ -316,29 +436,26 @@
 
     <!-- Footer -->
     <footer>
-        <p>&copy; 2026 MarketX. መብቱ በህግ የተጠበቀ ነው።</p>
+        <p>&copy; 2026 MarketX. All rights reserved.</p>
     </footer>
 
     <!-- JavaScript code for Filtering -->
     <script>
         function showCategory(categoryId, element) {
-            // 1. የሁሉም ነባር በተኖች አክቲቭ ከለር ማንሳት
             let buttons = document.querySelectorAll('.nav-btn');
             buttons.forEach(btn => btn.classList.remove('active'));
             
-            // 2. ለተነካው በተን ብቻ አክቲቭ ከለር መስጠት
             element.classList.add('active');
 
-            // 3. የሴክሽኖችን ሁኔታ ማስተካከል
             let sections = document.querySelectorAll('.category-section');
             sections.forEach(section => {
                 if (categoryId === 'all') {
-                    section.classList.add('active'); // ሁሉንም አሳይ
+                    section.classList.add('active');
                 } else {
                     if (section.id === categoryId) {
-                        section.classList.add('active'); // የተመረጠውን ብቻ አሳይ
+                        section.classList.add('active');
                     } else {
-                        section.classList.remove('active'); // ሌላውን ደብቅ
+                        section.classList.remove('active');
                     }
                 }
             });
