@@ -307,30 +307,20 @@
             font-weight: 600;
         }
 
-        /* Modal Overlay & Styling */
+        /* Modal Overlay & Styling (የተስተካከለ) */
         .modal-overlay {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(15, 23, 42, 0.6);
+            background: rgba(15, 23, 42, 0.7);
             backdrop-filter: blur(4px);
-            display: none;
+            display: none; /* መጀመሪያ የተሸሸገ ነው */
             justify-content: center;
             align-items: center;
             z-index: 2000;
             padding: 20px;
-        }
-
-        .modal-overlay.show {
-            display: flex !important;
-            animation: modalFadeIn 0.3s ease-out;
-        }
-
-        @keyframes modalFadeIn {
-            from { opacity: 0; transform: scale(0.95); }
-            to { opacity: 1; transform: scale(1); }
         }
 
         .modal-content {
@@ -425,12 +415,12 @@
             font-family: inherit;
             transition: all 0.2s ease;
         }
+
         .form-group input:focus, .form-group textarea:focus {
             background: #ffffff;
             border-color: var(--primary);
             box-shadow: 0 0 0 3px var(--accent-glow);
         }
-
         .submit-order-btn {
             background: #22c55e;
             color: white;
@@ -535,6 +525,7 @@
                 </div>
             </div>
         </section>
+
         <!-- 2. ልብሶች -->
         <section id="clothes" class="category-section active">
             <h3 class="category-header">👕 ልብሶች</h3>
@@ -651,12 +642,12 @@
         <p>&copy; 2026 MerkatoX. All rights reserved.</p>
     </footer>
 
-    <!-- JavaScript code -->
+    <!-- JavaScript code (ቀጥታ Display Flex የሚያደርግበት ተስተካክሏል) -->
     <script>
         let currentProduct = '';
         let currentPrice = '';
 
-        // 1. Modal-ኡን መክፈቻ function (onclick ላይ የሚጠራው)
+        // 1. Modal-ኡን መክፈቻ function
         function openOrderModal(productName, price) {
             currentProduct = productName;
             currentPrice = price;
@@ -665,13 +656,17 @@
             document.getElementById('modalProductPrice').innerText = price;
 
             const modal = document.getElementById('orderModal');
-            modal.classList.add('show');
+            if (modal) {
+                modal.style.display = 'flex'; // ቀጥታ ሞዳሉ እንዲታይ ያደርጋል
+            }
         }
 
         // 2. Modal-ኡን መዝጋቻ function
         function closeOrderModal() {
             const modal = document.getElementById('orderModal');
-            modal.classList.remove('show');
+            if (modal) {
+                modal.style.display = 'none'; // ሞዳሉን ይሸሽጋል
+            }
             document.getElementById('orderForm').reset();
         }
 
@@ -704,10 +699,10 @@
 
             let encodedMessage = encodeURIComponent(message);
             let telegramUrl = https://t.me/${telegramUsername}?text=${encodedMessage};
-
-            window.open(telegramUrl, '_blank');
+        window.open(telegramUrl, '_blank');
             closeOrderModal();
         }
+
         // 4. ካቴጎሪዎችን የማጣሪያ function
         function filterCategory(category, btnElement) {
             document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
