@@ -285,29 +285,148 @@
             font-weight: 800;
         }
 
+        /* Action Buttons Area */
+        .btn-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .form-btn {
+            background-color: var(--primary);
+            color: white !important;
+            text-align: center;
+            padding: 10px;
+            border: none;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 13px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            width: 100%;
+        }
+
+        .form-btn:hover {
+            background-color: var(--primary-hover);
+        }
+
         .buy-btn {
             background-color: #22c55e;
             color: white !important;
             text-align: center;
-            padding: 12px;
+            padding: 10px;
             border: none;
-            border-radius: 10px;
+            border-radius: 8px;
             font-weight: 700;
-            font-size: 14px;
+            font-size: 13px;
             transition: all 0.2s ease;
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 8px;
+            gap: 6px;
             width: 100%;
             cursor: pointer;
             text-decoration: none;
-            box-shadow: 0 4px 12px rgba(34, 197, 94, 0.2);
         }
 
         .buy-btn:hover {
             background-color: #16a34a;
-            box-shadow: 0 6px 16px rgba(34, 197, 94, 0.35);
+        }
+
+        /* Modal Styles (የፎርም መስኮት) */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(15, 23, 42, 0.7);
+            backdrop-filter: blur(5px);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .modal-card {
+            background: #ffffff;
+            width: 100%;
+            max-width: 450px;
+            border-radius: 16px;
+            padding: 24px;
+            position: relative;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            animation: modalSlide 0.3s ease-out;
+        }
+
+        @keyframes modalSlide {
+            from { transform: translateY(20px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 16px;
+            right: 20px;
+            font-size: 24px;
+            cursor: pointer;
+            color: var(--text-muted);
+        }
+
+        .modal-card h3 {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 4px;
+        }
+
+        .modal-card p {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 14px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 13px;
+            font-weight: 600;
+            margin-bottom: 6px;
+        }
+
+        .form-group input, .form-group textarea {
+            width: 100%;
+            padding: 10px 14px;
+            border: 1px solid #cbd5e1;
+            border-radius: 8px;
+            font-size: 14px;
+            outline: none;
+            font-family: inherit;
+        }
+
+        .form-group input:focus, .form-group textarea:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px var(--accent-glow);
+        }
+
+        .submit-btn {
+            width: 100%;
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 12px;
+            border-radius: 8px;
+            font-weight: 700;
+            cursor: pointer;
+            font-size: 14px;
+            margin-top: 10px;
+        }
+
+        .submit-btn:hover {
+            background: var(--primary-hover);
         }
 
         /* Testimonials Section */
@@ -478,25 +597,27 @@
                     <span class="badge">HOT</span>
                     <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=500" alt="የስፖርት ጫማ">
                     <h3>Nike Air Max Limited</h3>
-                    <p class="product-details">📏 Size: 40 - 44 | 🏷️ Condition: Brand New (አዲስ) | 👟 Color: Red/Black</p>
+                    <p class="product-details">📏 Size: 40 - 44 | 🏷️ Condition: Brand New (አዲስ)</p>
                     <div class="price-container">
                         <span class="price">3,200 ብር</span>
                     </div>
-                    <a href="https://t.me/Tvwlute?text=%E1%88%B0%E1%88%AF%E1%88%B1%21%20%E1%8B%AD%E1%88%85%E1%8A%95%E1%8A%95%20%E1%8A%A5%E1%89%83%20%E1%88%98%E1%8B%9D%E1%8A%A5%20%E1%8A%A5%E1%8D%8D%E1%88%8D%E1%8C%AF%E1%88%8B%E1%88%AE%20Nike%20Air%20Max%20Limited%20%283%2C200%20%E1%89%B5%E1%88%AD%29" target="_blank" class="buy-btn">
-                        ✈️ በቴሌግራም ያናግሩን
-                    </a>
+                    <div class="btn-group">
+                        <button class="form-btn" onclick="openOrderModal('Nike Air Max Limited', '3,200 ብር')">📝 በፎርም እዘዝ</button>
+                        <a href="https://t.me/Tvwlute?text=%E1%88%B0%E1%88%AF%E1%88%B1%21%20%E1%8B%AD%E1%88%85%E1%8A%95%E1%8A%95%20%E1%8A%A5%E1%89%83%20%E1%88%98%E1%8B%9D%E1%8A%A5%20%E1%8A%A5%E1%8D%8D%E1%88%8D%E1%8C%AF%E1%88%8B%E1%88%AE%20Nike%20Air%20Max%20Limited%20%283%2C200%20%E1%89%B5%E1%88%AD%29" target="_blank" class="buy-btn">✈️ በቴሌግራም አናግር</a>
+                    </div>
                 </div>
                 <div class="card">
                     <span class="badge">NEW</span>
                     <img src="https://images.unsplash.com/photo-1549298916-b41d501d3772?w=500" alt="የካዥዋል ጫማ">
                     <h3>Casual Sneakers Edition</h3>
-                    <p class="product-details">📏 Size: 39 - 43 | 🏷️ Condition: Brand New (አዲስ) | 👟 Color: White/Brown</p>
+                    <p class="product-details">📏 Size: 39 - 43 | 🏷️ Condition: Brand New (አዲስ)</p>
                     <div class="price-container">
                         <span class="price">2,800 ብር</span>
                     </div>
-                    <a href="https://t.me/Tvwlute?text=%E1%88%B0%E1%88%AF%E1%88%B1%21%20%E1%8B%AD%E1%88%85%E1%8A%95%E1%8A%95%20%E1%8A%A5%E1%89%83%20%E1%88%98%E1%8B%9D%E1%8A%A5%20%E1%8A%A5%E1%8D%8D%E1%88%8D%E1%8C%AF%E1%88%8B%E1%88%AE%20Casual%20Sneakers%20Edition%20%282%2C800%20%E1%89%B5%E1%88%AD%29" target="_blank" class="buy-btn">
-                        ✈️ በቴሌግራም ያናግሩን
-                    </a>
+                    <div class="btn-group">
+                        <button class="form-btn" onclick="openOrderModal('Casual Sneakers Edition', '2,800 ብር')">📝 በፎርም እዘዝ</button>
+                        <a href="https://t.me/Tvwlute?text=%E1%88%B0%E1%88%AF%E1%88%B1%21%20%E1%8B%AD%E1%88%85%E1%8A%95%E1%8A%95%20%E1%8A%A5%E1%89%83%20%E1%88%98%E1%8B%9D%E1%8A%A5%20%E1%8A%A5%E1%8D%8D%E1%88%8D%E1%8C%AF%E1%88%8B%E1%88%AE%20Casual%20Sneakers%20Edition%20%282%2C800%20%E1%89%B5%E1%88%AD%29" target="_blank" class="buy-btn">✈️ በቴሌግራም አናግር</a>
+                    </div>
                 </div>
             </div>
         </section>
@@ -508,25 +629,27 @@
                 <div class="card">
                     <img src="https://images.unsplash.com/photo-1521572267360-ee0c2909d518?w=500" alt="ቲሸርት">
                     <h3>Premium Cotton T-Shirt</h3>
-                    <p class="product-details">📏 Size: Medium, Large, XL | 🧵 Material: 100% Pure Cotton</p>
+                    <p class="product-details">📏 Size: Medium, Large, XL | 🧵 Material: 100% Cotton</p>
                     <div class="price-container">
                         <span class="price">1,200 ብር</span>
                     </div>
-                    <a href="https://t.me/Tvwlute?text=%E1%88%B0%E1%88%AF%E1%88%B1%21%20%E1%8B%AD%E1%88%85%E1%8A%95%E1%8A%95%20%E1%8A%A5%E1%89%83%20%E1%88%98%E1%8B%9D%E1%8A%A5%20%E1%8A%A5%E1%8D%8D%E1%88%8D%E1%8C%AF%E1%88%8B%E1%88%AE%20Premium%20Cotton%20T-Shirt%20%281%2C200%20%E1%89%B5%E1%88%AD%29" target="_blank" class="buy-btn">
-                        ✈️ በቴሌግራም ያናግሩን
-                    </a>
+                    <div class="btn-group">
+                        <button class="form-btn" onclick="openOrderModal('Premium Cotton T-Shirt', '1,200 ብር')">📝 በፎርም እዘዝ</button>
+                        <a href="https://t.me/Tvwlute?text=%E1%88%B0%E1%88%AF%E1%88%B1%21%20%E1%8B%AD%E1%88%85%E1%8A%95%E1%8A%95%20%E1%8A%A5%E1%89%83%20%E1%88%98%E1%8B%9D%E1%8A%A5%20%E1%8A%A5%E1%8D%8D%E1%88%8D%E1%8C%AF%E1%88%8B%E1%88%AE%20Premium%20Cotton%20T-Shirt%20%281%2C200%20%E1%89%B5%E1%88%AD%29" target="_blank" class="buy-btn">✈️ በቴሌግራም አናግር</a>
+                    </div>
                 </div>
                 <div class="card">
                     <span class="badge">HOT</span>
                     <img src="https://images.unsplash.com/photo-1551028719-00167b16eac5?w=500" alt="ጃኬት">
                     <h3>Classic Leather Jacket</h3>
-                    <p class="product-details">📏 Size: L, XL | 🧵 Material: Genuine Leather | 🧥 Color: Black</p>
+                    <p class="product-details">📏 Size: L, XL | 🧵 Material: Genuine Leather</p>
                     <div class="price-container">
                         <span class="price">4,500 ብር</span>
                     </div>
-                    <a href="https://t.me/Tvwlute?text=%E1%88%B0%E1%88%AF%E1%88%B1%21%20%E1%8B%AD%E1%88%85%E1%8A%95%E1%8A%95%20%E1%8A%A5%E1%89%83%20%E1%88%98%E1%8B%9D%E1%8A%A5%20%E1%8A%A5%E1%8D%8D%E1%88%8D%E1%8C%AF%E1%88%8B%E1%88%AE%20Classic%20Leather%20Jacket%20%284%2C500%20%E1%89%B5%E1%88%AD%29" target="_blank" class="buy-btn">
-                        ✈️ በቴሌግራም ያናግሩን
-                    </a>
+                    <div class="btn-group">
+                        <button class="form-btn" onclick="openOrderModal('Classic Leather Jacket', '4,500 ብር')">📝 በፎርም እዘዝ</button>
+                        <a href="https://t.me/Tvwlute?text=%E1%88%B0%E1%88%AF%E1%88%B1%21%20%E1%8B%AD%E1%88%85%E1%8A%95%E1%8A%95%20%E1%8A%A5%E1%89%83%20%E1%88%98%E1%8B%9D%E1%8A%A5%20%E1%8A%A5%E1%8D%8D%E1%88%8D%E1%8C%AF%E1%88%8B%E1%88%AE%20Classic%20Leather%20Jacket%20%284%2C500%20%E1%89%B5%E1%88%AD%29" target="_blank" class="buy-btn">✈️ በቴሌግራም አናግር</a>
+                    </div>
                 </div>
             </div>
         </section>
@@ -538,25 +661,27 @@
                 <div class="card">
                     <img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=500" alt="ስማርት ስልክ">
                     <h3>Smart Phone Flagship</h3>
-                    <p class="product-details">💾 Storage: 128GB | 🔋 Battery: 5000mAh | 📸 Camera: 50MP Pro</p>
+                    <p class="product-details">💾 Storage: 128GB | 🔋 Battery: 5000mAh</p>
                     <div class="price-container">
                         <span class="price">18,000 ብር</span>
                     </div>
-                    <a href="https://t.me/Tvwlute?text=%E1%88%B0%E1%88%AF%E1%88%B1%21%20%E1%8B%AD%E1%88%85%E1%8A%95%E1%8A%95%20%E1%8A%A5%E1%89%83%20%E1%88%98%E1%8B%9D%E1%8A%A5%20%E1%8A%A5%E1%8D%8D%E1%88%8D%E1%8C%AF%E1%88%8B%E1%88%AE%20Smart%20Phone%20Flagship%20%2818%2C000%20%E1%89%B5%E1%88%AD%29" target="_blank" class="buy-btn">
-                        ✈️ በቴሌግራም ያናግሩን
-                    </a>
+                    <div class="btn-group">
+                        <button class="form-btn" onclick="openOrderModal('Smart Phone Flagship', '18,000 ብር')">📝 በፎርም እዘዝ</button>
+                        <a href="https://t.me/Tvwlute?text=%E1%88%B0%E1%88%AF%E1%88%B1%21%20%E1%8B%AD%E1%88%85%E1%8A%95%E1%8A%95%20%E1%8A%A5%E1%89%83%20%E1%88%98%E1%8B%9D%E1%8A%A5%20%E1%8A%A5%E1%8D%8D%E1%88%8D%E1%8C%AF%E1%88%8B%E1%88%AE%20Smart%20Phone%20Flagship%20%2818%2C000%20%E1%89%B5%E1%88%AD%29" target="_blank" class="buy-btn">✈️ በቴሌግራም አናግር</a>
+                    </div>
                 </div>
                 <div class="card">
                     <span class="badge">NEW</span>
                     <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=500" alt="Headphone">
                     <h3>Wireless Headphones Pro</h3>
-                    <p class="product-details">🎧 Noise Cancelling | 🔋 Battery Life: 30 Hours | 📶 Bluetooth 5.2</p>
+                    <p class="product-details">🎧 Noise Cancelling | 🔋 Battery: 30 Hours</p>
                     <div class="price-container">
                         <span class="price">2,200 ብር</span>
                     </div>
-                    <a href="https://t.me/Tvwlute?text=%E1%88%B0%E1%88%AF%E1%88%B1%21%20%E1%8B%AD%E1%88%85%E1%8A%95%E1%8A%95%20%E1%8A%A5%E1%89%83%20%E1%88%98%E1%8B%9D%E1%8A%A5%20%E1%8A%A5%E1%8D%8D%E1%88%8D%E1%8C%AF%E1%88%8B%E1%88%AE%20Wireless%20Headphones%20Pro%20%282%2C200%20%E1%89%B5%E1%88%AD%29" target="_blank" class="buy-btn">
-                        ✈️ በቴሌግራም ያናግሩን
-                    </a>
+                    <div class="btn-group">
+                        <button class="form-btn" onclick="openOrderModal('Wireless Headphones Pro', '2,200 ብር')">📝 በፎርም እዘዝ</button>
+                        <a href="https://t.me/Tvwlute?text=%E1%88%B0%E1%88%AF%E1%88%B1%21%20%E1%8B%AD%E1%88%85%E1%8A%95%E1%8A%95%20%E1%8A%A5%E1%89%83%20%E1%88%98%E1%8B%9D%E1%8A%A5%20%E1%8A%A5%E1%8D%8D%E1%88%8D%E1%8C%AF%E1%88%8B%E1%88%AE%20Wireless%20Headphones%20Pro%20%282%2C200%20%E1%89%B5%E1%88%AD%29" target="_blank" class="buy-btn">✈️ በቴሌግራም አናግር</a>
+                    </div>
                 </div>
             </div>
         </section>
@@ -569,30 +694,56 @@
                     <span class="badge">USED</span>
                     <img src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=500" alt="ላፕቶፕ">
                     <h3>MacBook Pro</h3>
-                    <p class="product-details">💻 Core i7 / 16GB RAM / 512GB SSD | 🏷️ Condition: Very Good (በትንሹ ያገለገለ)</p>
+                    <p class="product-details">💻 Core i7 / 16GB RAM / 512GB SSD</p>
                     <div class="price-container">
                         <span class="price">35,000 ብር</span>
                     </div>
-                    <a href="https://t.me/Tvwlute?text=%E1%88%B0%E1%88%AF%E1%88%B1%21%20%E1%8B%AD%E1%88%85%E1%8A%95%E1%8A%95%20%E1%8A%A5%E1%89%83%20%E1%88%98%E1%8B%9D%E1%8A%A5%20%E1%8A%A5%E1%8D%8D%E1%88%8D%E1%8C%AF%E1%88%8B%E1%88%AE%20MacBook%20Pro%20%2835%2C000%20%E1%89%B5%E1%88%AD%29" target="_blank" class="buy-btn">
-                        ✈️ በቴሌግራም ያናግሩን
-                    </a>
+                    <div class="btn-group">
+                        <button class="form-btn" onclick="openOrderModal('MacBook Pro', '35,000 ብር')">📝 በፎርም እዘዝ</button>
+                        <a href="https://t.me/Tvwlute?text=%E1%88%B0%E1%88%AF%E1%88%B1%21%20%E1%8B%AD%E1%88%85%E1%8A%95%E1%8A%95%20%E1%8A%A5%E1%89%83%20%E1%88%98%E1%8B%9D%E1%8A%A5%20%E1%8A%A5%E1%8D%8D%E1%88%8D%E1%8C%AF%E1%88%8B%E1%88%AE%20MacBook%20Pro%20%2835%2C000%20%E1%89%B5%E1%88%AD%29" target="_blank" class="buy-btn">✈️ በቴሌግራም አናግር</a>
+                    </div>
                 </div>
                 <div class="card">
                     <span class="badge">USED</span>
                     <img src="https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f?w=500" alt="ካሜራ">
                     <h3>Canon Professional Camera</h3>
-                    <p class="product-details">📷 24MP Sensor / 18-55mm Lens | 🏷️ Condition: Excellent | 🔋 Original Charger</p>
+                    <p class="product-details">📷 24MP Sensor / 18-55mm Lens</p>
                     <div class="price-container">
                         <span class="price">15,000 ብር</span>
                     </div>
-                    <a href="https://t.me/Tvwlute?text=%E1%88%B0%E1%88%AF%E1%88%B1%21%20%E1%8B%AD%E1%88%85%E1%8A%95%E1%8A%95%20%E1%8A%A5%E1%89%83%20%E1%88%98%E1%8B%9D%E1%8A%A5%20%E1%8A%A5%E1%8D%8D%E1%88%8D%E1%8C%AF%E1%88%8B%E1%88%AE%20Canon%20Professional%20Camera%20%2815%2C000%20%E1%89%B5%E1%88%AD%29" target="_blank" class="buy-btn">
-                        ✈️ በቴሌግራም ያናግሩን
-                    </a>
+                    <div class="btn-group">
+                        <button class="form-btn" onclick="openOrderModal('Canon Professional Camera', '15,000 ብር')">📝 በፎርም እዘዝ</button>
+                        <a href="https://t.me/Tvwlute?text=%E1%88%B0%E1%88%AF%E1%88%B1%21%20%E1%8B%AD%E1%88%85%E1%8A%95%E1%8A%95%20%E1%8A%A5%E1%89%83%20%E1%88%98%E1%8B%9D%E1%8A%A5%20%E1%8A%A5%E1%8D%8D%E1%88%8D%E1%8C%AF%E1%88%8B%E1%88%AE%20Canon%20Professional%20Camera%20%2815%2C000%20%E1%89%B5%E1%88%AD%29" target="_blank" class="buy-btn">✈️ በቴሌግራም አናግር</a>
+                    </div>
                 </div>
             </div>
         </section>
 
     </main>
+
+    <!-- Order Form Modal (የፎርም መስኮት) -->
+    <div id="orderModal" class="modal-overlay">
+        <div class="modal-card">
+            <span class="close-modal" onclick="closeOrderModal()">&times;</span>
+            <h3 id="modalProductName">የእቃ ስም</h3>
+            <p id="modalProductPrice">ዋጋ</p>
+            <form id="orderForm" onsubmit="handleFormSubmit(event)">
+                <div class="form-group">
+                    <label for="custName">ሙሉ ስም</label>
+                    <input type="text" id="custName" required placeholder="ስምዎን ያስገቡ">
+                </div>
+                <div class="form-group">
+                    <label for="custPhone">ስልክ ቁጥር</label>
+                    <input type="tel" id="custPhone" required placeholder="09... / 07...">
+                </div>
+                <div class="form-group">
+                    <label for="custAddress">የማድረሻ አድራሻ</label>
+                    <textarea id="custAddress" rows="2" required placeholder="ከተማ፣ ክፍለ ከተማ ወይም አካባቢ"></textarea>
+                </div>
+                <button type="submit" class="submit-btn">🚀 ትእዛዝ ላክ</button>
+            </form>
+        </div>
+    </div>
 
     <!-- Testimonials Section -->
     <section class="testimonials">
@@ -643,9 +794,40 @@
         </div>
     </footer>
 
-    <!-- JavaScript for Filter and Search -->
+    <!-- JavaScript logic -->
     <script>
-        // ካቴጎሪዎችን የማጣሪያ function
+        let selectedProduct = '';
+        let selectedPrice = '';
+
+        // Modal Controls
+        function openOrderModal(pName, pPrice) {
+            selectedProduct = pName;
+            selectedPrice = pPrice;
+            document.getElementById('modalProductName').innerText = pName;
+            document.getElementById('modalProductPrice').innerText = "ዋጋ፦ " + pPrice;
+            document.getElementById('orderModal').style.display = 'flex';
+        }
+
+        function closeOrderModal() {
+            document.getElementById('orderModal').style.display = 'none';
+        }
+
+        // Form Submit Handler
+        function handleFormSubmit(e) {
+            e.preventDefault();
+            const name = document.getElementById('custName').value;
+            const phone = document.getElementById('custPhone').value;
+            const address = document.getElementById('custAddress').value;
+
+            const text = `ሰላም! አዲስ ትእዛዝ አለኝ%0A%0A📦 እቃ፦ ${selectedProduct}%0A💰 ዋጋ፦ ${selectedPrice}%0A👤 ስም፦ ${name}%0A📞 ስልክ፦ ${phone}%0A📍 አድራሻ፦ ${address}`;
+            
+            // Redirect to Telegram with filled data
+            window.open(`https://t.me/Tvwlute?text=${text}`, '_blank');
+            closeOrderModal();
+            document.getElementById('orderForm').reset();
+        }
+
+        // Filter Function
         function filterCategory(category, btnElement) {
             document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
             btnElement.classList.add('active');
