@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Global Marketplace | የኔ ኦንላይን ገበያ</title>
-    <!-- Google Fonts for Modern Look -->
+    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
         * {
@@ -18,17 +18,16 @@
             color: #1e293b;
         }
 
-        /* Top Announcement Bar */
+        /* Top Bar */
         .top-bar {
             background-color: #0f172a;
             color: #f8fafc;
             text-align: center;
             padding: 8px 10px;
             font-size: 13px;
-            letter-spacing: 0.5px;
         }
 
-        /* Main Header */
+        /* Header */
         header {
             background: #ffffff;
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
@@ -52,7 +51,6 @@
             text-decoration: none;
         }
         
-        /* Search Box */
         .search-box {
             flex-grow: 1;
             max-width: 500px;
@@ -65,10 +63,6 @@
             border-radius: 25px 0 0 25px;
             outline: none;
             font-size: 14px;
-            transition: 0.3s;
-        }
-        .search-box input:focus {
-            border-color: #2563eb;
         }
         .search-box button {
             background: #2563eb;
@@ -80,7 +74,7 @@
             font-weight: 600;
         }
 
-        /* Navigation Menu */
+        /* Navigation Menu Buttons */
         nav {
             background: #ffffff;
             border-top: 1px solid #f1f5f9;
@@ -91,44 +85,39 @@
             margin: 0 auto;
             display: flex;
             justify-content: center;
-            gap: 15px;
+            gap: 10px;
             padding: 12px 20px;
             overflow-x: auto;
         }
         .nav-btn {
-            text-decoration: none;
+            border: none;
             color: #475569;
             font-size: 14px;
             font-weight: 600;
-            padding: 8px 18px;
+            padding: 10px 20px;
             border-radius: 20px;
+            cursor: pointer;
             transition: all 0.3s ease;
             white-space: nowrap;
             background: #f1f5f9;
         }
-        .nav-btn:hover {
+        .nav-btn:hover, .nav-btn.active {
             background-color: #2563eb;
             color: white;
         }
 
-        /* Hero Banner Section */
+        /* Hero Section */
         .hero {
             background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
             color: white;
             text-align: center;
-            padding: 50px 20px;
-            margin-bottom: 40px;
+            padding: 40px 20px;
+            margin-bottom: 30px;
         }
         .hero h2 {
-            font-size: 32px;
+            font-size: 30px;
             font-weight: 700;
             margin-bottom: 10px;
-        }
-        .hero p {
-            font-size: 15px;
-            color: #94a3b8;
-            max-width: 600px;
-            margin: 0 auto;
         }
 
         /* Main Content Area */
@@ -137,36 +126,40 @@
             margin: 0 auto;
             padding: 0 20px 60px;
         }
-        
+
+        /* Category Sections */
+        .category-section {
+            display: none; /* መጀመሪያ ሁሉንም እንደብቃቸዋለን */
+        }
+        .category-section.active {
+            display: block; /* የተመረጠውን ብቻ እናሳያለን */
+        }
+
         .category-header {
             font-size: 22px;
             font-weight: 700;
-            margin: 40px 0 20px;
+            margin-bottom: 20px;
             padding-bottom: 8px;
-            border-bottom: 2px solid #e2e8f0;
-            display: flex;
-            align-items: center;
-            gap: 10px;
+            border-bottom: 2px solid #2563eb;
         }
+
         .product-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
             gap: 25px;
         }
-
         .card {
             background: white;
             border-radius: 12px;
             padding: 15px;
             box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            transition: transform 0.3s ease;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
         }
         .card:hover {
             transform: translateY(-6px);
-            box-shadow: 0 12px 25px rgba(0,0,0,0.1);
         }
         .card img {
             width: 100%;
@@ -178,7 +171,6 @@
         .card h3 {
             font-size: 16px;
             margin-bottom: 6px;
-            color: #0f172a;
         }
         .price {
             color: #2563eb;
@@ -194,35 +186,16 @@
             text-decoration: none;
             border-radius: 8px;
             font-weight: 600;
-            transition: background 0.3s;
             display: block;
-        }
-        .buy-btn:hover {
-            background-color: #1d4ed8;
         }
 
         /* Footer */
         footer {
             background-color: #0f172a;
             color: #94a3b8;
-            padding: 40px 20px 20px;
+            padding: 30px 20px;
             text-align: center;
             margin-top: 50px;
-        }
-        .footer-links {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            margin-bottom: 20px;
-            flex-wrap: wrap;
-        }
-        .footer-links a {
-            color: #cbd5e1;
-            text-decoration: none;
-            font-size: 14px;
-        }
-        .footer-links a:hover {
-            color: #2563eb;
         }
     </style>
 </head>
@@ -244,103 +217,133 @@
         </div>
     </header>
 
-    <!-- Navigation Bar -->
+    <!-- Navigation Menu Buttons -->
     <nav>
         <div class="nav-container">
-            <a href="#shoes" class="nav-btn">👟 ጫማዎች</a>
-            <a href="#clothes" class="nav-btn">👕 ልብሶች</a>
-            <a href="#electronics" class="nav-btn">📱 ኤሌክትሮኒክስ</a>
-            <a href="#used" class="nav-btn">📦 ያገለገሉ እቃዎች</a>
+            <button class="nav-btn active" onclick="showCategory('all', this)">🌐 ሁሉንም</button>
+            <button class="nav-btn" onclick="showCategory('shoes', this)">👟 ጫማዎች</button>
+            <button class="nav-btn" onclick="showCategory('clothes', this)">👕 ልብሶች</button>
+            <button class="nav-btn" onclick="showCategory('electronics', this)">📱 ኤሌክትሮኒክስ</button>
+            <button class="nav-btn" onclick="showCategory('used', this)">📦 ያገለገሉ እቃዎች</button>
         </div>
     </nav>
 
     <!-- Hero Banner -->
     <section class="hero">
         <h2>ጥራት ያላቸው ምርቶች በአንድ ቦታ!</h2>
-        <p>ከአዳዲስ ልብሶችና ጫማዎች እስከ አቅም ያላቸው ያገለገሉ እቃዎች ድረስ በታማኝነትና በፍጥነት ይዘዙ።</p>
     </section>
 
     <!-- Main Content Area -->
     <main class="main-content">
         
         <!-- 1. ጫማዎች -->
-        <h3 class="category-header" id="shoes">👟 ጫማዎች</h3>
-        <div class="product-grid">
-            <div class="card">
-                <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=500" alt="የስፖርት ጫማ">
-                <h3>የስፖርት ጫማ (Nike Air)</h3>
-                <p class="price">3,200 ብር</p>
-                <a class="buy-btn" href="https://t.me/Tvwlute" target="_blank">በቴሌግራም ይዘዙ</a>
+        <section id="shoes" class="category-section active">
+            <h3 class="category-header">👟 ጫማዎች</h3>
+            <div class="product-grid">
+                <div class="card">
+                    <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=500" alt="የስፖርት ጫማ">
+                    <h3>የስፖርት ጫማ (Nike Air)</h3>
+                    <p class="price">3,200 ብር</p>
+                    <a class="buy-btn" href="https://t.me/Tvwlute" target="_blank">በቴሌግራም ይዘዙ</a>
+                </div>
+                <div class="card">
+                    <img src="https://images.unsplash.com/photo-1549298916-b41d501d3772?w=500" alt="የካዥዋል ጫማ">
+                    <h3>የካዥዋል ጫማ (Sneakers)</h3>
+                    <p class="price">2,800 ብር</p>
+                    <a class="buy-btn" href="https://t.me/Tvwlute" target="_blank">በቴሌግራም ይዘዙ</a>
+                </div>
             </div>
-            <div class="card">
-                <img src="https://images.unsplash.com/photo-1549298916-b41d501d3772?w=500" alt="የካዥዋል ጫማ">
-                <h3>የካዥዋል ጫማ (Sneakers)</h3>
-                <p class="price">2,800 ብር</p>
-                <a class="buy-btn" href="https://t.me/Tvwlute" target="_blank">በቴሌግራም ይዘዙ</a>
-            </div>
-        </div>
+        </section>
+
         <!-- 2. ልብሶች -->
-        <h3 class="category-header" id="clothes">👕 ልብሶች</h3>
-        <div class="product-grid">
-            <div class="card">
-                <img src="https://images.unsplash.com/photo-1521572267360-ee0c2909d518?w=500" alt="ቲሸርት">
-                <h3>ጥራት ያለው ቲሸርት (Cotton T-Shirt)</h3>
-                <p class="price">1,200 ብር</p>
-                <a class="buy-btn" href="https://t.me/Tvwlute" target="_blank">በቴሌግራም ይዘዙ</a>
+        <section id="clothes" class="category-section active">
+            <h3 class="category-header">👕 ልብሶች</h3>
+            <div class="product-grid">
+                <div class="card">
+                    <img src="https://images.unsplash.com/photo-1521572267360-ee0c2909d518?w=500" alt="ቲሸርት">
+                    <h3>ጥራት ያለው ቲሸርት (Cotton T-Shirt)</h3>
+                    <p class="price">1,200 ብር</p>
+                    <a class="buy-btn" href="https://t.me/Tvwlute" target="_blank">በቴሌግራም ይዘዙ</a>
+                </div>
+                <div class="card">
+                    <img src="https://images.unsplash.com/photo-1551028719-00167b16eac5?w=500" alt="ጃኬት">
+                    <h3>የቆዳ ጃኬት (Leather Jacket)</h3>
+                    <p class="price">4,500 ብር</p>
+                    <a class="buy-btn" href="https://t.me/Tvwlute" target="_blank">በቴሌግራም ይዘዙ</a>
+                </div>
             </div>
-            <div class="card">
-                <img src="https://images.unsplash.com/photo-1551028719-00167b16eac5?w=500" alt="ጃኬት">
-                <h3>የቆዳ ጃኬት (Leather Jacket)</h3>
-                <p class="price">4,500 ብር</p>
-                <a class="buy-btn" href="https://t.me/Tvwlute" target="_blank">በቴሌግራም ይዘዙ</a>
-            </div>
-        </div>
+        </section>
 
         <!-- 3. ኤሌክትሮኒክስ -->
-        <h3 class="category-header" id="electronics">📱 ኤሌክትሮኒክስ</h3>
-        <div class="product-grid">
-            <div class="card">
-                <img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=500" alt="ስማርት ስልክ">
-                <h3>ስማርት ስልክ</h3>
-                <p class="price">18,000 ብር</p>
-                <a class="buy-btn" href="https://t.me/Tvwlute" target="_blank">በቴሌግራም ይዘዙ</a>
+        <section id="electronics" class="category-section active">
+            <h3 class="category-header">📱 ኤሌክትሮኒክስ</h3>
+            <div class="product-grid">
+                <div class="card">
+                    <img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=500" alt="ስማርት ስልክ">
+                    <h3>ስማርት ስልክ</h3>
+                    <p class="price">18,000 ብር</p>
+                    <a class="buy-btn" href="https://t.me/Tvwlute" target="_blank">በቴሌግራም ይዘዙ</a>
+                </div>
+                <div class="card">
+                    <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=500" alt="Headphone">
+                    <h3>የገመድ አልባ ማዳመጫ (Headphone)</h3>
+                    <p class="price">2,200 ብር</p>
+                    <a class="buy-btn" href="https://t.me/Tvwlute" target="_blank">በቴሌግራም ይዘዙ</a>
+                </div>
             </div>
-            <div class="card">
-                <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=500" alt="Headphone">
-                <h3>የገመድ አልባ ማዳመጫ (Wireless Headphone)</h3>
-                <p class="price">2,200 ብር</p>
-                <a class="buy-btn" href="https://t.me/Tvwlute" target="_blank">በቴሌግራም ይዘዙ</a>
-            </div>
-        </div>
+        </section>
 
         <!-- 4. ያገለገሉ እቃዎች -->
-        <h3 class="category-header" id="used">📦 ያገለገሉ እቃዎች</h3>
-        <div class="product-grid">
-            <div class="card">
-                <img src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=500" alt="ላፕቶፕ">
-                <h3>ያገለገለ MacBook Pro (በጣም በጥሩ ሁኔታ ያለ)</h3>
-                <p class="price">35,000 ብር</p>
-                <a class="buy-btn" href="https://t.me/Tvwlute" target="_blank">በቴሌግራም ይዘዙ</a>
+        <section id="used" class="category-section active">
+            <h3 class="category-header">📦 ያገለገሉ እቃዎች</h3>
+            <div class="product-grid">
+                <div class="card">
+                    <img src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=500" alt="ላፕቶፕ">
+                    <h3>ያገለገለ MacBook Pro</h3>
+                    <p class="price">35,000 ብር</p>
+                    <a class="buy-btn" href="https://t.me/Tvwlute" target="_blank">በቴሌግራም ይዘዙ</a>
+                </div>
+                <div class="card">
+                    <img src="https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f?w=500" alt="ካሜራ">
+                    <h3>የፎቶ ካሜራ (Canon Camera)</h3>
+                    <p class="price">15,000 ብር</p>
+                    <a class="buy-btn" href="https://t.me/Tvwlute" target="_blank">በቴሌግራም ይዘዙ</a>
+                </div>
             </div>
-            <div class="card">
-                <img src="https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f?w=500" alt="ካሜራ">
-                <h3>የፎቶ ካሜራ (Canon Camera)</h3>
-                <p class="price">15,000 ብር</p>
-                <a class="buy-btn" href="https://t.me/Tvwlute" target="_blank">በቴሌግራም ይዘዙ</a>
-            </div>
-        </div>
+        </section>
 
     </main>
 
     <!-- Footer -->
     <footer>
-        <div class="footer-links">
-            <a href="#">ስለ እኛ</a>
-            <a href="#">የአገልግሎት ውሎች</a>
-            <a href="#">እርዳታ</a>
-        </div>
         <p>&copy; 2026 MarketX. መብቱ በህግ የተጠበቀ ነው።</p>
     </footer>
+
+    <!-- JavaScript code for Filtering -->
+    <script>
+        function showCategory(categoryId, element) {
+            // 1. የሁሉም ነባር በተኖች አክቲቭ ከለር ማንሳት
+            let buttons = document.querySelectorAll('.nav-btn');
+            buttons.forEach(btn => btn.classList.remove('active'));
+            
+            // 2. ለተነካው በተን ብቻ አክቲቭ ከለር መስጠት
+            element.classList.add('active');
+
+            // 3. የሴክሽኖችን ሁኔታ ማስተካከል
+            let sections = document.querySelectorAll('.category-section');
+            sections.forEach(section => {
+                if (categoryId === 'all') {
+                    section.classList.add('active'); // ሁሉንም አሳይ
+                } else {
+                    if (section.id === categoryId) {
+                        section.classList.add('active'); // የተመረጠውን ብቻ አሳይ
+                    } else {
+                        section.classList.remove('active'); // ሌላውን ደብቅ
+                    }
+                }
+            });
+        }
+    </script>
 
 </body>
 </html>
