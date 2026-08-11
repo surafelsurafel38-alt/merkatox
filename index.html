@@ -3,18 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MerkatoX | ኦንላይን ገበያ እና የእቃ መሸጫ ፕላትፎርም</title>
-    <meta name="description" content="MerkatoX - ይግዙ፣ ይሸጡ! አካውንት በመክፈት የሚሸጡትን እቃ በነጻ ያስገቡ።">
     
+    <!-- SEO Meta Tags -->
+    <title>MerkatoX | ኦንላይን ገበያ - አልባሳት፣ ጫማዎች እና ኤሌክትሮኒክስ</title>
+    <meta name="description" content="MerkatoX በኢትዮጵያ ውስጥ ጥራት ያላቸውን ልብሶች፣ ጫማዎች፣ ኤሌክትሮኒክስ እና ያገለገሉ እቃዎችን በታማኝነት የሚያገኙበት የዲጂታል መርካቶ ገበያ ነው።">
+    <meta name="keywords" content="MerkatoX, Merkato X, መርካቶ, ገበያ, ኦንላይን ሾፕ, ጫማ, ልብስ, ኤሌክትሮኒክስ, ኢትዮጵያ ሾፕ">
+    <meta name="author" content="MerkatoX Ethiopia">
+    <meta name="robots" content="index, follow">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="MerkatoX | World Class E-Commerce">
+    <meta property="og:description" content="ጥራት ያላቸውን ምርቶች ከአዲሱ ዲጂታል መርካቶ ይበልጥ በታማኝነት ይዘዙ።">
+    <meta property="og:type" content="website">
+
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    
     <style>
         :root {
             --primary: #2563eb;
             --primary-hover: #1d4ed8;
-            --success: #16a34a;
-            --success-hover: #15803d;
             --dark-bg: #0f172a;
             --card-bg: #ffffff;
             --text-main: #0f172a;
@@ -43,6 +50,8 @@
             padding: 10px;
             font-size: 13px;
             font-weight: 500;
+            letter-spacing: 0.5px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
         }
 
         /* Header */
@@ -62,8 +71,7 @@
             align-items: center;
             justify-content: space-between;
             padding: 16px 20px;
-            gap: 15px;
-            flex-wrap: wrap;
+            gap: 20px;
         }
 
         .logo {
@@ -73,21 +81,24 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             text-decoration: none;
+            letter-spacing: -0.5px;
         }
 
         .search-box {
             flex-grow: 1;
-            max-width: 400px;
+            max-width: 480px;
+            position: relative;
         }
 
         .search-box input {
             width: 100%;
-            padding: 10px 18px;
+            padding: 12px 20px;
             background-color: #f1f5f9;
             border: 1px solid transparent;
             border-radius: 30px;
             outline: none;
             font-size: 14px;
+            transition: all 0.3s ease;
         }
 
         .search-box input:focus {
@@ -96,50 +107,7 @@
             box-shadow: 0 0 0 4px var(--accent-glow);
         }
 
-        /* Account & Action Controls */
-        .user-actions {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .btn-auth {
-            padding: 8px 16px;
-            border-radius: 20px;
-            font-size: 13px;
-            font-weight: 600;
-            cursor: pointer;
-            border: 1px solid #cbd5e1;
-            background: #ffffff;
-            color: var(--text-main);
-            transition: all 0.2s ease;
-        }
-
-        .btn-auth:hover {
-            border-color: var(--primary);
-            color: var(--primary);
-        }
-
-        .btn-sell {
-            background: var(--success);
-            color: white;
-            border: none;
-            padding: 9px 18px;
-            border-radius: 20px;
-            font-size: 13px;
-            font-weight: 700;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            transition: all 0.2s ease;
-        }
-
-        .btn-sell:hover {
-            background: var(--success-hover);
-        }
-
-        /* Navigation */
+        /* Navigation Buttons */
         nav {
             background: #ffffff;
             border-bottom: 1px solid #e2e8f0;
@@ -150,68 +118,100 @@
             margin: 0 auto;
             display: flex;
             justify-content: center;
-            gap: 10px;
+            gap: 12px;
             padding: 12px 20px;
             overflow-x: auto;
         }
 
         .nav-btn {
-            border: 1px solid #e2e8f0;
+            border: none;
             color: var(--text-muted);
             font-size: 14px;
             font-weight: 600;
-            padding: 8px 20px;
+            padding: 10px 22px;
             border-radius: 30px;
             cursor: pointer;
-            background: #f8fafc;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             white-space: nowrap;
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+        }
+
+        .nav-btn:hover {
+            color: var(--primary);
+            background: #eff6ff;
+            border-color: #bfdbfe;
         }
 
         .nav-btn.active {
             background-color: var(--primary);
             color: #ffffff;
             border-color: var(--primary);
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.25);
         }
 
-        /* Hero Section */
+        /* Hero Banner */
         .hero {
             background: radial-gradient(circle at top right, #1e293b, #0f172a);
             color: white;
             text-align: center;
-            padding: 50px 20px;
-            margin-bottom: 30px;
+            padding: 65px 20px;
+            margin-bottom: 40px;
+            position: relative;
+            overflow: hidden;
         }
 
         .hero h2 {
-            font-size: 32px;
+            font-size: 38px;
             font-weight: 800;
-            margin-bottom: 10px;
+            margin-bottom: 12px;
+            letter-spacing: -1px;
         }
 
         .hero p {
-            font-size: 15px;
+            font-size: 16px;
             color: #94a3b8;
+            max-width: 550px;
+            margin: 0 auto;
+            line-height: 1.6;
         }
 
-        /* Main Section */
+        /* Main Content */
         .main-content {
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 20px 60px;
         }
 
+        .category-section {
+            display: none;
+            animation: fadeIn 0.4s ease-in-out;
+        }
+
+        .category-section.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
         .category-header {
-            font-size: 22px;
+            font-size: 24px;
             font-weight: 700;
-            margin-bottom: 20px;
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
             color: var(--text-main);
         }
 
         /* Product Grid & Cards */
         .product-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            gap: 25px;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: 30px;
         }
 
         .card {
@@ -219,7 +219,7 @@
             border-radius: 16px;
             padding: 16px;
             border: 1px solid #e2e8f0;
-            transition: all 0.3s ease;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             display: flex;
             flex-direction: column;
             justify-content: space-between;
@@ -227,59 +227,87 @@
         }
 
         .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 12px 20px rgba(0, 0, 0, 0.06);
+            transform: translateY(-8px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.08), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            border-color: #cbd5e1;
         }
 
         .badge {
             position: absolute;
-            top: 24px;
-            left: 24px;
+            top: 26px;
+            left: 26px;
             background: rgba(15, 23, 42, 0.85);
+            backdrop-filter: blur(4px);
             color: white;
             font-size: 11px;
             font-weight: 700;
             padding: 4px 10px;
             border-radius: 20px;
             text-transform: uppercase;
+            letter-spacing: 0.5px;
+            z-index: 2;
         }
 
         .card img {
             width: 100%;
-            height: 200px;
+            height: 220px;
             object-fit: cover;
             border-radius: 12px;
-            margin-bottom: 12px;
+            margin-bottom: 16px;
             background-color: #f1f5f9;
         }
 
         .card h3 {
-            font-size: 16px;
+            font-size: 17px;
             font-weight: 600;
             margin-bottom: 6px;
+            color: var(--text-main);
+            line-height: 1.4;
         }
 
         .product-details {
             font-size: 13px;
             color: var(--text-muted);
-            margin-bottom: 10px;
+            margin-bottom: 12px;
+            line-height: 1.5;
+        }
+
+        .price-container {
+            display: flex;
+            align-items: baseline;
+            gap: 8px;
+            margin-bottom: 16px;
         }
 
         .price {
             color: var(--primary);
-            font-size: 18px;
+            font-size: 20px;
             font-weight: 800;
-            margin-bottom: 12px;
         }
 
-        .seller-tag {
-            font-size: 11px;
-            color: #64748b;
-            background: #f1f5f9;
-            padding: 3px 8px;
-            border-radius: 6px;
-            display: inline-block;
-            margin-bottom: 10px;
+        /* Action Buttons Area */
+        .btn-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .form-btn {
+            background-color: var(--primary);
+            color: white !important;
+            text-align: center;
+            padding: 10px;
+            border: none;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 13px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            width: 100%;
+        }
+
+        .form-btn:hover {
+            background-color: var(--primary-hover);
         }
 
         .buy-btn {
@@ -291,16 +319,21 @@
             border-radius: 8px;
             font-weight: 700;
             font-size: 13px;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            width: 100%;
             cursor: pointer;
             text-decoration: none;
-            display: block;
         }
 
         .buy-btn:hover {
             background-color: #16a34a;
         }
 
-        /* Modal Popups */
+        /* Modal Styles (የፎርም መስኮት) */
         .modal-overlay {
             display: none;
             position: fixed;
@@ -323,7 +356,13 @@
             border-radius: 16px;
             padding: 24px;
             position: relative;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            animation: modalSlide 0.3s ease-out;
+        }
+
+        @keyframes modalSlide {
+            from { transform: translateY(20px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
         }
 
         .close-modal {
@@ -338,38 +377,39 @@
         .modal-card h3 {
             font-size: 20px;
             font-weight: 700;
-            margin-bottom: 6px;
+            margin-bottom: 4px;
         }
 
         .modal-card p {
             font-size: 13px;
             color: var(--text-muted);
-            margin-bottom: 18px;
+            margin-bottom: 20px;
         }
 
         .form-group {
-            margin-bottom: 12px;
+            margin-bottom: 14px;
         }
 
         .form-group label {
             display: block;
-            font-size: 12px;
+            font-size: 13px;
             font-weight: 600;
-            margin-bottom: 5px;
+            margin-bottom: 6px;
         }
 
-        .form-group input, .form-group select, .form-group textarea {
+        .form-group input, .form-group textarea {
             width: 100%;
-            padding: 10px;
+            padding: 10px 14px;
             border: 1px solid #cbd5e1;
             border-radius: 8px;
-            font-size: 13px;
+            font-size: 14px;
             outline: none;
             font-family: inherit;
         }
 
-        .form-group input:focus {
+        .form-group input:focus, .form-group textarea:focus {
             border-color: var(--primary);
+            box-shadow: 0 0 0 3px var(--accent-glow);
         }
 
         .submit-btn {
@@ -385,55 +425,146 @@
             margin-top: 10px;
         }
 
-        .submit-btn-success {
-            background: var(--success);
+        .submit-btn:hover {
+            background: var(--primary-hover);
         }
 
-        .submit-btn-success:hover {
-            background: var(--success-hover);
+        /* Testimonials Section */
+        .testimonials {
+            background: #ffffff;
+            border-top: 1px solid #e2e8f0;
+            border-bottom: 1px solid #e2e8f0;
+            padding: 60px 20px;
+            margin-bottom: 40px;
+        }
+
+        .testimonials-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 26px;
+            font-weight: 800;
+            margin-bottom: 30px;
+            color: var(--text-main);
+        }
+
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .testimonial-card {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 20px;
+            font-size: 14px;
+            color: var(--text-main);
+        }
+
+        .testimonial-card p {
+            font-style: italic;
+            color: #475569;
+            margin-bottom: 12px;
+        }
+
+        .testimonial-author {
+            font-weight: 700;
+            color: var(--primary);
+            font-size: 13px;
         }
 
         /* Footer */
         footer {
             background-color: var(--dark-bg);
             color: #94a3b8;
-            padding: 40px 20px;
+            padding: 50px 20px;
+            border-top: 1px solid #1e293b;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        .footer-col h4 {
+            color: #ffffff;
+            font-size: 16px;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+
+        .footer-col p, .footer-col ul {
+            font-size: 14px;
+            line-height: 1.8;
+            list-style: none;
+        }
+
+        .footer-col a {
+            color: #38bdf8;
+            text-decoration: none;
+        }
+
+        .footer-col a:hover {
+            text-decoration: underline;
+        }
+
+        .payment-badges span {
+            display: inline-block;
+            background: #1e293b;
+            color: #38bdf8;
+            padding: 6px 12px;
+            border-radius: 6px;
+            font-size: 12px;
+            font-weight: 600;
+            margin: 4px 4px 4px 0;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .footer-bottom {
             text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid #1e293b;
             font-size: 13px;
+        }
+
+        /* No Results Message */
+        .no-results {
+            display: none;
+            text-align: center;
+            padding: 50px 20px;
+            color: var(--text-muted);
+            font-size: 18px;
+            font-weight: 600;
         }
     </style>
 </head>
 <body>
 
-    <!-- Top Bar -->
+    <!-- Top Announcement -->
     <div class="top-bar">
-        ✨ እንኳን ወደ MerkatoX በሰላም መጡ! አካውንት በመክፈት የሚሸጡትን እቃ በነጻ ይለጥፉ!
+        ✨ እንኳን ወደ ዲጂታሉ MerkatoX ኦንላይን ገበያ በሰላም መጡ!
     </div>
 
-    <!-- Header -->
+    <!-- Main Header -->
     <header>
         <div class="header-container">
             <a href="#" class="logo">MerkatoX.</a>
-
             <div class="search-box">
-                <input type="text" id="searchInput" placeholder="የሚፈልጉትን እቃ ይፈልጉ...">
-            </div>
-
-            <div class="user-actions">
-                <div id="authButtons">
-                    <button class="btn-auth" onclick="openModal('loginModal')">🔑 ግባ (Login)</button>
-                    <button class="btn-auth" onclick="openModal('signupModal')">✨ ተመዝገብ</button>
-                </div>
-                <div id="userProfile" style="display: none; align-items: center; gap: 8px;">
-                    <span id="userNameDisplay" style="font-size: 13px; font-weight: 700; color: var(--primary);"></span>
-                    <button class="btn-auth" onclick="logout()">ውጣ</button>
-                </div>
-                <button class="btn-sell" onclick="handleSellButtonClick()">➕ እቃ ለመሸጥ</button>
+                <input type="text" id="searchInput" placeholder="የሚፈልጉትን እቃ እዚህ ይፈልጉ...">
             </div>
         </div>
     </header>
 
-    <!-- Category Nav -->
+    <!-- Navigation Menu Buttons -->
     <nav>
         <div class="nav-container">
             <button class="nav-btn active" onclick="filterCategory('all', this)">🌐 ሁሉንም</button>
@@ -446,300 +577,313 @@
 
     <!-- Hero Banner -->
     <section class="hero">
-        <h2>ይግዙ፤ የሚሸጡትንም በቀላሉ ይለጥፉ!</h2>
-        <p>በመላ ኢትዮጵያ የሚገኙ ገዢዎችን እና ሻጮችን የሚያገናኝ የዲጂታል መርካቶ ገበያ።</p>
+        <h2>Digital Merkato Experience</h2>
+        <p>ከአለም አቀፍ ጥራት ያላቸው እቃዎች እስከ ምርጥ ያገለገሉ እቃዎች ድረስ በታማኝነት ይዘዙ።</p>
     </section>
 
-    <!-- Main Content -->
+    <!-- Main Content Area -->
     <main class="main-content">
-        <h3 class="category-header">🛍️ የቅርብ ጊዜ እቃዎች</h3>
-        <div class="product-grid" id="productGrid">
-            <!-- Products dynamic rendering dynamically -->
+        
+        <!-- No Results Message -->
+        <div id="noResults" class="no-results">
+            🔍 "ለፈለጉት ቃል የሚሆን እቃ አልተገኘም!"
         </div>
+
+        <!-- 1. ጫማዎች -->
+        <section id="shoes" class="category-section active">
+            <h3 class="category-header">👟 ጫማዎች</h3>
+            <div class="product-grid">
+                <div class="card">
+                    <span class="badge">HOT</span>
+                    <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=500" alt="የስፖርት ጫማ">
+                    <h3>Nike Air Max Limited</h3>
+                    <p class="product-details">📏 Size: 40 - 44 | 🏷️ Condition: Brand New (አዲስ)</p>
+                    <div class="price-container">
+                        <span class="price">3,200 ብር</span>
+                    </div>
+                    <div class="btn-group">
+                        <button class="form-btn" onclick="openOrderModal('Nike Air Max Limited', '3,200 ብር')">📝 በፎርም እዘዝ</button>
+                        <a href="https://t.me/Tvwlute?text=%E1%88%B0%E1%88%AF%E1%88%B1%21%20%E1%8B%AD%E1%88%85%E1%8A%95%E1%8A%95%20%E1%8A%A5%E1%89%83%20%E1%88%98%E1%8B%9D%E1%8A%A5%20%E1%8A%A5%E1%8D%8D%E1%88%8D%E1%8C%AF%E1%88%8B%E1%88%AE%20Nike%20Air%20Max%20Limited%20%283%2C200%20%E1%89%B5%E1%88%AD%29" target="_blank" class="buy-btn">✈️ በቴሌግራም አናግር</a>
+                    </div>
+                </div>
+                <div class="card">
+                    <span class="badge">NEW</span>
+                    <img src="https://images.unsplash.com/photo-1549298916-b41d501d3772?w=500" alt="የካዥዋል ጫማ">
+                    <h3>Casual Sneakers Edition</h3>
+                    <p class="product-details">📏 Size: 39 - 43 | 🏷️ Condition: Brand New (አዲስ)</p>
+                    <div class="price-container">
+                        <span class="price">2,800 ብር</span>
+                    </div>
+                    <div class="btn-group">
+                        <button class="form-btn" onclick="openOrderModal('Casual Sneakers Edition', '2,800 ብር')">📝 በፎርም እዘዝ</button>
+                        <a href="https://t.me/Tvwlute?text=%E1%88%B0%E1%88%AF%E1%88%B1%21%20%E1%8B%AD%E1%88%85%E1%8A%95%E1%8A%95%20%E1%8A%A5%E1%89%83%20%E1%88%98%E1%8B%9D%E1%8A%A5%20%E1%8A%A5%E1%8D%8D%E1%88%8D%E1%8C%AF%E1%88%8B%E1%88%AE%20Casual%20Sneakers%20Edition%20%282%2C800%20%E1%89%B5%E1%88%AD%29" target="_blank" class="buy-btn">✈️ በቴሌግራም አናግር</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. ልብሶች -->
+        <section id="clothes" class="category-section active">
+            <h3 class="category-header">👕 ልብሶች</h3>
+            <div class="product-grid">
+                <div class="card">
+                    <img src="https://images.unsplash.com/photo-1521572267360-ee0c2909d518?w=500" alt="ቲሸርት">
+                    <h3>Premium Cotton T-Shirt</h3>
+                    <p class="product-details">📏 Size: Medium, Large, XL | 🧵 Material: 100% Cotton</p>
+                    <div class="price-container">
+                        <span class="price">1,200 ብር</span>
+                    </div>
+                    <div class="btn-group">
+                        <button class="form-btn" onclick="openOrderModal('Premium Cotton T-Shirt', '1,200 ብር')">📝 በፎርም እዘዝ</button>
+                        <a href="https://t.me/Tvwlute?text=%E1%88%B0%E1%88%AF%E1%88%B1%21%20%E1%8B%AD%E1%88%85%E1%8A%95%E1%8A%95%20%E1%8A%A5%E1%89%83%20%E1%88%98%E1%8B%9D%E1%8A%A5%20%E1%8A%A5%E1%8D%8D%E1%88%8D%E1%8C%AF%E1%88%8B%E1%88%AE%20Premium%20Cotton%20T-Shirt%20%281%2C200%20%E1%89%B5%E1%88%AD%29" target="_blank" class="buy-btn">✈️ በቴሌግራም አናግር</a>
+                    </div>
+                </div>
+                <div class="card">
+                    <span class="badge">HOT</span>
+                    <img src="https://images.unsplash.com/photo-1551028719-00167b16eac5?w=500" alt="ጃኬት">
+                    <h3>Classic Leather Jacket</h3>
+                    <p class="product-details">📏 Size: L, XL | 🧵 Material: Genuine Leather</p>
+                    <div class="price-container">
+                        <span class="price">4,500 ብር</span>
+                    </div>
+                    <div class="btn-group">
+                        <button class="form-btn" onclick="openOrderModal('Classic Leather Jacket', '4,500 ብር')">📝 በፎርም እዘዝ</button>
+                        <a href="https://t.me/Tvwlute?text=%E1%88%B0%E1%88%AF%E1%88%B1%21%20%E1%8B%AD%E1%88%85%E1%8A%95%E1%8A%95%20%E1%8A%A5%E1%89%83%20%E1%88%98%E1%8B%9D%E1%8A%A5%20%E1%8A%A5%E1%8D%8D%E1%88%8D%E1%8C%AF%E1%88%8B%E1%88%AE%20Classic%20Leather%20Jacket%20%284%2C500%20%E1%89%B5%E1%88%AD%29" target="_blank" class="buy-btn">✈️ በቴሌግራም አናግር</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. ኤሌክትሮኒክስ -->
+        <section id="electronics" class="category-section active">
+            <h3 class="category-header">📱 ኤሌክትሮኒክስ</h3>
+            <div class="product-grid">
+                <div class="card">
+                    <img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=500" alt="ስማርት ስልክ">
+                    <h3>Smart Phone Flagship</h3>
+                    <p class="product-details">💾 Storage: 128GB | 🔋 Battery: 5000mAh</p>
+                    <div class="price-container">
+                        <span class="price">18,000 ብር</span>
+                    </div>
+                    <div class="btn-group">
+                        <button class="form-btn" onclick="openOrderModal('Smart Phone Flagship', '18,000 ብር')">📝 በፎርም እዘዝ</button>
+                        <a href="https://t.me/Tvwlute?text=%E1%88%B0%E1%88%AF%E1%88%B1%21%20%E1%8B%AD%E1%88%85%E1%8A%95%E1%8A%95%20%E1%8A%A5%E1%89%83%20%E1%88%98%E1%8B%9D%E1%8A%A5%20%E1%8A%A5%E1%8D%8D%E1%88%8D%E1%8C%AF%E1%88%8B%E1%88%AE%20Smart%20Phone%20Flagship%20%2818%2C000%20%E1%89%B5%E1%88%AD%29" target="_blank" class="buy-btn">✈️ በቴሌግራም አናግር</a>
+                    </div>
+                </div>
+                <div class="card">
+                    <span class="badge">NEW</span>
+                    <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=500" alt="Headphone">
+                    <h3>Wireless Headphones Pro</h3>
+                    <p class="product-details">🎧 Noise Cancelling | 🔋 Battery: 30 Hours</p>
+                    <div class="price-container">
+                        <span class="price">2,200 ብር</span>
+                    </div>
+                    <div class="btn-group">
+                        <button class="form-btn" onclick="openOrderModal('Wireless Headphones Pro', '2,200 ብር')">📝 በፎርም እዘዝ</button>
+                        <a href="https://t.me/Tvwlute?text=%E1%88%B0%E1%88%AF%E1%88%B1%21%20%E1%8B%AD%E1%88%85%E1%8A%95%E1%8A%95%20%E1%8A%A5%E1%89%83%20%E1%88%98%E1%8B%9D%E1%8A%A5%20%E1%8A%A5%E1%8D%8D%E1%88%8D%E1%8C%AF%E1%88%8B%E1%88%AE%20Wireless%20Headphones%20Pro%20%282%2C200%20%E1%89%B5%E1%88%AD%29" target="_blank" class="buy-btn">✈️ በቴሌግራም አናግር</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. ያገለገሉ እቃዎች -->
+        <section id="used" class="category-section active">
+            <h3 class="category-header">📦 ያገለገሉ እቃዎች</h3>
+            <div class="product-grid">
+                <div class="card">
+                    <span class="badge">USED</span>
+                    <img src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=500" alt="ላፕቶፕ">
+                    <h3>MacBook Pro</h3>
+                    <p class="product-details">💻 Core i7 / 16GB RAM / 512GB SSD</p>
+                    <div class="price-container">
+                        <span class="price">35,000 ብር</span>
+                    </div>
+                    <div class="btn-group">
+                        <button class="form-btn" onclick="openOrderModal('MacBook Pro', '35,000 ብር')">📝 በፎርም እዘዝ</button>
+                        <a href="https://t.me/Tvwlute?text=%E1%88%B0%E1%88%AF%E1%88%B1%21%20%E1%8B%AD%E1%88%85%E1%8A%95%E1%8A%95%20%E1%8A%A5%E1%89%83%20%E1%88%98%E1%8B%9D%E1%8A%A5%20%E1%8A%A5%E1%8D%8D%E1%88%8D%E1%8C%AF%E1%88%8B%E1%88%AE%20MacBook%20Pro%20%2835%2C000%20%E1%89%B5%E1%88%AD%29" target="_blank" class="buy-btn">✈️ በቴሌግራም አናግር</a>
+                    </div>
+                </div>
+                <div class="card">
+                    <span class="badge">USED</span>
+                    <img src="https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f?w=500" alt="ካሜራ">
+                    <h3>Canon Professional Camera</h3>
+                    <p class="product-details">📷 24MP Sensor / 18-55mm Lens</p>
+                    <div class="price-container">
+                        <span class="price">15,000 ብር</span>
+                    </div>
+                    <div class="btn-group">
+                        <button class="form-btn" onclick="openOrderModal('Canon Professional Camera', '15,000 ብር')">📝 በፎርም እዘዝ</button>
+                        <a href="https://t.me/Tvwlute?text=%E1%88%B0%E1%88%AF%E1%88%B1%21%20%E1%8B%AD%E1%88%85%E1%8A%95%E1%8A%95%20%E1%8A%A5%E1%89%83%20%E1%88%98%E1%8B%9D%E1%8A%A5%20%E1%8A%A5%E1%8D%8D%E1%88%8D%E1%8C%AF%E1%88%8B%E1%88%AE%20Canon%20Professional%20Camera%20%2815%2C000%20%E1%89%B5%E1%88%AD%29" target="_blank" class="buy-btn">✈️ በቴሌግራም አናግር</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
     </main>
 
-    <!-- 1. SIGNUP MODAL -->
-    <div id="signupModal" class="modal-overlay">
+    <!-- Order Form Modal (የፎርም መስኮት) -->
+    <div id="orderModal" class="modal-overlay">
         <div class="modal-card">
-            <span class="close-modal" onclick="closeModal('signupModal')">&times;</span>
-            <h3>አካውንት ይክፈቱ</h3>
-            <p>እቃ ለመሸጥ እና ለመግዛት ይመዝገቡ</p>
-            <form onsubmit="handleSignUp(event)">
+            <span class="close-modal" onclick="closeOrderModal()">&times;</span>
+            <h3 id="modalProductName">የእቃ ስም</h3>
+            <p id="modalProductPrice">ዋጋ</p>
+            <form id="orderForm" onsubmit="handleFormSubmit(event)">
                 <div class="form-group">
-                    <label>ሙሉ ስም</label>
-                    <input type="text" id="signUpName" required placeholder="ምሳሌ፦ አበበ ከበደ">
+                    <label for="custName">ሙሉ ስም</label>
+                    <input type="text" id="custName" required placeholder="ስምዎን ያስገቡ">
                 </div>
                 <div class="form-group">
-                    <label>ስልክ ቁጥር</label>
-                    <input type="tel" id="signUpPhone" required placeholder="09...">
+                    <label for="custPhone">ስልክ ቁጥር</label>
+                    <input type="tel" id="custPhone" required placeholder="09... / 07...">
                 </div>
                 <div class="form-group">
-                    <label>የምስጢር ቃል (Password)</label>
-                    <input type="password" id="signUpPassword" required placeholder="******">
+                    <label for="custAddress">የማድረሻ አድራሻ</label>
+                    <textarea id="custAddress" rows="2" required placeholder="ከተማ፣ ክፍለ ከተማ ወይም አካባቢ"></textarea>
                 </div>
-                <button type="submit" class="submit-btn">ተመዝገብ</button>
+                <button type="submit" class="submit-btn">🚀 ትእዛዝ ላክ</button>
             </form>
         </div>
     </div>
 
-    <!-- 2. LOGIN MODAL -->
-    <div id="loginModal" class="modal-overlay">
-        <div class="modal-card">
-            <span class="close-modal" onclick="closeModal('loginModal')">&times;</span>
-            <h3>ወደ አካውንትዎ ይግቡ</h3>
-            <p>እቃ ለመለጠፍ አስቀድመው ይግቡ</p>
-            <form onsubmit="handleLogin(event)">
-                <div class="form-group">
-                    <label>ስልክ ቁጥር</label>
-                    <input type="tel" id="loginPhone" required placeholder="09...">
+    <!-- Testimonials Section -->
+    <section class="testimonials">
+        <div class="testimonials-container">
+            <h3 class="section-title">💬 የደንበኞቻችን አስተያየት</h3>
+            <div class="testimonial-grid">
+                <div class="testimonial-card">
+                    <p>"ጫማውን አዝዤ በሰዓቱ ነው ያረከቡኝ። ጥራቱ በጣም ደስ ይላል፤ አመሰግናለሁ MerkatoX!"</p>
+                    <span class="testimonial-author">⭐ ሰለሞን ከካሳንቺስ</span>
                 </div>
-                <div class="form-group">
-                    <label>የምስጢር ቃል</label>
-                    <input type="password" id="loginPassword" required placeholder="******">
+                <div class="testimonial-card">
+                    <p>"ያገለገለ ላፕቶፕ ገዝቼ ነበር፤ እንደ አዲስ ነው የሚያገለግለው። በታማኝነታችሁ ቀጥሉበት።"</p>
+                    <span class="testimonial-author">⭐ ሀና ከቦሌ</span>
                 </div>
-                <button type="submit" class="submit-btn">ግባ</button>
-            </form>
+                <div class="testimonial-card">
+                    <p>"በቴሌግራም ቀጥታ አናግሬ በቃ በደቂቃዎች ውስጥ ትእዛዜን አስተናገዱልኝ። ፈጣን አገልግሎት!"</p>
+                    <span class="testimonial-author">⭐ ዮናስ ከሲኤምሲ</span>
+                </div>
+            </div>
         </div>
-    </div>
-
-    <!-- 3. SELL ITEM MODAL (የእቃ መሸጫ ፎርም) -->
-    <div id="sellModal" class="modal-overlay">
-        <div class="modal-card">
-            <span class="close-modal" onclick="closeModal('sellModal')">&times;</span>
-            <h3>የሚሸጡትን እቃ ያስገቡ</h3>
-            <p>መረጃውን ሲሞሉ እቃዎ በቀጥታ ድረ-ገጹ ላይ ይለጠፋል</p>
-            <form onsubmit="handlePostItem(event)">
-                <div class="form-group">
-                    <label>የእቃው ስም</label>
-                    <input type="text" id="itemTitle" required placeholder="ምሳሌ፦ Nike Sneakers Size 42">
-                </div>
-                <div class="form-group">
-                    <label>ምድብ (Category)</label>
-                    <select id="itemCategory" required>
-                        <option value="shoes">👟 ጫማዎች</option>
-                        <option value="clothes">👕 ልብሶች</option>
-                        <option value="electronics">📱 ኤሌክትሮኒክስ</option>
-                        <option value="used">📦 ያገለገሉ እቃዎች</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label>ዋጋ (ብር)</label>
-                    <input type="number" id="itemPrice" required placeholder="ምሳሌ፦ 2500">
-                </div>
-                <div class="form-group">
-                    <label>የፎቶ ሊንክ (Image URL) ወይም የምስል መግለጫ</label>
-                    <input type="url" id="itemImage" placeholder="https://..." value="https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=500">
-                </div>
-                <div class="form-group">
-                    <label>ተጨማሪ መግለጫ (Size, Condition, etc...)</label>
-                    <textarea id="itemDesc" rows="2" placeholder="የእቃው ሁኔታ፣ ሳይዝ፣ አድራሻ..."></textarea>
-                </div>
-                <button type="submit" class="submit-btn submit-btn-success">🚀 እቃውን ለጥፍ (Post Item)</button>
-            </form>
-        </div>
-    </div>
+    </section>
 
     <!-- Footer -->
     <footer>
-        <p>&copy; 2026 MerkatoX. All rights reserved. | Powered by MerkatoX Platform</p>
+        <div class="footer-container">
+            <div class="footer-col">
+                <h4>ስለ MerkatoX</h4>
+                <p>MerkatoX ጥራት ያላቸውን ምርቶች በተጣጣመ ዋጋና በታማኝነት የሚያቀርብ የእርስዎ የመጀመሪያ ዲጂታል ገበያ ነው።</p>
+            </div>
+            <div class="footer-col">
+                <h4>የመገናኛ አድራሻ</h4>
+                <p>📍 አዲስ አበባ፣ ኢትዮጵያ</p>
+                <p>📞 ስልክ 1፡ <a href="tel:+251900578058">+251 900 578 058</a></p>
+                <p>📞 ስልክ 2፡ <a href="tel:+251910037996">+251 910 037 996</a></p>
+                <p>✈️ ቴሌግራም፡ <a href="https://t.me/Tvwlute" target="_blank">@Tvwlute</a></p>
+            </div>
+            <div class="footer-col">
+                <h4>የክፍያ አማራጮች</h4>
+                <div class="payment-badges">
+                    <span>Telebirr</span>
+                    <span>CBE Birr</span>
+                    <span>Bank Transfer</span>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 MerkatoX. All rights reserved.</p>
+        </div>
     </footer>
 
-    <!-- JavaScript Application Logic -->
+    <!-- JavaScript logic -->
     <script>
-        // Initial Mock Database
-        let products = [
-            {
-                id: 1,
-                title: "Nike Air Max Limited",
-                category: "shoes",
-                price: "3,200",
-                details: "📏 Size: 40 - 44 | Brand New",
-                img: "https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=500",
-                seller: "MerkatoX Official",
-                phone: "0900578058"
-            },
-            {
-                id: 2,
-                title: "Classic Leather Jacket",
-                category: "clothes",
-                price: "4,500",
-                details: "📏 Size: L, XL | Genuine Leather",
-                img: "https://images.unsplash.com/photo-1551028719-00167b16eac5?w=500",
-                seller: "MerkatoX Official",
-                phone: "0910037996"
-            },
-            {
-                id: 3,
-                title: "Smart Phone Flagship",
-                category: "electronics",
-                price: "18,000",
-                details: "💾 Storage: 128GB | Battery: 5000mAh",
-                img: "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=500",
-                seller: "MerkatoX Official",
-                phone: "0900578058"
-            },
-            {
-                id: 4,
-                title: "MacBook Pro Used",
-                category: "used",
-                price: "35,000",
-                details: "💻 Core i7 / 16GB RAM / 512GB SSD",
-                img: "https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=500",
-                seller: "አበበ (ለጋራ)",
-                phone: "0912345678"
-            }
-        ];
+        let selectedProduct = '';
+        let selectedPrice = '';
 
-        let currentUser = null;
+        // Modal Controls
+        function openOrderModal(pName, pPrice) {
+            selectedProduct = pName;
+            selectedPrice = pPrice;
+            document.getElementById('modalProductName').innerText = pName;
+            document.getElementById('modalProductPrice').innerText = "ዋጋ፦ " + pPrice;
+            document.getElementById('orderModal').style.display = 'flex';
+        }
 
-        // Load saved state on start
-        window.onload = function() {
-            const savedUser = localStorage.getItem('merkatoX_user');
-            if (savedUser) {
-                currentUser = JSON.parse(savedUser);
-                updateUIForUser();
-            }
+        function closeOrderModal() {
+            document.getElementById('orderModal').style.display = 'none';
+        }
 
-            const savedProducts = localStorage.getItem('merkatoX_products');
-            if (savedProducts) {
-                products = JSON.parse(savedProducts);
-            }
+        // Form Submit Handler
+        function handleFormSubmit(e) {
+            e.preventDefault();
+            const name = document.getElementById('custName').value;
+            const phone = document.getElementById('custPhone').value;
+            const address = document.getElementById('custAddress').value;
 
-            renderProducts(products);
-        };
+            const text = `ሰላም! አዲስ ትእዛዝ አለኝ%0A%0A📦 እቃ፦ ${selectedProduct}%0A💰 ዋጋ፦ ${selectedPrice}%0A👤 ስም፦ ${name}%0A📞 ስልክ፦ ${phone}%0A📍 አድራሻ፦ ${address}`;
+            
+            // Redirect to Telegram with filled data
+            window.open(`https://t.me/Tvwlute?text=${text}`, '_blank');
+            closeOrderModal();
+            document.getElementById('orderForm').reset();
+        }
 
-        // Render products to Grid
-        function renderProducts(items) {
-            const grid = document.getElementById('productGrid');
-            grid.innerHTML = '';
+        // Filter Function
+        function filterCategory(category, btnElement) {
+            document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+            btnElement.classList.add('active');
 
-            if (items.length === 0) {
-                grid.innerHTML = '<p style="grid-column: 1/-1; text-align: center; color: #64748b; padding: 40px;">ምንም አይነት እቃ አልተገኘም!</p>';
-                return;
-            }
+            const searchInput = document.getElementById('searchInput');
+            searchInput.value = '';
+            document.getElementById('noResults').style.display = 'none';
 
-            items.forEach(item => {
-                const card = document.createElement('div');
-                card.className = 'card';
-                card.innerHTML = `
-                    <span class="badge">${item.category}</span>
-                    <img src="${item.img}" alt="${item.title}">
-                    <h3>${item.title}</h3>
-                    <p class="product-details">${item.details}</p>
-                    <span class="seller-tag">👤 ሻጭ፦ ${item.seller}</span>
-                    <div class="price">${item.price} ብር</div>
-                    <a href="https://t.me/Tvwlute?text=ሰላም%20የተለጠፈውን%20${encodeURIComponent(item.title)}%20ለመግዛት%20ፈልጌ%20ነበር" target="_blank" class="buy-btn">✈️ በቴሌግራም አናግር</a>
-                `;
-                grid.appendChild(card);
+            document.querySelectorAll('.category-section').forEach(section => {
+                section.querySelectorAll('.card').forEach(card => card.style.display = 'flex');
+
+                if (category === 'all') {
+                    section.classList.add('active');
+                } else {
+                    if (section.id === category) {
+                        section.classList.add('active');
+                    } else {
+                        section.classList.remove('active');
+                    }
+                }
             });
         }
 
-        // Auth Logic
-        function handleSignUp(e) {
-            e.preventDefault();
-            const name = document.getElementById('signUpName').value;
-            const phone = document.getElementById('signUpPhone').value;
-
-            currentUser = { name: name, phone: phone };
-            localStorage.setItem('merkatoX_user', JSON.stringify(currentUser));
-            
-            updateUIForUser();
-            closeModal('signupModal');
-            alert(`እንኳን ደስ አለዎት ${name}! አካውንትዎ በተሳካ ሁኔታ ተከፍቷል።`);
-        }
-
-        function handleLogin(e) {
-            e.preventDefault();
-            const phone = document.getElementById('loginPhone').value;
-
-            currentUser = { name: "የተመዘገበ ተጠቃሚ", phone: phone };
-            localStorage.setItem('merkatoX_user', JSON.stringify(currentUser));
-
-            updateUIForUser();
-            closeModal('loginModal');
-            alert("በተሳካ ሁኔታ ገብተዋል!");
-        }
-
-        function logout() {
-            currentUser = null;
-            localStorage.removeItem('merkatoX_user');
-            document.getElementById('authButtons').style.display = 'block';
-            document.getElementById('userProfile').style.display = 'none';
-            alert("ከአካውንትዎ ወጥተዋል።");
-        }
-
-        function updateUIForUser() {
-            if (currentUser) {
-                document.getElementById('authButtons').style.display = 'none';
-                document.getElementById('userProfile').style.display = 'flex';
-                document.getElementById('userNameDisplay').innerText = `👤 ${currentUser.name}`;
-            }
-        }
-
-        function handleSellButtonClick() {
-            if (!currentUser) {
-                alert("እቃ ለመሸጥ/ለመፖሰት አስቀድመው አካውንት መክፈት ወይም መግባት (Login) አለብዎት!");
-                openModal('loginModal');
-            } else {
-                openModal('sellModal');
-            }
-        }
-
-        // Post Product Logic
-        function handlePostItem(e) {
-            e.preventDefault();
-            const title = document.getElementById('itemTitle').value;
-            const category = document.getElementById('itemCategory').value;
-            const price = document.getElementById('itemPrice').value;
-            const img = document.getElementById('itemImage').value;
-            const desc = document.getElementById('itemDesc').value;
-
-            const newItem = {
-                id: Date.now(),
-                title: title,
-                category: category,
-                price: Number(price).toLocaleString(),
-                details: desc || "አዲስ የቀረበ እቃ",
-                img: img || "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=500",
-                seller: currentUser.name,
-                phone: currentUser.phone
-            };
-
-            products.unshift(newItem);
-            localStorage.setItem('merkatoX_products', JSON.stringify(products));
-
-            renderProducts(products);
-            closeModal('sellModal');
-            alert("🎉 እቃዎ በተሳካ ሁኔታ ድረ-ገጹ ላይ ተለጥፏል!");
-        }
-
-        // Category Filter
-        function filterCategory(category, btn) {
-            document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
-            btn.classList.add('active');
-
-            if (category === 'all') {
-                renderProducts(products);
-            } else {
-                const filtered = products.filter(p => p.category === category);
-                renderProducts(filtered);
-            }
-        }
-
-        // Search
+        // Search Filter Function
         document.getElementById('searchInput').addEventListener('keyup', function() {
-            const val = this.value.toLowerCase();
-            const filtered = products.filter(p => p.title.toLowerCase().includes(val));
-            renderProducts(filtered);
-        });
+            let input = this.value.toLowerCase().trim();
+            let visibleCardsCount = 0;
 
-        // Modal Helpers
-        function openModal(id) {
-            document.getElementById(id).style.display = 'flex';
-        }
-        function closeModal(id) {
-            document.getElementById(id).style.display = 'none';
-        }
+            document.querySelectorAll('.category-section').forEach(section => {
+                let sectionHasMatch = false;
+
+                section.querySelectorAll('.card').forEach(card => {
+                    let title = card.querySelector('h3').innerText.toLowerCase();
+                    if (title.includes(input)) {
+                        card.style.display = 'flex';
+                        sectionHasMatch = true;
+                        visibleCardsCount++;
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+
+                if (sectionHasMatch) {
+                    section.classList.add('active');
+                } else {
+                    section.classList.remove('active');
+                }
+            });
+
+            let noResultsMsg = document.getElementById('noResults');
+            if (visibleCardsCount === 0 && input !== '') {
+                noResultsMsg.style.display = 'block';
+            } else {
+                noResultsMsg.style.display = 'none';
+            }
+        });
     </script>
 </body>
 </html>
