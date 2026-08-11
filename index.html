@@ -276,7 +276,7 @@
             font-size: 20px;
             font-weight: 800;
         }
-        .buy-btn {
+       .buy-btn {
             background-color: var(--primary);
             color: white;
             text-align: center;
@@ -323,7 +323,7 @@
             padding: 20px;
         }
 
-        .modal-overlay.active {
+        .modal-overlay.show {
             display: flex !important;
             animation: modalFadeIn 0.3s ease-out;
         }
@@ -424,8 +424,8 @@
             font-size: 14px;
             font-family: inherit;
             transition: all 0.2s ease;
-        }
-        .form-group input:focus, .form-group textarea:focus {
+        } 
+       .form-group input:focus, .form-group textarea:focus {
             background: #ffffff;
             border-color: var(--primary);
             box-shadow: 0 0 0 3px var(--accent-glow);
@@ -481,7 +481,7 @@
         <div class="header-container">
             <a href="#" class="logo">MerkatoX.</a>
             <div class="search-box">
-                <input type="text" id="searchInput" onkeyup="filterProducts()" placeholder="የሚፈልጉትን እቃ እዚህ ይፈልጉ...">
+                <input type="text" id="searchInput" placeholder="የሚፈልጉትን እቃ እዚህ ይፈልጉ...">
             </div>
         </div>
     </header>
@@ -489,11 +489,11 @@
     <!-- Navigation Menu Buttons -->
     <nav>
         <div class="nav-container">
-            <button class="nav-btn active" onclick="showCategory('all', this)">🌐 ሁሉንም</button>
-            <button class="nav-btn" onclick="showCategory('shoes', this)">👟 ጫማዎች</button>
-            <button class="nav-btn" onclick="showCategory('clothes', this)">👕 ልብሶች</button>
-            <button class="nav-btn" onclick="showCategory('electronics', this)">📱 ኤሌክትሮኒክስ</button>
-            <button class="nav-btn" onclick="showCategory('used', this)">📦 ያገለገሉ እቃዎች</button>
+            <button class="nav-btn active" data-category="all">🌐 ሁሉንም</button>
+            <button class="nav-btn" data-category="shoes">👟 ጫማዎች</button>
+            <button class="nav-btn" data-category="clothes">👕 ልብሶች</button>
+            <button class="nav-btn" data-category="electronics">📱 ኤሌክትሮኒክስ</button>
+            <button class="nav-btn" data-category="used">📦 ያገለገሉ እቃዎች</button>
         </div>
     </nav>
 
@@ -522,7 +522,7 @@
                     <div class="price-container">
                         <span class="price">3,200 ብር</span>
                     </div>
-                    <button type="button" class="buy-btn" onclick="openOrderModal('Nike Air Max Limited (የስፖርት ጫማ)', '3,200 ብር')">በቴሌግራም ይዘዙ</button>
+                    <button type="button" class="buy-btn" data-name="Nike Air Max Limited (የስፖርት ጫማ)" data-price="3,200 ብር">በቴሌግራም ይዘዙ</button>
                 </div>
                 <div class="card">
                     <span class="badge">NEW</span>
@@ -531,10 +531,10 @@
                     <div class="price-container">
                         <span class="price">2,800 ብር</span>
                     </div>
-                    <button type="button" class="buy-btn" onclick="openOrderModal('Casual Sneakers Edition (የካዥዋል ጫማ)', '2,800 ብር')">በቴሌግራም ይዘዙ</button>
+                    <button type="button" class="buy-btn" data-name="Casual Sneakers Edition (የካዥዋል ጫማ)" data-price="2,800 ብር">በቴሌግራም ይዘዙ</button>
                 </div>
             </div>
-        </section>
+        </section> 
         <!-- 2. ልብሶች -->
         <section id="clothes" class="category-section active">
             <h3 class="category-header">👕 ልብሶች</h3>
@@ -545,7 +545,7 @@
                     <div class="price-container">
                         <span class="price">1,200 ብር</span>
                     </div>
-                    <button type="button" class="buy-btn" onclick="openOrderModal('Premium Cotton T-Shirt (ቲሸርት)', '1,200 ብር')">በቴሌግራም ይዘዙ</button>
+                    <button type="button" class="buy-btn" data-name="Premium Cotton T-Shirt (ቲሸርት)" data-price="1,200 ብር">በቴሌግራም ይዘዙ</button>
                 </div>
                 <div class="card">
                     <span class="badge">HOT</span>
@@ -554,7 +554,7 @@
                     <div class="price-container">
                         <span class="price">4,500 ብር</span>
                     </div>
-                    <button type="button" class="buy-btn" onclick="openOrderModal('Classic Leather Jacket (የቆዳ ጃኬት)', '4,500 ብር')">በቴሌግራም ይዘዙ</button>
+                    <button type="button" class="buy-btn" data-name="Classic Leather Jacket (የቆዳ ጃኬት)" data-price="4,500 ብር">በቴሌግራም ይዘዙ</button>
                 </div>
             </div>
         </section>
@@ -569,7 +569,7 @@
                     <div class="price-container">
                         <span class="price">18,000 ብር</span>
                     </div>
-                    <button type="button" class="buy-btn" onclick="openOrderModal('Smart Phone Flagship (ስማርት ስልክ)', '18,000 ብር')">በቴሌግራም ይዘዙ</button>
+                    <button type="button" class="buy-btn" data-name="Smart Phone Flagship (ስማርት ስልክ)" data-price="18,000 ብር">በቴሌግራም ይዘዙ</button>
                 </div>
                 <div class="card">
                     <span class="badge">NEW</span>
@@ -578,7 +578,7 @@
                     <div class="price-container">
                         <span class="price">2,200 ብር</span>
                     </div>
-                    <button type="button" class="buy-btn" onclick="openOrderModal('Wireless Headphones Pro (የገመድ አልባ ማዳመጫ)', '2,200 ብር')">በቴሌግራም ይዘዙ</button>
+                    <button type="button" class="buy-btn" data-name="Wireless Headphones Pro (የገመድ አልባ ማዳመጫ)" data-price="2,200 ብር">በቴሌግራም ይዘዙ</button>
                 </div>
             </div>
         </section>
@@ -594,7 +594,7 @@
                     <div class="price-container">
                         <span class="price">35,000 ብር</span>
                     </div>
-                    <button type="button" class="buy-btn" onclick="openOrderModal('MacBook Pro (ላፕቶፕ)', '35,000 ብር')">በቴሌግራም ይዘዙ</button>
+                    <button type="button" class="buy-btn" data-name="MacBook Pro (ላፕቶፕ)" data-price="35,000 ብር">በቴሌግራም ይዘዙ</button>
                 </div>
                 <div class="card">
                     <span class="badge">USED</span>
@@ -603,7 +603,7 @@
                     <div class="price-container">
                         <span class="price">15,000 ብር</span>
                     </div>
-                    <button type="button" class="buy-btn" onclick="openOrderModal('Canon Professional Camera (ካሜራ)', '15,000 ብር')">በቴሌግራም ይዘዙ</button>
+                    <button type="button" class="buy-btn" data-name="Canon Professional Camera (ካሜራ)" data-price="15,000 ብር">በቴሌግራም ይዘዙ</button>
                 </div>
             </div>
         </section>
@@ -612,7 +612,7 @@
     <!-- Order Modal Form -->
     <div id="orderModal" class="modal-overlay">
         <div class="modal-content">
-            <button type="button" class="close-modal" onclick="closeOrderModal()">&times;</button>
+            <button type="button" class="close-modal" id="closeModalBtn">&times;</button>
             <h3 class="modal-title">የእቃ ማዘዣ ፎርም</h3>
             <p class="modal-subtitle">እባክዎን መረጃዎን ይሙሉ፣ ቀጥታ ወደ ቴሌግራም ይላካል።</p>
             
@@ -621,7 +621,7 @@
                 <span id="modalProductPrice" class="selected-item-price">-</span>
             </div>
 
-            <form id="orderForm" onsubmit="sendToTelegram(event)">
+            <form id="orderForm">
                 <div class="form-group">
                     <label for="custName">ሙሉ ስም</label>
                     <input type="text" id="custName" placeholder="ለምሳሌ፡ አበበ ከበደ" required>
@@ -653,117 +653,125 @@
 
     <!-- JavaScript code -->
     <script>
-        let currentProduct = "";
-        let currentPrice = "";
+        document.addEventListener('DOMContentLoaded', function() {
+            let selectedProduct = "";
+            let selectedPrice = "";
+            const modal = document.getElementById('orderModal');
+            const closeModalBtn = document.getElementById('closeModalBtn');
+            const orderForm = document.getElementById('orderForm');
+            const searchInput = document.getElementById('searchInput');
 
-        function openOrderModal(productName, productPrice) {
-            currentProduct = productName;
-            currentPrice = productPrice;
-            document.getElementById('modalProductName').innerText = productName;
-            document.getElementById('modalProductPrice').innerText = productPrice;
-            
-            let modal = document.getElementById('orderModal');
-            modal.style.display = 'flex';
-        }
+            // Open Modal for Buy Buttons
+            document.querySelectorAll('.buy-btn').forEach(button => {
+                button.addEventListener('click', function() {
+                    selectedProduct = this.getAttribute('data-name');
+                    selectedPrice = this.getAttribute('data-price');
+                    
+                    document.getElementById('modalProductName').innerText = selectedProduct;
+                    document.getElementById('modalProductPrice').innerText = selectedPrice;
+                    
+                    modal.classList.add('show');
+                });
+            });
 
-        function closeOrderModal() {
-            let modal = document.getElementById('orderModal');
-            modal.style.display = 'none';
-            document.getElementById('orderForm').reset();
-        }
+            // Close Modal
+            closeModalBtn.addEventListener('click', function() {
+                modal.classList.remove('show');
+                orderForm.reset();
+            });
 
-        // Close modal when clicking outside of it
-        window.onclick = function(event) {
-            let modal = document.getElementById('orderModal');
-            if (event.target === modal) {
-                closeOrderModal();
-            }
-        }
-
-        function sendToTelegram(event) {
-            event.preventDefault();
-            
-            let name = document.getElementById('custName').value;
-            let phone = document.getElementById('custPhone').value;
-            let location = document.getElementById('custLocation').value;
-            let note = document.getElementById('custNote').value;
-
-            let telegramUsername = "Tvwlute"; // ያንተ የቴሌግራም Username
-
-            let message = 🛍️ *አዲስ ትእዛዝ ከ MerkatoX!*\n\n +
-                          📦 *የተመረጠው እቃ:* ${currentProduct}\n +
-                          💰 *ዋጋ:* ${currentPrice}\n\n +
-                          👤 *የደንበኛ ስም:* ${name}\n +
-                          📞 *ስልክ ቁጥር:* ${phone}\n +
-                          📍 *አድራሻ:* ${location}\n +
-                          📝 *ተጨማሪ ማስታወሻ:* ${note ? note : "የለም"};
-
-            let encodedMessage = encodeURIComponent(message);
-            let telegramUrl = https://t.me/${telegramUsername}?text=${encodedMessage};
-            
-            window.location.href = telegramUrl;
-            closeOrderModal();
-        }
-        function showCategory(categoryId, element) {
-            document.getElementById('searchInput').value = '';
-            document.getElementById('noResults').style.display = 'none';
-
-            let buttons = document.querySelectorAll('.nav-btn');
-            buttons.forEach(btn => btn.classList.remove('active'));
-            
-            element.classList.add('active');
-
-            let sections = document.querySelectorAll('.category-section');
-            sections.forEach(section => {
-                let cards = section.querySelectorAll('.card');
-                cards.forEach(card => card.style.display = 'flex');
-
-                if (categoryId === 'all') {
-                    section.classList.add('active');
-                } else {
-                    if (section.id === categoryId) {
-                        section.classList.add('active');
-                    } else {
-                        section.classList.remove('active');
-                    }
+            window.addEventListener('click', function(event) {
+                if (event.target === modal) {
+                    modal.classList.remove('show');
+                    orderForm.reset();
                 }
             });
-        }
 
-        function filterProducts() {
-            let input = document.getElementById('searchInput').value.toLowerCase();
-            let cards = document.querySelectorAll('.card');
-            let sections = document.querySelectorAll('.category-section');
-            let visibleCardsCount = 0;
+            // Submit Form to Telegram
+            orderForm.addEventListener('submit', function(event) {
+                event.preventDefault();
+                
+                let name = document.getElementById('custName').value;
+                let phone = document.getElementById('custPhone').value;
+                let location = document.getElementById('custLocation').value;
+                let note = document.getElementById('custNote').value;
 
-            sections.forEach(section => {
-                section.classList.add('active');
-                let sectionHasMatch = false;
+                let telegramUsername = "Tvwlute";
+                let message = 🛍️ *አዲስ ትእዛዝ ከ MerkatoX!*\n\n +
+                              📦 *የተመረጠው እቃ:* ${selectedProduct}\n +
+                              💰 *ዋጋ:* ${selectedPrice}\n\n +
+                              👤 *የደንበኛ ስም:* ${name}\n +
+                              📞 *ስልክ ቁጥር:* ${phone}\n +
+                              📍 *አድራሻ:* ${location}\n +
+                              📝 *ተጨማሪ ማስታወሻ:* ${note ? note : "የለም"};
 
-                let sectionCards = section.querySelectorAll('.card');
-                sectionCards.forEach(card => {
-                    let title = card.querySelector('h3').innerText.toLowerCase();
-                    if (title.includes(input)) {
-                        card.style.display = 'flex';
-                        sectionHasMatch = true;
-                        visibleCardsCount++;
-                    } else {
-                        card.style.display = 'none';
+                let encodedMessage = encodeURIComponent(message);
+                let telegramUrl = https://t.me/${telegramUsername}?text=${encodedMessage};
+                
+                window.open(telegramUrl, '_blank');
+                modal.classList.remove('show');
+                orderForm.reset();
+            });
+
+            // Category Filtering
+            document.querySelectorAll('.nav-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    let category = this.getAttribute('data-category');
+                    searchInput.value = '';
+                    document.getElementById('noResults').style.display = 'none';
+
+                    document.querySelectorAll('.category-section').forEach(section => {
+                        section.querySelectorAll('.card').forEach(card => card.style.display = 'flex');
+
+                        if (category === 'all') {
+                            section.classList.add('active');
+                        } else {
+                            if (section.id === category) {
+                                section.classList.add('active');
+                            } else {
+                                section.classList.remove('active');
+                            }
+                        }
+                    });
+                });
+            });
+
+            // Search Filter
+            searchInput.addEventListener('keyup', function() {
+                let input = this.value.toLowerCase();
+                let visibleCardsCount = 0;
+
+                document.querySelectorAll('.category-section').forEach(section => {
+                    section.classList.add('active');
+                    let sectionHasMatch = false;
+
+                    section.querySelectorAll('.card').forEach(card => {
+                        let title = card.querySelector('h3').innerText.toLowerCase();
+                        if (title.includes(input)) {
+                            card.style.display = 'flex';
+                            sectionHasMatch = true;
+                            visibleCardsCount++;
+                        } else {
+                            card.style.display = 'none';
+                        }
+                    });
+
+                    if (!sectionHasMatch && input !== '') {
+                        section.classList.remove('active');
                     }
                 });
 
-                if (!sectionHasMatch && input !== '') {
-                    section.classList.remove('active');
+                let noResultsMsg = document.getElementById('noResults');
+                if (visibleCardsCount === 0 && input !== '') {
+                    noResultsMsg.style.display = 'block';
+                } else {
+                    noResultsMsg.style.display = 'none';
                 }
             });
-
-            let noResultsMsg = document.getElementById('noResults');
-            if (visibleCardsCount === 0 && input !== '') {
-                noResultsMsg.style.display = 'block';
-            } else {
-                noResultsMsg.style.display = 'none';
-            }
-        }
+        });
     </script>
 
 </body>
