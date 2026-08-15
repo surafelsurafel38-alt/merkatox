@@ -333,7 +333,7 @@
             background-color: #16a34a;
         }
 
-        /* Modal Styles (የፎርም መስኮት) */
+        /* Modal Styles */
         .modal-overlay {
             display: none;
             position: fixed;
@@ -347,6 +347,10 @@
             justify-content: center;
             align-items: center;
             padding: 20px;
+        }
+
+        .modal-overlay.active {
+            display: flex;
         }
 
         .modal-card {
@@ -482,7 +486,7 @@
         footer {
             background-color: var(--dark-bg);
             color: #94a3b8;
-            padding: 50px 20px;
+            padding: 50px 20px 20px;
             border-top: 1px solid #1e293b;
         }
 
@@ -721,7 +725,7 @@
 
     </main>
 
-    <!-- Order Form Modal (የፎርም መስኮት) -->
+    <!-- Order Form Modal -->
     <div id="orderModal" class="modal-overlay">
         <div class="modal-card">
             <span class="close-modal" onclick="closeOrderModal()">&times;</span>
@@ -783,107 +787,92 @@
             <div class="footer-col">
                 <h4>የክፍያ አማራጮች</h4>
                 <div class="payment-badges">
-                    <span>Telebirr</span>
                     <span>CBE Birr</span>
-                    <span>Bank Transfer</span>
+                    <span>Telebirr</span>
+                    <span>BOA</span>
+                    <span>Awash Bank</span>
                 </div>
             </div>
         </div>
         <div class="footer-bottom">
-            <p>&copy; 2026 MerkatoX. All rights reserved.</p>
+            &copy; 2026 MerkatoX Ethiopia. All Rights Reserved.
         </div>
     </footer>
 
-    <!-- JavaScript logic -->
+    <!-- Interactive JavaScript -->
     <script>
-        let selectedProduct = '';
-        let selectedPrice = '';
+        // Category Filter
+        function filterCategory(category, btnElement) {
+            const sections = document.querySelectorAll('.category-section');
+            const buttons = document.querySelectorAll('.nav-btn');
+            const noResults = document.getElementById('noResults');
 
-        // Modal Controls
-        function openOrderModal(pName, pPrice) {
-            selectedProduct = pName;
-            selectedPrice = pPrice;
-            document.getElementById('modalProductName').innerText = pName;
-            document.getElementById('modalProductPrice').innerText = "ዋጋ፦ " + pPrice;
-            document.getElementById('orderModal').style.display = 'flex';
+            noResults.style.display = 'none';
+
+            buttons.forEach(btn => btn.classList.remove('active'));
+            if (btnElement) btnElement.classList.add('active');
+
+            sections.forEach(sec => {
+                if (category === 'all' || sec.id === category) {
+                    sec.classList.add('active');
+                } else {
+                    sec.classList.remove('active');
+                }
+            });
+        }
+
+        // Live Search Filter
+        const searchInput = document.getElementById('searchInput');
+        searchInput.addEventListener('input', function(e) {
+            const query = e.target.value.toLowerCase().trim();
+            const cards = document.querySelectorAll('.card');
+            const sections = document.querySelectorAll('.category-section');
+            const noResults = document.getElementById('noResults');
+            let totalVisible = 0;
+
+            sections.forEach(sec => sec.classList.add('active'));
+
+            cards.forEach(card => {
+                const title = card.querySelector('h3').textContent.toLowerCase();
+                const details = card.querySelector('.product-details').textContent.toLowerCase();
+                if (title.includes(query) || details.includes(query)) {
+                    card.style.display = 'flex';
+                    totalVisible++;
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+
+            if (totalVisible === 0) {
+                noResults.style.display = 'block';
+            } else {
+                noResults.style.display = 'none';
+            }
+        });
+
+        // Modal Logic
+        function openOrderModal(name, price) {
+            document.getElementById('modalProductName').textContent = name;
+            document.getElementById('modalProductPrice').textContent = "ዋጋ: " + price;
+            document.getElementById('orderModal').classList.add('active');
         }
 
         function closeOrderModal() {
-            document.getElementById('orderModal').style.display = 'none';
+            document.getElementById('orderModal').classList.remove('active');
+            document.getElementById('orderForm').reset();
         }
 
-        // Form Submit Handler
+        // Handle Order Form Submission
         function handleFormSubmit(e) {
             e.preventDefault();
             const name = document.getElementById('custName').value;
             const phone = document.getElementById('custPhone').value;
             const address = document.getElementById('custAddress').value;
+            const item = document.getElementById('modalProductName').textContent;
 
-            const text = `ሰላም! አዲስ ትእዛዝ አለኝ%0A%0A📦 እቃ፦ ${selectedProduct}%0A💰 ዋጋ፦ ${selectedPrice}%0A👤 ስም፦ ${name}%0A📞 ስልክ፦ ${phone}%0A📍 አድራሻ፦ ${address}`;
-            
-            // Redirect to Telegram with filled data
-            window.open(`https://t.me/Tvwlute?text=${text}`, '_blank');
+            alert(`እናመሰግናለን ${name}! የ${item} ትእዛዝዎ በስኬት ተልኳል። በስልክ ቁጥር ${phone} በቅርቡ እናገኝዎታለን።`);
             closeOrderModal();
-            document.getElementById('orderForm').reset();
         }
-
-        // Filter Function
-        function filterCategory(category, btnElement) {
-            document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
-            btnElement.classList.add('active');
-
-            const searchInput = document.getElementById('searchInput');
-            searchInput.value = '';
-            document.getElementById('noResults').style.display = 'none';
-
-            document.querySelectorAll('.category-section').forEach(section => {
-                section.querySelectorAll('.card').forEach(card => card.style.display = 'flex');
-
-                if (category === 'all') {
-                    section.classList.add('active');
-                } else {
-                    if (section.id === category) {
-                        section.classList.add('active');
-                    } else {
-                        section.classList.remove('active');
-                    }
-                }
-            });
-        }
-
-        // Search Filter Function
-        document.getElementById('searchInput').addEventListener('keyup', function() {
-            let input = this.value.toLowerCase().trim();
-            let visibleCardsCount = 0;
-
-            document.querySelectorAll('.category-section').forEach(section => {
-                let sectionHasMatch = false;
-
-                section.querySelectorAll('.card').forEach(card => {
-                    let title = card.querySelector('h3').innerText.toLowerCase();
-                    if (title.includes(input)) {
-                        card.style.display = 'flex';
-                        sectionHasMatch = true;
-                        visibleCardsCount++;
-                    } else {
-                        card.style.display = 'none';
-                    }
-                });
-
-                if (sectionHasMatch) {
-                    section.classList.add('active');
-                } else {
-                    section.classList.remove('active');
-                }
-            });
-
-            let noResultsMsg = document.getElementById('noResults');
-            if (visibleCardsCount === 0 && input !== '') {
-                noResultsMsg.style.display = 'block';
-            } else {
-                noResultsMsg.style.display = 'none';
-            }
-        });
     </script>
 </body>
 </html>
