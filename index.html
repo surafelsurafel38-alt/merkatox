@@ -169,7 +169,7 @@
            ========================================== */
         .product-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
             gap: 20px;
         }
 
@@ -220,7 +220,15 @@
             font-size: 12px;
             color: var(--text-muted);
             margin-bottom: 12px;
-            line-height: 1.4;
+            line-height: 1.6;
+        }
+
+        .contact-info {
+            background-color: #f1f5f9;
+            padding: 8px;
+            border-radius: 6px;
+            margin-top: 6px;
+            border-left: 3px solid var(--primary);
         }
 
         .price-container {
@@ -423,7 +431,7 @@
         <div class="header-container">
             <a href="#" class="logo">MerkatoX</a>
             <div class="search-box">
-                <input type="text" id="searchInput" placeholder="እቃዎችን እዚህ ይፈልጉ..." onkeyup="filterProducts()">
+                <input type="text" id="searchInput" placeholder="እቃዎችን፣ አድራሻን ወይም ስልክ እዚህ ይፈልጉ..." onkeyup="filterProducts()">
             </div>
             <div class="auth-buttons">
                 <button class="auth-btn login-btn" onclick="openAuthModal('login')">🔑 ግባ (Login)</button>
@@ -448,71 +456,70 @@
         <section id="shoes" class="category-section active">
             <h3 class="category-header">👟 ጫማዎች</h3>
             <div class="product-grid">
+                
                 <div class="card">
                     <span class="badge">NEW</span>
-                    <img src="https://cdn.corenexis.com/f/Vrz5II5JZ5r.jpg" alt="Sneaker">
+                    <img src="https://cdn.corenexis.com/f/Vrz5II5JZ5r.jpg" alt="Casual Sports Shoes">
                     <h3>Casual Sports Shoes</h3>
-                    <p class="product-details">📏 Size: 41 | 🏷️ Condition: Brand New</p>
+                    <div class="product-details">
+                        <p>📏 Size: 41 | 🏷️ Condition: Brand New</p>
+                        <p>💬 አስተያየት፡ ምርጥ ጥራት ያለውና ለአጠቃቀም ምቹ የሆነ::</p>
+                        <div class="contact-info">
+                            📍 አድራሻ፡ አዲስ አበባ<br>
+                            📞 ስልክ፡ +251900578058 / +251 91 003 7996
+                        </div>
+                    </div>
                     <div class="price-container">
                         <span class="price">2,500 ብር</span>
                     </div>
                     <div class="btn-group">
                         <button class="form-btn" onclick="openOrderModal('Casual Sports Shoes', '2,500 ብር')">📝 በፎርም እዘዝ</button>
-                        <a href="https://t.me/Tvwlute?text=ሰላም!%20ይህንን%20እቃ%20መግዛት%20እፈልጋለሁ%20Casual%20Sports%20Shoes%20(2,500%20ብር)" target="_blank" class="buy-btn">✈️ በቴሌግራም አናግር</a>
+                        <a href="https://t.me/Tvwlute?text=ሰላም!%20Casual%20Sports%20Shoes%20(2,500%20ብር)%20መግዛት%20እፈልጋለሁ" target="_blank" class="buy-btn">✈️ በቴሌግራም አናግር</a>
                     </div>
                 </div>
+
                 <div class="card">
                     <span class="badge">NEW</span>
-                    <img src="https://cdn.corenexis.com/f/Nnn2BjcfMU7.png" alt="Sneakers">
+                    <img src="https://cdn.corenexis.com/f/Nnn2BjcfMU7.png" alt="Casual Sports Shoes">
                     <h3>Casual Sports Shoes</h3>
-                    <p class="product-details">📏 Size: 35 | 🏷️ Condition: Brand New</p>
+                    <div class="product-details">
+                        <p>📏 Size: 35 | 🏷️ Condition: Brand New</p>
+                        <p>💬 አስተያየት፡ ለቀጣይ ቀን እንቅስቃሴዎች ተመራጭ።</p>
+                        <div class="contact-info">
+                            📍 አድራሻ፡ አዲስ አበባ<br>
+                            📞 ስልክ፡ +251900578058 / +251 91 003 7996
+                        </div>
+                    </div>
                     <div class="price-container">
                         <span class="price">1,600 ብር</span>
                     </div>
                     <div class="btn-group">
                         <button class="form-btn" onclick="openOrderModal('Casual Sports Shoes', '1,600 ብር')">📝 በፎርም እዘዝ</button>
-                        <a href="https://t.me/Tvwlute?text=ሰላም!%20ይህንን%20እቃ%20መግዛት%20እፈልጋለሁ%20Casual%20Sports%20Shoes%20(1,600%20ብር)" target="_blank" class="buy-btn">✈️ በቴሌግራም አናግር</a>
+                        <a href="https://t.me/Tvwlute?text=ሰላም!%20Casual%20Sports%20Shoes%20(1,600%20ብር)%20መግዛት%20እፈልጋለሁ" target="_blank" class="buy-btn">✈️ በቴሌግራም አናግር</a>
                     </div>
                 </div>
+
                 <div class="card">
                     <span class="badge">NEW</span>
-                    <img src="https://cdn.corenexis.com/f/S4HIDwAxlmB.png" alt="Sneakers">
-                    <h3>Casual Sports Shoes</h3>
-                    <p class="product-details">📏 Size: 44 | 🏷️ Condition: Brand New</p>
-                    <div class="price-container">
-                        <span class="price">2,300 ብር</span>
-                    </div>
-                    <div class="btn-group">
-                        <button class="form-btn" onclick="openOrderModal('Casual Sports Shoes', '2,300 ብር')">📝 በፎርም እዘዝ</button>
-                        <a href="https://t.me/Tvwlute?text=ሰላም!%20ይህንን%20እቃ%20መግዛት%20እፈልጋለሁ%20Casual%20Sports%20Shoes%20(2,300%20ብር)" target="_blank" class="buy-btn">✈️ በቴሌግራም አናግር</a>
-                    </div>
-                </div>
-                <div class="card">
-                    <span class="badge">NEW</span>
-                    <img src="https://cdn.corenexis.com/f/U4h8BuS7QO1.png" alt="Sneakers">
-                    <h3>Casual Sports Shoes</h3>
-                    <p class="product-details">📏 Size: 41 | 🏷️ Condition: Brand New</p>
-                    <div class="price-container">
-                        <span class="price">2,300 ብር</span>
-                    </div>
-                    <div class="btn-group">
-                        <button class="form-btn" onclick="openOrderModal('Casual Sports Shoes', '2,300 ብር')">📝 በፎርም እዘዝ</button>
-                        <a href="https://t.me/Tvwlute?text=ሰላም!%20ይህንን%20እቃ%20መግዛት%20እፈልጋለሁ%20Casual%20Sports%20Shoes%20(2,300%20ብር)" target="_blank" class="buy-btn">✈️ በቴሌግራም አናግር</a>
-                    </div>
-                </div>   
-                <div class="card">
-                    <span class="badge">NEW</span>
-                    <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=500" alt="Nike Sneaker">
+                    <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=500" alt="Nike Air Max">
                     <h3>Nike Air Max 270</h3>
-                    <p class="product-details">📏 Size: 41, 42, 43 | 🎨 Color: Red/Black | 🏷️ Condition: Brand New</p>
+                    <div class="product-details">
+                        <p>📏 Size: 41-43 | 🎨 Color: Red/Black</p>
+                        <p>💬 አስተያየት፡ ኦሪጅናል ጥራት ያለው የስፖርት ጫማ።</p>
+                        <div class="contact-info">
+                            📍 አድራሻ፡ አዲስ አበባ<br>
+                            📞 ስልክ፡ +251900578058 / +251 91 003 7996
+                        </div>
+                    </div>
                     <div class="price-container">
                         <span class="price">3,800 ብር</span>
                     </div>
                     <div class="btn-group">
                         <button class="form-btn" onclick="openOrderModal('Nike Air Max 270', '3,800 ብር')">📝 በፎርም እዘዝ</button>
-                        <a href="https://t.me/Tvwlute?text=ሰላም!%20ይህንን%20እቃ%20መግዛት%20እፈልጋለሁ%20Nike%20Air%20Max%20270%20(3,800%20ብር)" target="_blank" class="buy-btn">✈️ በቴሌግራም አናግር</a>
+                        <a href="https://t.me/Tvwlute?text=ሰላም!%20Nike%20Air%20Max%20270%20(3,800%20ብር)%20መግዛት%20እፈልጋለሁ" target="_blank" class="buy-btn">✈️ በቴሌግራም አናግር</a>
                     </div>
                 </div>
+
             </div>
         </section>
 
@@ -522,15 +529,22 @@
             <div class="product-grid">
                 <div class="card">
                     <span class="badge">HOT</span>
-                    <img src="https://images.unsplash.com/photo-1521572267360-ee0c2909d518?w=500" alt="T-Shirt">
+                    <img src="https://images.unsplash.com/photo-1521572267360-ee0c2909d518?w=500" alt="Jacket">
                     <h3>Casual Denim Jacket</h3>
-                    <p class="product-details">📏 Size: L, XL | 🎨 Color: Blue | 🏷️ Condition: Brand New</p>
+                    <div class="product-details">
+                        <p>📏 Size: L, XL | 🎨 Color: Blue</p>
+                        <p>💬 አስተያየት፡ ለሁሉም ወቅቶች የሚሆን ዘመናዊ ጃኬት።</p>
+                        <div class="contact-info">
+                            📍 አድራሻ፡ አዲስ አበባ<br>
+                            📞 ስልክ፡ +251900578058 / +251 91 003 7996
+                        </div>
+                    </div>
                     <div class="price-container">
                         <span class="price">2,500 ብር</span>
                     </div>
                     <div class="btn-group">
                         <button class="form-btn" onclick="openOrderModal('Casual Denim Jacket', '2,500 ብር')">📝 በፎርም እዘዝ</button>
-                        <a href="https://t.me/Tvwlute?text=ሰላም!%20ይህንን%20እቃ%20መግዛት%20እፈልጋለሁ%20Casual%20Denim%20Jacket%20(2,500%20ብር)" target="_blank" class="buy-btn">✈️ በቴሌግራም አናግር</a>
+                        <a href="https://t.me/Tvwlute?text=ሰላም!%20Casual%20Denim%20Jacket%20(2,500%20ብር)%20መግዛት%20እፈልጋለሁ" target="_blank" class="buy-btn">✈️ በቴሌግራም አናግር</a>
                     </div>
                 </div>
             </div>
@@ -544,13 +558,20 @@
                     <span class="badge">NEW</span>
                     <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=500" alt="Smart Watch">
                     <h3>Apple Watch Series 9</h3>
-                    <p class="product-details">📏 Size: 45mm | 🔋 Battery: 18 Hours | 🏷️ Condition: Brand New</p>
+                    <div class="product-details">
+                        <p>📏 Size: 45mm | 🔋 Battery: 18 Hours</p>
+                        <p>💬 አስተያየት፡ ከሙሉ ዋስትና እና አካሰሰሪዎች ጋር።</p>
+                        <div class="contact-info">
+                            📍 አድራሻ፡ አዲስ አበባ<br>
+                            📞 ስልክ፡ +251900578058 / +251 91 003 7996
+                        </div>
+                    </div>
                     <div class="price-container">
                         <span class="price">22,000 ብር</span>
                     </div>
                     <div class="btn-group">
                         <button class="form-btn" onclick="openOrderModal('Apple Watch Series 9', '22,000 ብር')">📝 በፎርም እዘዝ</button>
-                        <a href="https://t.me/Tvwlute?text=ሰላም!%20ይህንን%20እቃ%20መግዛት%20እፈልጋለሁ%20Apple%20Watch%20Series%209%20(22,000%20ብር)" target="_blank" class="buy-btn">✈️ በቴሌግራም አናግር</a>
+                        <a href="https://t.me/Tvwlute?text=ሰላም!%20Apple%20Watch%20Series%209%20(22,000%20ብር)%20መግዛት%20እፈልጋለሁ" target="_blank" class="buy-btn">✈️ በቴሌግራም አናግር</a>
                     </div>
                 </div>
             </div>
@@ -564,13 +585,20 @@
                     <span class="badge">USED</span>
                     <img src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=500" alt="MacBook">
                     <h3>MacBook Pro 2019 (Slightly Used)</h3>
-                    <p class="product-details">💻 Core i7 | 16GB RAM | 512GB SSD | 🏷️ Condition: 9/10</p>
+                    <div class="product-details">
+                        <p>💻 Core i7 | 16GB RAM | 512GB SSD</p>
+                        <p>💬 አስተያየት፡ በታላቅ ጥንቃቄ የተያዘ እና በጥሩ ሁኔታ ላይ ያለ።</p>
+                        <div class="contact-info">
+                            📍 አድራሻ፡ አዲስ አበባ<br>
+                            📞 ስልክ፡ +251900578058 / +251 91 003 7996
+                        </div>
+                    </div>
                     <div class="price-container">
                         <span class="price">48,000 ብር</span>
                     </div>
                     <div class="btn-group">
                         <button class="form-btn" onclick="openOrderModal('MacBook Pro 2019', '48,000 ብር')">📝 በፎርም እዘዝ</button>
-                        <a href="https://t.me/Tvwlute?text=ሰላም!%20ይህንን%20እቃ%20መግዛት%20እፈልጋለሁ%20MacBook%20Pro%202019%20(48,000%20ብር)" target="_blank" class="buy-btn">✈️ በቴሌግራም አናግር</a>
+                        <a href="https://t.me/Tvwlute?text=ሰላም!%20MacBook%20Pro%202019%20(48,000%20ብር)%20መግዛት%20እፈልጋለሁ" target="_blank" class="buy-btn">✈️ በቴሌግራም አናግር</a>
                     </div>
                 </div>
             </div>
@@ -601,8 +629,16 @@
                     <input type="tel" required placeholder="09...">
                 </div>
                 <div class="form-group">
-                    <label>ማድረሻ አድራሻ (Location)</label>
+                    <label>የቴሌግራም User Name (አማራጭ)</label>
+                    <input type="text" id="orderTgUser" placeholder="@username">
+                </div>
+                <div class="form-group">
+                    <label>ማድረሻ አድራሻ / አካባቢ (Location)</label>
                     <textarea rows="2" required placeholder="ለምሳሌ፡ አዲስ አበባ፣ ቦሌ..."></textarea>
+                </div>
+                <div class="form-group">
+                    <label>ተጨማሪ አስተያየት / ማስታወሻ</label>
+                    <textarea rows="2" placeholder="ስለ እቃው ወይም ማድረሻ ሰዓቱ ተጨማሪ ሀሳብ ካለዎት ያስገቡ..."></textarea>
                 </div>
                 <button type="submit" class="submit-btn">ትእዛዝ ላክ 🚀</button>
             </form>
@@ -614,13 +650,11 @@
         <div class="modal-card">
             <span class="close-modal" onclick="closeAuthModal()">&times;</span>
 
-            <!-- Tabs -->
             <div class="auth-tabs">
                 <button class="tab-btn active" id="loginTabBtn" onclick="switchAuthTab('login')">ግባ (Login)</button>
                 <button class="tab-btn" id="registerTabBtn" onclick="switchAuthTab('register')">ተመዝገብ</button>
             </div>
 
-            <!-- 1. LOGIN FORM -->
             <form id="loginForm" class="auth-form active" onsubmit="handleLoginSubmit(event)">
                 <div class="form-group">
                     <label for="loginEmail">ኢሜይል ወይም ስልክ ቁጥር</label>
@@ -633,7 +667,6 @@
                 <button type="submit" class="submit-btn">ግባ</button>
             </form>
 
-            <!-- 2. REGISTER FORM -->
             <form id="registerForm" class="auth-form" onsubmit="handleRegisterSubmit(event)">
                 <div class="form-group">
                     <label for="regName">ሙሉ ስም</label>
@@ -644,13 +677,16 @@
                     <input type="text" id="regEmail" required placeholder="09... ወይም example@mail.com">
                 </div>
                 <div class="form-group">
+                    <label for="regTg">የቴሌግራም User Name (አማራጭ)</label>
+                    <input type="text" id="regTg" placeholder="@username">
+                </div>
+                <div class="form-group">
                     <label for="regPass">አዲስ የይለፍ ቃል</label>
                     <input type="password" id="regPass" required placeholder="ቢያንስ 6 ፊደላት/ቁጥሮች">
                 </div>
                 <button type="submit" class="submit-btn">ተመዝገብና ኮድ ላክ 📩</button>
             </form>
 
-            <!-- 3. VERIFICATION (OTP) STEP -->
             <div id="otpStep" class="auth-form">
                 <div class="otp-header">
                     <h3>📲 ማረጋገጫ ኮድ (OTP)</h3>
@@ -671,9 +707,6 @@
 
     <!-- JAVASCRIPT -->
     <script>
-        // ==========================================
-        // 1. CATEGORY FILTER & SEARCH
-        // ==========================================
         function switchCategory(catId) {
             const sections = document.querySelectorAll('.category-section');
             const buttons = document.querySelectorAll('.cat-btn');
@@ -707,9 +740,6 @@
             });
         }
 
-        // ==========================================
-        // 2. ORDER MODAL LOGIC
-        // ==========================================
         function openOrderModal(itemName, itemPrice) {
             document.getElementById('orderItemName').value = itemName;
             document.getElementById('orderItemPrice').value = itemPrice;
@@ -726,9 +756,6 @@
             closeOrderModal();
         }
 
-        // ==========================================
-        // 3. AUTH (LOGIN / REGISTER / OTP) LOGIC
-        // ==========================================
         function openAuthModal(tab) {
             document.getElementById('authModal').classList.add('active');
             switchAuthTab(tab);
