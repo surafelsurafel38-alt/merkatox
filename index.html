@@ -1994,15 +1994,12 @@
             &copy; 2026 MerkatoX Ethiopia. All rights reserved.
         </div>
     </footer>
-
-  <!-- JavaScript logic -->
+<!-- JavaScript logic -->
 <script>
     function filterCategory(category, btn) {
         const buttons = document.querySelectorAll('.nav-btn');
         buttons.forEach(b => b.classList.remove('active'));
-        if (btn) {
-            btn.classList.add('active');
-        }
+        if (btn) btn.classList.add('active');
 
         const sections = document.querySelectorAll('.category-section');
         sections.forEach(sec => {
@@ -2015,7 +2012,6 @@
     }
 
     function openOrderModal(name, price) {
-        // value በመጠቀም በ input ቦክሱ ውስጥ ስም እና ዋጋ እንዲገባ ማድረግ
         const nameInput = document.getElementById('modalProductName');
         const priceInput = document.getElementById('modalProductPrice');
         
@@ -2029,18 +2025,22 @@
         document.getElementById('orderModal').classList.remove('active');
     }
 
-    function handleFormSubmit(e) {
+    async function handleFormSubmit(e) {
         e.preventDefault();
 
-        // ፎርሙ ላይ የተሞሉትን መረጃዎች መሰብሰብ
+        // 1. የ Telegram Bot credentials (Token እና የእርስዎ Chat ID)
+        const BOT_TOKEN = "8816561755:AAFpNsZT-OGnz9uqnb-eCjIysTCKsEtzlTQ"; 
+        const CHAT_ID = "942161257"; 
+
+        // 2. ፎርሙ ላይ የተሞሉትን መረጃዎች መሰብሰብ
         const product = document.getElementById('modalProductName') ? document.getElementById('modalProductName').value : '';
         const price = document.getElementById('modalProductPrice') ? document.getElementById('modalProductPrice').value : '';
         const name = document.getElementById('custName') ? document.getElementById('custName').value : '';
         const phone = document.getElementById('custPhone') ? document.getElementById('custPhone').value : '';
         const address = document.getElementById('custAddress') ? document.getElementById('custAddress').value : 'አልተጠቀሰም';
 
-        // የቴሌግራም መልእክት ማዘጋጀት
-        const message = `🛍️ *አዲስ ትእዛዝ ደርሷል!*
+        // 3. ወደ ቴሌግራም የሚላከው መልእክት አደረጃጀት
+        const message = `🛍️ *አዲስ ትእዛዝ ደርሷል (MerkatoX)!*
 
 📦 *እቃ:* ${product}
 💰 *ዋጋ:* ${price}
@@ -2048,15 +2048,41 @@
 📞 *ስልክ ቁጥር:* ${phone}
 📍 *አድራሻ:* ${address}`;
 
-        // ወደ ቴሌግራም መላክ
-        const telegramUsername = "Tvwlute"; // የ እርስዎ Telegram Username
-        const telegramUrl = `https://t.me/${telegramUsername}?text=${encodeURIComponent(message)}`;
+        // Submit Button ሁኔታን መቀየር
+        const submitBtn = e.target.querySelector('button[type="submit"]');
+        const originalText = submitBtn.innerText;
+        submitBtn.innerText = "እየተላከ ነው...";
+        submitBtn.disabled = true;
 
-        alert('ትዕዛዝዎ ተዘጋጅቷል! እባክዎን ወደ ቴሌግራም በመቀየር "Send" የሚለውን ይጫኑ።');
-        window.open(telegramUrl, '_blank');
+        try {
+            // 4. Telegram API sendMessage endpoint መጠቀም
+            const response = await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    chat_id: CHAT_ID,
+                    text: message,
+                    parse_mode: 'Markdown'
+                })
+            });
 
-        closeOrderModal();
-        e.target.reset();
+            const data = await response.json();
+
+            if (data.ok) {
+                alert('ትዕዛዝዎ በተሳካ ሁኔታ ተልኳል! በቅርብ ጊዜ በስልክ እንገናኛለን።');
+                closeOrderModal();
+                e.target.reset();
+            } else {
+                console.error('Telegram API Error:', data);
+                alert('ስህተት ተፈጽሟል። እባክዎን ቦቱን በ Telegram Start ማድረጎትን ያረጋግጡ።');
+            }
+        } catch (error) {
+            console.error('Network Error:', error);
+            alert('መልእክቱን መላክ አልተቻለም። እባክዎ የኢንተርኔት ግንኙነትዎን ያረጋግጡ።');
+        } finally {
+            submitBtn.innerText = originalText;
+            submitBtn.disabled = false;
+        }
     }
 
     // Search script
