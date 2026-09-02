@@ -1936,29 +1936,37 @@
             </div>
         </div>
     </section>
-    <!-- Order Modal Form -->
-    <div class="modal-overlay" id="orderModal">
-        <div class="modal-card">
-            <span class="close-modal" onclick="closeOrderModal()">&times;</span>
-            <h3 id="modalProductName">እቃ ማዘዣ</h3>
-            <p id="modalProductPrice">ዋጋ: -</p>
-            <form onsubmit="handleFormSubmit(event)">
-                <div class="form-group">
-                    <label for="userName">ሙሉ ስም</label>
-                    <input type="text" id="userName" required placeholder="ለምሳሌ: አበበ ከበደ">
-                </div>
-                <div class="form-group">
-                    <label for="userPhone">ስልክ ቁጥር</label>
-                    <input type="tel" id="userPhone" required placeholder="09... / 07...">
-                </div>
-                <div class="form-group">
-                    <label for="userAddress">የመላኪያ አድራሻ</label>
-                    <textarea id="userAddress" rows="2" required placeholder="ከተማ፣ ክፍለ ከተማ ወይም ልዩ ቦታ..."></textarea>
-                </div>
-                <button type="submit" class="submit-btn">ትዕዛዙን ላክ</button>
-            </form>
-        </div>
+  <!-- Order Modal Overlay -->
+<div class="modal-overlay" id="orderModal">
+    <div class="modal-card">
+        <span class="close-modal" onclick="closeOrderModal()">&times;</span>
+        <h3>የትእዛዝ ፎርም</h3>
+        <p>እባክዎን መረጃዎን በትክክል ይሙሉ፤ በፍጥነት እናገናኝዎታለን።</p>
+        <form id="checkoutForm" onsubmit="handleFormSubmit(event)">
+            <div class="form-group">
+                <label>የመረጡት እቃ</label>
+                <input type="text" id="modalProductName" readonly>
+            </div>
+            <div class="form-group">
+                <label>ዋጋ</label>
+                <input type="text" id="modalProductPrice" readonly>
+            </div>
+            <div class="form-group">
+                <label>ሙሉ ስም *</label>
+                <input type="text" id="custName" required placeholder="ለምሳሌ፡ አበበ ከበደ">
+            </div>
+            <div class="form-group">
+                <label>ስልክ ቁጥር *</label>
+                <input type="tel" id="custPhone" required placeholder="09........">
+            </div>
+            <div class="form-group">
+                <label>መላኪያ አድራሻ / ክልል ወይም ከተማ</label>
+                <textarea id="custAddress" rows="2" placeholder="ለምሳሌ፡ አዲስ አበባ፣ ቦሌ"></textarea>
+            </div>
+            <button type="submit" class="submit-btn">ትእዛዝ ላክ (በቴሌግራም)</button>
+        </form>
     </div>
+</div>
 
     <!-- Footer -->
     <footer>
@@ -1987,41 +1995,74 @@
         </div>
     </footer>
 
-    <!-- JavaScript logic -->
-    <script>
-        function filterCategory(category, btn) {
-            const buttons = document.querySelectorAll('.nav-btn');
-            buttons.forEach(b => b.classList.remove('active'));
+  <!-- JavaScript logic -->
+<script>
+    function filterCategory(category, btn) {
+        const buttons = document.querySelectorAll('.nav-btn');
+        buttons.forEach(b => b.classList.remove('active'));
+        if (btn) {
             btn.classList.add('active');
-
-            const sections = document.querySelectorAll('.category-section');
-            sections.forEach(sec => {
-                if (category === 'all' || sec.id === category) {
-                    sec.classList.add('active');
-                } else {
-                    sec.classList.remove('active');
-                }
-            });
         }
 
-        function openOrderModal(name, price) {
-            document.getElementById('modalProductName').innerText = name;
-            document.getElementById('modalProductPrice').innerText = 'ዋጋ: ' + price;
-            document.getElementById('orderModal').classList.add('active');
-        }
+        const sections = document.querySelectorAll('.category-section');
+        sections.forEach(sec => {
+            if (category === 'all' || sec.id === category) {
+                sec.classList.add('active');
+            } else {
+                sec.classList.remove('active');
+            }
+        });
+    }
 
-        function closeOrderModal() {
-            document.getElementById('orderModal').classList.remove('active');
-        }
+    function openOrderModal(name, price) {
+        // value በመጠቀም በ input ቦክሱ ውስጥ ስም እና ዋጋ እንዲገባ ማድረግ
+        const nameInput = document.getElementById('modalProductName');
+        const priceInput = document.getElementById('modalProductPrice');
+        
+        if (nameInput) nameInput.value = name;
+        if (priceInput) priceInput.value = price;
+        
+        document.getElementById('orderModal').classList.add('active');
+    }
 
-        function handleFormSubmit(e) {
-            e.preventDefault();
-            alert('ትዕዛዝዎ በተሳካ ሁኔታ ተልኳል! በቅርብ ጊዜ በስልክ እንገናኛለን።');
-            closeOrderModal();
-        }
+    function closeOrderModal() {
+        document.getElementById('orderModal').classList.remove('active');
+    }
 
-        // Search script
-        document.getElementById('searchInput').addEventListener('input', function (e) {
+    function handleFormSubmit(e) {
+        e.preventDefault();
+
+        // ፎርሙ ላይ የተሞሉትን መረጃዎች መሰብሰብ
+        const product = document.getElementById('modalProductName') ? document.getElementById('modalProductName').value : '';
+        const price = document.getElementById('modalProductPrice') ? document.getElementById('modalProductPrice').value : '';
+        const name = document.getElementById('custName') ? document.getElementById('custName').value : '';
+        const phone = document.getElementById('custPhone') ? document.getElementById('custPhone').value : '';
+        const address = document.getElementById('custAddress') ? document.getElementById('custAddress').value : 'አልተጠቀሰም';
+
+        // የቴሌግራም መልእክት ማዘጋጀት
+        const message = `🛍️ *አዲስ ትእዛዝ ደርሷል!*
+
+📦 *እቃ:* ${product}
+💰 *ዋጋ:* ${price}
+👤 *የደንበኛ ስም:* ${name}
+📞 *ስልክ ቁጥር:* ${phone}
+📍 *አድራሻ:* ${address}`;
+
+        // ወደ ቴሌግራም መላክ
+        const telegramUsername = "Tvwlute"; // የ እርስዎ Telegram Username
+        const telegramUrl = `https://t.me/${telegramUsername}?text=${encodeURIComponent(message)}`;
+
+        alert('ትዕዛዝዎ ተዘጋጅቷል! እባክዎን ወደ ቴሌግራም በመቀየር "Send" የሚለውን ይጫኑ።');
+        window.open(telegramUrl, '_blank');
+
+        closeOrderModal();
+        e.target.reset();
+    }
+
+    // Search script
+    const searchInput = document.getElementById('searchInput');
+    if (searchInput) {
+        searchInput.addEventListener('input', function (e) {
             const query = e.target.value.toLowerCase();
             const cards = document.querySelectorAll('.card');
             let found = false;
@@ -2036,8 +2077,12 @@
                 }
             });
 
-            document.getElementById('noResults').style.display = found ? 'none' : 'block';
+            const noResults = document.getElementById('noResults');
+            if (noResults) {
+                noResults.style.display = found ? 'none' : 'block';
+            }
         });
-    </script>
+    }
+</script>
 </body>
 </html>
